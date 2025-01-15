@@ -1,0 +1,151 @@
+<project name="SatSim" default="all" basedir="..">
+
+	<!-- Set up environment property -->
+	<property environment="env" />
+
+	<!-- Select version of simant -->
+	<property name="simant.version" value="1.16.4" />
+
+	<!-- Import Ant files -->
+	<property name="simant.dir" value="${env.SIMTG_INSTALL_ROOT}/simant/simant_${simant.version}" />
+	<property name="simant.cache.skip" value ="false" />	
+	<import file="${simant.dir}/simant.xml" />
+	<import file="${simant.dir}/simtg_init.xml" />
+	<import file="${simant.dir}/simmf_init.xml" />
+    <import file="${simant.dir}/test.xml" />
+    <import file="${simant.dir}/simops_init.xml" />
+    <import file="${simant.dir}/jsynoptic_init.xml"/>
+	
+	<!-- Optionnaly read a common properties file. Properties defined locally take precedence. -->
+	<!-- readCommonProperties projectname="projectThatDefinesCommonProperties" /-->
+
+	<!-- Set up project name and version -->
+	<property name="project_name" value="${ant.project.name}" />
+	<propertycopy property="project_version" from="${project_name}.version" />
+
+	<!-- Entry point of this build. First tries to trigger Ant scripts of referenced projects. -->
+	<target name="all" depends="buildReferencedProjects, build" description="Build and package all." />
+
+	<target name="dep_init">
+		
+		<!-- Add here the required products -->
+		<getProduct product="simtg" version="${simtg.version}" localdir="${env.SIMTG_LOCAL_ROOT}" installdir="${env.SIMTG_INSTALL_ROOT}" />
+
+		<getProduct product="unitTest" version="${unitTest.version}" installdir="${env.SIMTG_INSTALL_ROOT}"
+                localDir="${env.SIMTG_LOCAL_ROOT}/unitTest/delivery"/>
+
+        <getProduct product="simops" version="${simops5.version}" 
+                localDir="../simops/delivery" installDir="${env.SIMTG_INSTALL_ROOT}" javaonly="true" />
+        <getJsynopticProduct version="${jsynoptic.version}" installDir="${env.SIMTG_INSTALL_ROOT}" 
+                localDir="${env.SIMTG_LOCAL_ROOT}/jsynoptic/delivery" />
+
+		<!-- Define simtg compiler and simtg linker -->
+		<defineSimtgCompilerLinker/>
+		
+		<!-- Use the following task to set up automatically the binary references of the SimMF project -->
+		<!-- setSimMFBinaryReferences projectName="${project_name}">
+			<path>
+				<pathElement location="${simmf_binary_project_path_1}" />
+				<pathElement location="${simmf_binary_project_path_2}" />
+				<pathElement location="${...}" />
+			</path>
+		</setSimMFBinaryReferences -->
+		
+		<makeDeliveryDir product="${project_name}" version="${project_version}"/>
+		<contribStringSubstitution name="SIMTG_LIB_PATH" value="${simtgDir}:${deliveryDir}" />
+		<contribStringSubstitution name="SVF_DATA_PATH" value="${testDir}/data" />
+	</target>
+
+    <target name="simops5_init">
+        <propertycopy name="simops5Dir" from="simopsDir" /> 
+        <propertycopy name="simops5Jar" from="simopsJar" /> 
+        <property name="simops5BridgeJar" value="${simopsDir}/simops_bridge-${simops5.version}.jar"/>
+        <path id="simops5Classpath">
+            <pathelement location="${genSrcDir}" /> 
+            <pathelement location="${simtgJar}"/>   
+            <!--pathelement location="${simtg_m1553Jar}"/-->
+            <!--pathelement location="${simtg_spacewireJar}" /-->
+            <pathelement location="${simops5Jar}" />
+            <pathelement location="${jsynopticJar}" /> 
+            <pathelement location="${simsvfTmTcJar}"/>
+            <pathelement location="${env.JUNIT_ROOT}/junit.jar" />      
+            <pathelement location="${env.HAMCREST_JAR}" />          
+        </path>
+    </target>
+
+	<!-- Build the project. First initializes the product dependencies. -->
+	<target name="build" depends="dep_init,cc_init" description="Generate code, build and package the current project.">
+		
+		<echo>
+			---------------------------------
+			Build ${project_name}
+			---------------------------------
+		</echo>
+		
+		<!-- Generate code -->
+		<genCppVersion path="${project_name}" file="${project_name}" version="${project_version}" />
+		<generateSimMFCode />
+		
+		<!-- Do the dynamic library -->
+		<doDynLibWithSimMF projectName="${project_name}" projectVersion="${project_version}"/>
+		
+		<!-- Example of a custom compilation. Refer to doDynLibWithSimMF macro documentation for further info. -->
+		<!-- doDynLibWithSimMF projectName="${project_name}" projectVersion="${project_version}">
+			<compiler-elements>
+				<includepath location="${simtg_m1553Dir}" />
+			</compiler-elements>
+			<linker-elements>
+				<libset dir="${simtg_m1553Dir}" libs="simtg_m1553_core, simtg_m1553_model" />
+			</linker-elements>
+		</doDynLibWithSimMF -->
+		
+		<!-- Package other files -->
+		<deliverHppFiles />
+		<packageSimMFFiles />
+		
+		<echo>Project ${project_name} build successful</echo>
+		
+	</target>
+	
+	<!-- Top-level test target -->
+    <target name="test" depends="dep_init,test_init,test_unit,test_junit,test_end"/>
+    
+    <!-- Compile and run unit tests -->
+    <target name="test_unit" depends="dep_init">
+        <doCPPUnit testDir="${testDir}/SatSim" testNamePattern="**/test_*.cpp" ldLibraryPath="${deliveryBinDir}:${simtgBinDir}:${ace.libpath}:${tao.libpath}">
+            <includepath path="${genSrcDir}" />
+            <includepath path="${simtgDir}"/>
+            <libset dir="${deliveryBinDir}" libs="SatSim"/>
+        </doCPPUnit>
+    </target>
+
+
+    <target name="test_junit" depends="dep_init,cc_init,simops5_init">
+        <echo message="${deliveryBinDir}"/>
+        <if>
+            <os family="windows" /> 
+            <then>
+                <doJunit useJUnit4="true" path="${env.Path};${deliveryBinDir}" 
+                ldlibpath="${deliveryBinDir}" 
+                execDir="${deliveryBinDir}" 
+                junitPattern="SatSim/**/test_*">
+                    <classpath refid="simops5Classpath" /> 
+                </doJunit>
+            </then>
+            <else>                
+                <doJunit useJUnit4="true" path="${env.PATH}:${deliveryBinDir}"
+                ldlibpath="${env.LD_LIBRARY_PATH}:${deliveryBinDir}"
+                execDir="${deliveryBinDir}"
+                junitPattern="SatSim/**/test_*">
+                    <classpath refid="simops5Classpath" />
+                </doJunit>
+            </else>
+        </if>
+    </target>
+
+	<!-- Cleaning target -->
+	<target name="clean" depends="version_clean" description="delete generation, build and delivery directories">
+		<delete dir="${buildDir}" />
+	</target>
+
+</project>

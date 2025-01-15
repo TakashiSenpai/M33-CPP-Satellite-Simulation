@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="g++ 5.4.0 x86_64-linux-gnu -g -O2 -Wall -Wno-non-virtual-dtor -fno-strict-aliasing -c -fPIC -Isrc -I../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0 -Igeneration/src">
+      <target file="Cell.o" lastModified="19446e78a98">
+         <source file="../src/SatSim/Cell.cpp" lastModified="19446e786b0"/>
+      </target>
+      <target file="OrientationBase.o" lastModified="19446e728f0">
+         <source file="../src/SatSim/OrientationBase.cpp" lastModified="19446e71d38"/>
+      </target>
+      <target file="CellBase.o" lastModified="19446e78e80">
+         <source file="../src/SatSim/CellBase.cpp" lastModified="19446e786b0"/>
+      </target>
+      <target file="SunSensor.o" lastModified="19446e78a98">
+         <source file="../src/SatSim/SunSensor.cpp" lastModified="19446d2c248"/>
+      </target>
+      <target file="SunSensorBase.o" lastModified="19446e78e80">
+         <source file="../src/SatSim/SunSensorBase.cpp" lastModified="19446d2c248"/>
+      </target>
+      <target file="SatelliteBase.o" lastModified="19446e730c0">
+         <source file="../src/SatSim/SatelliteBase.cpp" lastModified="19446e71d38"/>
+      </target>
+      <target file="AttitudeController.o" lastModified="19446a443f0">
+         <source file="../src/SatSim/AttitudeController.cpp" lastModified="19446a44008"/>
+      </target>
+      <target file="SatSim.o" lastModified="194465a42a0">
+         <source file="../generation/src/SatSim/SatSim.cpp" lastModified="194465a3eb8"/>
+      </target>
+      <target file="Satellite.o" lastModified="19446e72508">
+         <source file="../src/SatSim/Satellite.cpp" lastModified="19446e71d38"/>
+      </target>
+      <target file="AttitudeControllerBase.o" lastModified="19446ac1fa8">
+         <source file="../src/SatSim/AttitudeControllerBase.cpp" lastModified="19446a44008"/>
+      </target>
+      <target file="Orientation.o" lastModified="19446e72120">
+         <source file="../src/SatSim/Orientation.cpp" lastModified="19446e71d38"/>
+      </target>
+   </processor>
+</history>

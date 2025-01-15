@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="simtg.simmf.modeldefinition.1.1" xmlns:_1="smfnotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <ModelDefinitionDocument xmi:id="_z-ShEM3VEe-dEfVxFIbKWQ">
+    <modelDefinition xmi:type="ModelDefinition" xmi:id="_z-ShEc3VEe-dEfVxFIbKWQ" name="AttitudeController">
+      <typeNotation xmi:type="_1:TypeNotation" xmi:id="_z-ShEs3VEe-dEfVxFIbKWQ">
+        <color xmi:type="_1:Color" xmi:id="_z-ShE83VEe-dEfVxFIbKWQ" red="192" green="192" blue="192"/>
+      </typeNotation>
+      <properties xmi:type="DataDef" xmi:id="__GPF4M3VEe-dEfVxFIbKWQ" name="in_initialSunDirection" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
+        <size>3</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="__G4mIM3VEe-dEfVxFIbKWQ"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_B38YgM3WEe-dEfVxFIbKWQ" name="out_sunDirection" propCategory="OUTPUT" defaultValue="0.0 0.0 0.0">
+        <size>3</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_CQy9YM3WEe-dEfVxFIbKWQ" order="1"/>
+      </properties>
+      <functions xmi:type="FuncDef" xmi:id="_z-ShFM3VEe-dEfVxFIbKWQ" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
+    </modelDefinition>
+  </ModelDefinitionDocument>
+  <notation:Diagram xmi:id="_z-TIIM3VEe-dEfVxFIbKWQ" type="Simmf" element="_z-ShEM3VEe-dEfVxFIbKWQ" name="AttitudeController.smf" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_0FBbMM3VEe-dEfVxFIbKWQ" type="2001" element="_z-ShEc3VEe-dEfVxFIbKWQ" fontName="Ubuntu" fontHeight="12" bold="true" fillColor="12632256">
+      <children xmi:type="notation:DecorationNode" xmi:id="_0FBbMs3VEe-dEfVxFIbKWQ" type="5003"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_0FBbM83VEe-dEfVxFIbKWQ" type="7001"/>
+      <children xmi:type="notation:Node" xmi:id="__GQUAM3VEe-dEfVxFIbKWQ" type="3004" element="__GPF4M3VEe-dEfVxFIbKWQ">
+        <children xmi:type="notation:DecorationNode" xmi:id="__GQ7EM3VEe-dEfVxFIbKWQ" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="__GQ7Ec3VEe-dEfVxFIbKWQ" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="__GQUAc3VEe-dEfVxFIbKWQ"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="__GQUAs3VEe-dEfVxFIbKWQ" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="__GQUA83VEe-dEfVxFIbKWQ" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="__GQUBM3VEe-dEfVxFIbKWQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_CQur8M3WEe-dEfVxFIbKWQ" type="3004" element="_B38YgM3WEe-dEfVxFIbKWQ">
+        <children xmi:type="notation:DecorationNode" xmi:id="_CQur9c3WEe-dEfVxFIbKWQ" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_CQur9s3WEe-dEfVxFIbKWQ" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_CQur8c3WEe-dEfVxFIbKWQ"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_CQur8s3WEe-dEfVxFIbKWQ" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_CQur883WEe-dEfVxFIbKWQ" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CQur9M3WEe-dEfVxFIbKWQ" x="-11" y="62"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0FBbMc3VEe-dEfVxFIbKWQ" x="100" y="100"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_z-TIIc3VEe-dEfVxFIbKWQ"/>
+  </notation:Diagram>
+</xmi:XMI>

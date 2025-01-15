@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/Isrc /I../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0 /Igeneration/src">
+      <source file="../src/SatSim/Satellite.cpp" lastModified="19446e71d38">
+         <include file="../src/SatSim/Satellite.hpp"/>
+         <include file="../src/SatSim/SunSensor.hpp"/>
+         <include file="../src/SatSim/Orientation.hpp"/>
+      </source>
+      <source file="../src/SatSim/Satellite.hpp" lastModified="19446e71d38">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/model/AsyncModelBase.hpp"/>
+         <include file="../generation/src/SatSim/SatSim.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/Data.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/AsyncData.hpp"/>
+      </source>
+      <source file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/MethodCallAsyncDataListener.hpp" lastModified="15998b006b0">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/AsyncData.hpp"/>
+      </source>
+      <source file="../src/SatSim/SunSensor.cpp" lastModified="19446d2c630">
+         <include file="../src/SatSim/SunSensor.hpp"/>
+         <include file="../src/SatSim/Cell.hpp"/>
+      </source>
+      <source file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/ConnectionService.hpp" lastModified="15998b00a98">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/Smp/ISimulator.h"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/Smp/IComposite.h"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/Smp/Management/IManagedComponent.h"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/Smp/Management/IManagedModel.h"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/connector/IConnectionService.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/Component.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/simtg_smp.hpp"/>
+      </source>
+      <source file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/TimeKeeperAdapter.hpp" lastModified="15998b00a98">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/Component.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/ITimeKeeper.hpp"/>
+      </source>
+      <source file="../src/SatSim/SatelliteBase.cpp" lastModified="19446e71d38">
+         <include file="../src/SatSim/Satellite.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/TimeKeeperAdapter.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/ConnectionService.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/LoggerMacros.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/MethodCallAsyncDataListener.hpp"/>
+         <include file="../src/SatSim/SunSensor.hpp"/>
+         <include file="../src/SatSim/Orientation.hpp"/>
+      </source>
+      <source file="../src/SatSim/SunSensorBase.cpp" lastModified="19446d2c248">
+         <include file="../src/SatSim/SunSensor.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/TimeKeeperAdapter.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/ConnectionService.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/LoggerMacros.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/MethodCallAsyncDataListener.hpp"/>
+         <include file="../src/SatSim/Cell.hpp"/>
+      </source>
+      <source file="../src/SatSim/SunSensor.hpp" lastModified="19446d2c248">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/model/AsyncModelBase.hpp"/>
+         <include file="../generation/src/SatSim/SatSim.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/Data.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/AsyncData.hpp"/>
+      </source>
+      <source file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/LoggerMacros.hpp" lastModified="15998b00a98">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/Logbook.hpp"/>
+      </source>
+      <source file="../generation/src/SatSim/SatSim.cpp" lastModified="194465a3eb8">
+         <include file="../generation/src/SatSim/SatSim.hpp"/>
+      </source>
+      <source file="../src/SatSim/Cell.hpp" lastModified="19446e786b0">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/model/AsyncModelBase.hpp"/>
+         <include file="../generation/src/SatSim/SatSim.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/Data.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/AsyncData.hpp"/>
+      </source>
+      <source file="../generation/src/SatSim/SatSim.hpp" lastModified="194465a3eb8">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/system/Version.hpp"/>
+      </source>
+      <source file="../src/SatSim/Orientation.cpp" lastModified="19446e71d38">
+         <include file="../src/SatSim/Orientation.hpp"/>
+      </source>
+      <source file="../src/SatSim/OrientationBase.cpp" lastModified="19446e71d38">
+         <include file="../src/SatSim/Orientation.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/TimeKeeperAdapter.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/ConnectionService.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/smp/LoggerMacros.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/MethodCallAsyncDataListener.hpp"/>
+      </source>
+      <source file="../src/SatSim/Orientation.hpp" lastModified="19446e71d38">
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/model/AsyncModelBase.hpp"/>
+         <include file="../generation/src/SatSim/SatSim.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/Data.hpp"/>
+         <include file="../../../dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.8.0/simtg/kernel/AsyncData.hpp"/>
+      </source>
+   </includePath>
+</dependencies>
