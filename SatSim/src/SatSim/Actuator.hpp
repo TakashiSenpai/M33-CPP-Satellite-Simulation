@@ -1,5 +1,5 @@
 /*
- * File SunSensor.hpp
+ * File Actuator.hpp
  *
  * Project SatSim
  *
@@ -8,77 +8,71 @@
  *
  */
 
-#ifndef __SUNSENSOR__HPP
-#define __SUNSENSOR__HPP
+#ifndef __ACTUATOR__HPP
+#define __ACTUATOR__HPP
 
-#include <simtg/model/AsyncModelBase.hpp>
+#include <simtg/model/ModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
-#include <simtg/kernel/AsyncData.hpp>
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
-class Cell;
-class Baffle;
-}
 
-namespace SatSim {
-
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-class SunSensor: public simtg::AsyncModelBase {
+class Actuator: public
+		simtg::ModelBase {
 
 public:
 	/**
-	 [INPUT]  [3]
+	 [INPUT]  [4]
 	 */
-	simtg::AsyncFloat _in_sunDirection;
+	simtg::Float _in_measuredCurrents;
 	/**
-	 [OUTPUT]  [4]
+	 [LOCAL]  [2]
 	 */
-	simtg::AsyncFloat _out_measuredCurrents;
+	float _out_actuationAngle[2];
 	/**
-	 [LOCAL]  [3]
+	 [LOCAL]  [4]
 	 */
-	float _orientation_0[3];
-	/**
-	 [LOCAL]  [3]
-	 */
-	float _orientation_1[3];
+	float _measuredCurrents[4];
 	/**
 	 [LOCAL]  [3]
 	 */
-	float _orientation_2[3];
+	float _cssSunDirections[3];
 	/**
-	 [LOCAL]  [3]
+	 [LOCAL]  [2]
 	 */
-	float _orientation_3[3];
+	float _calculatedPosition[2];
+	/**
+	 [LOCAL]  [2]
+	 */
+	float _lastPosition[2];
+	/**
+	 [LOCAL]  [2]
+	 */
+	float _sumPositions[2];
 	/**
 	 [LOCAL] 
 	 */
-	float _angle;
+	float _coefficientProportional;
 	/**
-	 [INPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _in_sunAz;
+	float _coefficientIntegration;
 	/**
-	 [INPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _in_sunEl;
+	float _coefficientDifferential;
 	/**
-	 [OUTPUT]  [40]
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _out_test;
-	Cell* _Cell_0;
-	Cell* _Cell_1;
-	Cell* _Cell_2;
-	Cell* _Cell_3;
-	Baffle* _Baffle;
+	int32_t _numSteps;
 
 private:
 	/**
@@ -127,7 +121,7 @@ public:
 	 @param parent_         the model parent
 	 @param description_         the model description
 	 */
-	SunSensor(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0,
+	Actuator(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0,
 			Smp::String8 description_ = "");
 	/**
 	 SMP default Constructor
@@ -135,22 +129,22 @@ public:
 	 @param description_         the model description
 	 @param parent_         the model parent
 	 */
-	SunSensor(Smp::String8 name_, Smp::String8 description_,
+	Actuator(Smp::String8 name_, Smp::String8 description_,
 			Smp::IComposite* parent_);
 	/**
 	 Default Destructor
 	 */
-	virtual ~SunSensor();
+	virtual ~Actuator();
 	/**
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
 	/**
-	 InitMethod of SunSensor
+	 InitMethod of Actuator
 	 */
 	void init() throw (simtg::Exception);
 	/**
-	 Publish method of SunSensor
+	 Publish method of Actuator
 	 @param publication_         a SMP publishing interface
 	 */
 	void Publish(Smp::IPublication* publication_)
@@ -179,11 +173,11 @@ public:
 			throw (SchedulableObject::BreakPointReached, simtg::Exception);
 
 public:
-	CLASS_INFO(SunSensor,simtg::AsyncModelBase,SatSim)
+	CLASS_INFO(Actuator,simtg::ModelBase,SatSim)
 
 public:
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
 	/*PROTECTED REGION END*/
 
@@ -192,24 +186,24 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 };
-// end class SunSensor
+// end class Actuator
 }//end SatSim
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 
-#endif //end __SUNSENSOR.HPP__H  
+#endif //end __ACTUATOR.HPP__H  
 

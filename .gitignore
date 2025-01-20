@@ -3,7 +3,8 @@ SatSim/bin/*
 SatSim/build/*
 SatSim/delivery/*
 SatSim/generation/*
-
+SatSim/baffles.log
+SatSim/sat.log
 SatSim/.binprojects
 SatSim/.classpath
 SatSim/.cproject

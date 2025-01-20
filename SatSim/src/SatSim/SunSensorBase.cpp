@@ -28,13 +28,12 @@ using namespace SatSim;
 
 SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_,
 		Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_), _in_sunDirection(
-				"in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0), _out_measuredCurrents(
-				"out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this,
-				0), _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this,
-				0), _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this,
-				0), _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data,
-				this, 0)
+		AsyncModelBase(name_, parent_, description_),
+				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_measuredCurrents("out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -70,13 +69,12 @@ SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_,
 }
 SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_,
 		Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_), _in_sunDirection(
-				"in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0), _out_measuredCurrents(
-				"out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this,
-				0), _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this,
-				0), _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this,
-				0), _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data,
-				this, 0)
+		AsyncModelBase(name_, description_, parent_),
+				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_measuredCurrents("out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -133,9 +131,11 @@ void SunSensor::Publish(Smp::IPublication* publication_)
 		/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_publish_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -151,9 +151,11 @@ void SunSensor::Configure(Smp::Services::ILogger* logger_)
 
 	try {
 		configure();
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -176,9 +178,11 @@ void SunSensor::Connect(Smp::ISimulator* sim_)
 		/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_connect_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -191,26 +195,22 @@ void SunSensor::connectData() throw (Smp::IModel::InvalidModelState) {
 
 	try {
 		//data connections 
-		this->getInput("in_sunDirection").connect(
-				&_Cell_1->getInput("input_sunDirection"), 0, 3, 0);
-		this->getInput("in_sunDirection").connect(
-				&_Cell_2->getInput("input_sunDirection"), 0, 3, 0);
-		this->getInput("in_sunDirection").connect(
-				&_Cell_0->getInput("input_sunDirection"), 0, 3, 0);
-		this->getInput("in_sunDirection").connect(
-				&_Cell_3->getInput("input_sunDirection"), 0, 3, 0);
-		this->getInput("in_sunEl").connect(&_Baffle->getInput("in_sunAzimuth"));
-		this->getInput("in_sunAz").connect(
-				&_Baffle->getInput("in_sunElevation"));
-		_Baffle->getOutput("out_test").connect(&this->getOutput("out_test"), 0,
-				40, 0);
+		this->getInput("in_sunDirection").connect(&_Cell_1->getInput("input_sunDirection"), 0, 3, 0);
+		this->getInput("in_sunDirection").connect(&_Cell_2->getInput("input_sunDirection"), 0, 3, 0);
+		this->getInput("in_sunDirection").connect(&_Cell_0->getInput("input_sunDirection"), 0, 3, 0);
+		this->getInput("in_sunDirection").connect(&_Cell_3->getInput("input_sunDirection"), 0, 3, 0);
+		_Baffle->getOutput("out_baffleCoefficient").connect(&this->getOutput("out_test"), 0, 4, 0);
+		this->getInput("in_sunAz").connect(&_Baffle->getInput("in_sunAzimuth"));
+		this->getInput("in_sunEl").connect(&_Baffle->getInput("in_sunElevation"));
 
 		/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_connectData_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -246,6 +246,7 @@ void SunSensor::initDefaultValues() {
 	for (int row = 0; row < 40; row++) {
 		_out_test[row] = 0.0;
 	}
+	_stepNbr = 0;
 
 	initSubModelsDefaultValues();
 
@@ -270,7 +271,8 @@ void SunSensor::initScheduling() {
 	/*PROTECTED REGION END*/
 	try {
 		registerMethods(methods);
-	} catch (simtg::Exception& e) {
+	}
+	catch (simtg::Exception& e) {
 		std::cerr << "Exception:" << e.what() << std::endl;
 	}
 
@@ -308,6 +310,7 @@ void SunSensor::serializeMembers(simtg::SerializationStream& stream_)
 	stream_.array(&_orientation_2[0], 3);
 	stream_.array(&_orientation_3[0], 3);
 	stream_.value(_angle);
+	stream_.value(_stepNbr);
 
 	_Cell_0->serialize(stream_);
 	_Cell_1->serialize(stream_);

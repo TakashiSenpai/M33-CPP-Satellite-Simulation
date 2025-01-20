@@ -23,6 +23,9 @@
       <properties xmi:type="DataDef" xmi:id="_RROkwM3YEe-dEfVxFIbKWQ" name="measuredCurrent" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
+      <properties xmi:type="DataDef" xmi:id="_SyVKYNcIEe-2FqChB99MmQ" name="baffleCoefficient" defaultValue="1.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
       <functions xmi:type="FuncDef" xmi:id="_FFfWhL1XEe-zAc57ptwKlg" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
       <functions xmi:type="FuncDef" xmi:id="_NUBoAM3bEe-dEfVxFIbKWQ" name="measureCurrent" visibility="PUBLIC"/>
     </modelDefinition>

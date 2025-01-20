@@ -56,6 +56,7 @@
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_o6L6NNNWEe-NefUk8IaYnw" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
+      <functions xmi:type="FuncDef" xmi:id="_ZBm6oNcJEe-2FqChB99MmQ" name="computeBaffleCoefficients" visibility="PUBLIC"/>
     </modelDefinition>
   </ModelDefinitionDocument>
   <notation:Diagram xmi:id="_o6MhQNNWEe-NefUk8IaYnw" type="Simmf" element="_o6L6MNNWEe-NefUk8IaYnw" name="Baffle.smf" measurementUnit="Pixel">

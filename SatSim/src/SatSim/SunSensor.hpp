@@ -15,6 +15,7 @@
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
+#include <string>
 
 /*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_header_hpp_include) ENABLED START*/
 //add user defined includes here
@@ -31,7 +32,8 @@ namespace SatSim {
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-class SunSensor: public simtg::AsyncModelBase {
+class SunSensor: public
+		simtg::AsyncModelBase {
 
 public:
 	/**
@@ -74,6 +76,10 @@ public:
 	 [OUTPUT]  [40]
 	 */
 	simtg::AsyncFloat _out_test;
+	/**
+	 [LOCAL] 
+	 */
+	int32_t _stepNbr;
 	Cell* _Cell_0;
 	Cell* _Cell_1;
 	Cell* _Cell_2;
@@ -145,6 +151,7 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
+	void log(std::string& msg_);
 	/**
 	 InitMethod of SunSensor
 	 */

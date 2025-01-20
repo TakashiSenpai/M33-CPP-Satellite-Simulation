@@ -26,7 +26,8 @@ namespace SatSim {
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-class Baffle: public simtg::AsyncModelBase {
+class Baffle: public
+		simtg::AsyncModelBase {
 
 public:
 	/**
@@ -143,6 +144,7 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
+	void computeBaffleCoefficients();
 	/**
 	 InitMethod of Baffle
 	 */

@@ -41,8 +41,7 @@ void Orientation::configure() throw (simtg::Exception) {
 	/*PROTECTED REGION END*/
 
 }
-void Orientation::serializeExt(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Orientation::serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 	/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQserializeExt) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
@@ -53,11 +52,13 @@ void Orientation::step() throw (simtg::Exception) {
 	//add user defined code here
 	//float *mat, float *in, float *out
 	this->sat2cssFrameConvert();
-
+	float uPrime[3] = { 0, this->_out_cssSunDirection[1],
+			this->_out_cssSunDirection[2], };
+	float uPrimeNorm = sqrt(pow(uPrime[1], 2) + pow(uPrime[2], 2));
 	this->_sunAzimuth =
 			(this->_out_cssSunDirection[1] <= 0) ?
-					acos(this->_out_cssSunDirection[2]) :
-					M_PI + acos(-this->_out_cssSunDirection[2]);
+													acos(this->_out_cssSunDirection[2] / uPrimeNorm) :
+													M_PI + acos(-this->_out_cssSunDirection[2] / uPrimeNorm);
 	this->_sunLongitude = acos(this->_out_cssSunDirection[0]);
 	/*PROTECTED REGION END*/
 
@@ -74,8 +75,61 @@ void Orientation::sat2cssFrameConvert() {
 	for (int i = 0; i < 3; i++) {
 		this->_out_cssSunDirection[i] = 0.0;
 		for (int j = 0; j < 3; j++) {
-			this->_out_cssSunDirection[i] += this->_css2satFrame[i][j]
+			this->_out_cssSunDirection[i] += this->_sat2cssFrame[i][j]
 					* this->_in_satSunDirection[j];
+		}
+	}
+	/*PROTECTED REGION END*/
+
+}
+float * Orientation::sat2cssFrameConvert(float* in_) {
+	/*PROTECTED REGION ID(_pYB4MNdFEe-pvalCSSrrfQ) ENABLED START*/
+	//add user defined code here
+	float out[3] = { 0,0,0};
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			out[i] += this->_sat2cssFrame[i][j] * in_[j];
+		}
+	}
+
+	return out;
+	/*PROTECTED REGION END*/
+
+}
+float * Orientation::css2satFrameConvert(float* in_) {
+	/*PROTECTED REGION ID(_DDvocNdGEe-pvalCSSrrfQ) ENABLED START*/
+	//add user defined code here
+	float out[3] = { 0, 0, 0 };
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			out[i] += this->_css2satFrame[i][j] * in_[j];
+		}
+	}
+
+	return out;
+	/*PROTECTED REGION END*/
+
+}
+void Orientation::rotation(float* angles_) {
+	/*PROTECTED REGION ID(_4YkpwNdGEe-pvalCSSrrfQ) ENABLED START*/
+	//add user defined code here
+	float a1 = angles_[0];
+	float a2 = angles_[1];
+
+	float m1[3][3] = { { cos(a1), 0, sin(a1) }, { 0, 1, 0 }, { -sin(a1), 0, cos(
+			a1) } };
+
+	float m2[3][3] = { { cos(a2), -sin(a2), 0 }, { sin(a2), cos(a2), 0 }, { 0,
+			0, 1 }, };
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			this->_rotation[i][j] = 0;
+			for (int k = 0; k < 3; k++) {
+				this->_rotation[i][j] += m1[i][k] * m2[k][j];
+			}
 		}
 	}
 	/*PROTECTED REGION END*/

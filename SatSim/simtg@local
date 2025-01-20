@@ -1,8 +1,0 @@
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.636547000 Zulu	0	simtg@local	Created an object of class: Satellite with name o
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.779561000 Zulu	0	simtg@local	Starting Publication process for all Models in the Model Container
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.779643000 Zulu	0	simtg@local	Configuring models
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.779667000 Zulu	0	simtg@local	Connecting models to Simulation environment
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.779786000 Zulu	0	simtg@local	Beginning Initialization
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.779793000 Zulu	0	simtg@local	Calling Initialization entry points (if they exist)
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.779800000 Zulu	0	simtg@local	Initializing SimControl
-0.000000000 SRT	01/01/1970 00:00:00.000 Epoch	1736961108.781021000 Zulu	0	simtg@local	init() completed. State is now STOPPED

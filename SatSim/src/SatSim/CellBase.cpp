@@ -26,10 +26,9 @@ using namespace SatSim;
 
 Cell::Cell(Smp::String8 name_, simtg::NamedObject* parent_,
 		Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_), _input_sunDirection(
-				"input_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0), _maxCurrent(
-				"maxCurrent", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this,
-				0)
+		AsyncModelBase(name_, parent_, description_),
+				_input_sunDirection("input_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _maxCurrent("maxCurrent", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -53,10 +52,9 @@ Cell::Cell(Smp::String8 name_, simtg::NamedObject* parent_,
 }
 Cell::Cell(Smp::String8 name_, Smp::String8 description_,
 		Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_), _input_sunDirection(
-				"input_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0), _maxCurrent(
-				"maxCurrent", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this,
-				0)
+		AsyncModelBase(name_, description_, parent_),
+				_input_sunDirection("input_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _maxCurrent("maxCurrent", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -95,9 +93,11 @@ void Cell::Publish(Smp::IPublication* publication_)
 		/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_publish_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -113,9 +113,11 @@ void Cell::Configure(Smp::Services::ILogger* logger_)
 
 	try {
 		configure();
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -137,9 +139,11 @@ void Cell::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelState)
 		/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_connect_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -156,9 +160,11 @@ void Cell::connectData() throw (Smp::IModel::InvalidModelState) {
 		/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_connectData_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -179,6 +185,7 @@ void Cell::initDefaultValues() {
 		_normalVector[row] = 0.0;
 	}
 	_measuredCurrent = 0.0;
+	_baffleCoefficient = 1.0;
 
 	initSubModelsDefaultValues();
 
@@ -203,7 +210,8 @@ void Cell::initScheduling() {
 	/*PROTECTED REGION END*/
 	try {
 		registerMethods(methods);
-	} catch (simtg::Exception& e) {
+	}
+	catch (simtg::Exception& e) {
 		std::cerr << "Exception:" << e.what() << std::endl;
 	}
 
@@ -239,6 +247,7 @@ void Cell::serializeMembers(simtg::SerializationStream& stream_)
 	stream_.value(_incidenceCoefficient);
 	stream_.array(&_normalVector[0], 3);
 	stream_.value(_measuredCurrent);
+	stream_.value(_baffleCoefficient);
 
 	serializeExt(stream_);
 

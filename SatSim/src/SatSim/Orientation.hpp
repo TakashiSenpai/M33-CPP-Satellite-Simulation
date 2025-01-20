@@ -26,13 +26,14 @@ namespace SatSim {
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-class Orientation: public simtg::AsyncModelBase {
+class Orientation: public
+		simtg::AsyncModelBase {
 
 public:
 	/**
-	 [INPUT]  [3]
+	 [LOCAL]  [3]
 	 */
-	simtg::AsyncFloat _in_satSunDirection;
+	float _in_satSunDirection[3];
 	/**
 	 [OUTPUT]  [3]
 	 */
@@ -40,11 +41,11 @@ public:
 	/**
 	 [LOCAL]  [3, 3]
 	 */
-	int32_t _css2satFrame[3][3];
+	int32_t _sat2cssFrame[3][3];
 	/**
 	 [LOCAL]  [3, 3]
 	 */
-	int32_t _sat2cssFrame[3][3];
+	int32_t _css2satFrame[3][3];
 	/**
 	 [OUTPUT] 
 	 */
@@ -57,6 +58,10 @@ public:
 	 [OUTPUT] 
 	 */
 	simtg::AsyncFloat _sunLongitude;
+	/**
+	 [LOCAL]  [3, 3]
+	 */
+	float _rotation[3][3];
 
 private:
 	/**
@@ -75,8 +80,7 @@ private:
 	 Delegated serialize method. Permits to serialize additional fields.
 	 @param stream_         a serialization stream
 	 */
-	void serializeExt(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 protected:
 	/**
@@ -95,8 +99,7 @@ protected:
 	 Serialization method:
 	 @param stream_         a serialization stream
 	 */
-	void serializeMembers(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 public:
 	/**
@@ -105,16 +108,14 @@ public:
 	 @param parent_         the model parent
 	 @param description_         the model description
 	 */
-	Orientation(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0,
-			Smp::String8 description_ = "");
+	Orientation(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0, Smp::String8 description_ = "");
 	/**
 	 SMP default Constructor
 	 @param name_         the model instance name
 	 @param description_         the model description
 	 @param parent_         the model parent
 	 */
-	Orientation(Smp::String8 name_, Smp::String8 description_,
-			Smp::IComposite* parent_);
+	Orientation(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_);
 	/**
 	 Default Destructor
 	 */
@@ -125,6 +126,9 @@ public:
 	void step() throw (simtg::Exception);
 	void css2satFrameConvert();
 	void sat2cssFrameConvert();
+	float* sat2cssFrameConvert(float* in_);
+	float* css2satFrameConvert(float* in_);
+	void rotation(float* angles_);
 	/**
 	 InitMethod of Orientation
 	 */
@@ -133,14 +137,12 @@ public:
 	 Publish method of Orientation
 	 @param publication_         a SMP publishing interface
 	 */
-	void Publish(Smp::IPublication* publication_)
-			throw (Smp::IModel::InvalidModelState);
+	void Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Load configuration
 	 @param logger_         a SMP logging interface
 	 */
-	void Configure(Smp::Services::ILogger* logger_)
-			throw (Smp::IModel::InvalidModelState);
+	void Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Connect Model to simulation environment.
 	 @param sim_         a SMP simulation interface
@@ -155,8 +157,7 @@ public:
 	 @param methodId_         a model method identifier
 	 @param params_         a method parameters container
 	 */
-	void callMethod(uint32_t methodId_, BaseType* params_)
-			throw (SchedulableObject::BreakPointReached, simtg::Exception);
+	void callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception);
 
 public:
 	CLASS_INFO(Orientation,simtg::AsyncModelBase,SatSim)
@@ -191,5 +192,5 @@ public:
 //add user defined code here
 /*PROTECTED REGION END*/
 
-#endif //end __ORIENTATION.HPP__H  
+#endif //end __ORIENTATION__HPP
 

@@ -24,15 +24,12 @@ using namespace SatSim;
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_,
-		Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_), _in_satSunDirection(
-				"in_satSunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0), _out_cssSunDirection(
-				"out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this,
-				0), _isInEclipse("isInEclipse", 1, 1, "-", simtg::OUTPUT,
-				&_data, this, 0), _sunAzimuth("sunAzimuth", 1, 1, "-",
-				simtg::OUTPUT, &_data, this, 0), _sunLongitude("sunLongitude",
-				1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
+		AsyncModelBase(name_, parent_, description_),
+				_out_cssSunDirection("out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _isInEclipse("isInEclipse", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _sunAzimuth("sunAzimuth", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _sunLongitude("sunLongitude", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -54,15 +51,12 @@ Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_,
 	/*PROTECTED REGION END*/
 
 }
-Orientation::Orientation(Smp::String8 name_, Smp::String8 description_,
-		Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_), _in_satSunDirection(
-				"in_satSunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0), _out_cssSunDirection(
-				"out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this,
-				0), _isInEclipse("isInEclipse", 1, 1, "-", simtg::OUTPUT,
-				&_data, this, 0), _sunAzimuth("sunAzimuth", 1, 1, "-",
-				simtg::OUTPUT, &_data, this, 0), _sunLongitude("sunLongitude",
-				1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+Orientation::Orientation(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
+		AsyncModelBase(name_, description_, parent_),
+				_out_cssSunDirection("out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _isInEclipse("isInEclipse", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _sunAzimuth("sunAzimuth", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _sunLongitude("sunLongitude", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -93,17 +87,18 @@ Orientation::~Orientation() {
 	/*PROTECTED REGION END*/
 
 }
-void Orientation::Publish(Smp::IPublication* publication_)
-		throw (Smp::IModel::InvalidModelState) {
+void Orientation::Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Publish(publication_);
 	try {
 		/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_publish_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -112,16 +107,17 @@ void Orientation::Publish(Smp::IPublication* publication_)
 	/*PROTECTED REGION END*/
 
 }
-void Orientation::Configure(Smp::Services::ILogger* logger_)
-		throw (Smp::IModel::InvalidModelState) {
+void Orientation::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Configure(logger_);
 
 	try {
 		configure();
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -130,8 +126,7 @@ void Orientation::Configure(Smp::Services::ILogger* logger_)
 	/*PROTECTED REGION END*/
 
 }
-void Orientation::Connect(Smp::ISimulator* sim_)
-		throw (Smp::IModel::InvalidModelState) {
+void Orientation::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Connect(sim_);
 
@@ -144,9 +139,11 @@ void Orientation::Connect(Smp::ISimulator* sim_)
 		/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_connect_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -163,9 +160,11 @@ void Orientation::connectData() throw (Smp::IModel::InvalidModelState) {
 		/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_connectData_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -183,27 +182,32 @@ void Orientation::initDefaultValues() {
 	for (int row = 0; row < 3; row++) {
 		_out_cssSunDirection[row] = 0.0;
 	}
-	_css2satFrame[0][0] = 0;
-	_css2satFrame[0][1] = 0;
-	_css2satFrame[0][2] = -1;
-	_css2satFrame[1][0] = 0;
-	_css2satFrame[1][1] = 1;
-	_css2satFrame[1][2] = 0;
-	_css2satFrame[2][0] = 1;
-	_css2satFrame[2][1] = 0;
-	_css2satFrame[2][2] = 0;
 	_sat2cssFrame[0][0] = 0;
 	_sat2cssFrame[0][1] = 0;
-	_sat2cssFrame[0][2] = 1;
+	_sat2cssFrame[0][2] = -1;
 	_sat2cssFrame[1][0] = 0;
 	_sat2cssFrame[1][1] = 1;
 	_sat2cssFrame[1][2] = 0;
-	_sat2cssFrame[2][0] = -1;
+	_sat2cssFrame[2][0] = 1;
 	_sat2cssFrame[2][1] = 0;
 	_sat2cssFrame[2][2] = 0;
+	_css2satFrame[0][0] = 0;
+	_css2satFrame[0][1] = 0;
+	_css2satFrame[0][2] = 1;
+	_css2satFrame[1][0] = 0;
+	_css2satFrame[1][1] = 1;
+	_css2satFrame[1][2] = 0;
+	_css2satFrame[2][0] = -1;
+	_css2satFrame[2][1] = 0;
+	_css2satFrame[2][2] = 0;
 	_isInEclipse = false;
 	_sunAzimuth = 0.0;
 	_sunLongitude = 0.0;
+	for (int row = 0; row < 3; row++) {
+		for (int col = 0; col < 3; col++) {
+			_rotation[row][col] = 0.0;
+		}
+	}
 
 	initSubModelsDefaultValues();
 
@@ -228,7 +232,8 @@ void Orientation::initScheduling() {
 	/*PROTECTED REGION END*/
 	try {
 		registerMethods(methods);
-	} catch (simtg::Exception& e) {
+	}
+	catch (simtg::Exception& e) {
 		std::cerr << "Exception:" << e.what() << std::endl;
 	}
 
@@ -237,8 +242,7 @@ void Orientation::initScheduling() {
 	/*PROTECTED REGION END*/
 
 }
-void Orientation::callMethod(uint32_t methodId_, BaseType* params_)
-		throw (SchedulableObject::BreakPointReached, simtg::Exception) {
+void Orientation::callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception) {
 
 	preCompute();
 	switch (methodId_) {
@@ -254,15 +258,16 @@ void Orientation::callMethod(uint32_t methodId_, BaseType* params_)
 	/*PROTECTED REGION END*/
 
 }
-void Orientation::serializeMembers(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Orientation::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
 	/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_start_serializeMembers) ENABLED START*/
 	// add user defined code here
 	/*PROTECTED REGION END*/
 
-	stream_.array(&_css2satFrame[0][0], 9);
+	stream_.array(&_in_satSunDirection[0], 3);
 	stream_.array(&_sat2cssFrame[0][0], 9);
+	stream_.array(&_css2satFrame[0][0], 9);
+	stream_.array(&_rotation[0][0], 9);
 
 	serializeExt(stream_);
 

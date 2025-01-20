@@ -26,7 +26,8 @@ namespace SatSim {
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-class Cell: public simtg::AsyncModelBase {
+class Cell: public
+		simtg::AsyncModelBase {
 
 public:
 	/**
@@ -49,6 +50,10 @@ public:
 	 [LOCAL] 
 	 */
 	float _measuredCurrent;
+	/**
+	 [LOCAL] 
+	 */
+	float _baffleCoefficient;
 
 private:
 	/**

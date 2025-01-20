@@ -15,6 +15,7 @@
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
+#include <string>
 
 /*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_header_hpp_include) ENABLED START*/
 //add user defined includes here
@@ -23,6 +24,7 @@
 namespace SatSim {
 class SunSensor;
 class Orientation;
+class Actuator;
 }
 
 namespace SatSim {
@@ -31,7 +33,8 @@ namespace SatSim {
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-class Satellite: public simtg::AsyncModelBase {
+class Satellite: public
+		simtg::AsyncModelBase {
 
 public:
 	/**
@@ -41,29 +44,10 @@ public:
 	/**
 	 [INPUT]  [3]
 	 */
-	simtg::AsyncFloat _input_sunDirection;
-	/**
-	 [OUTPUT]  [4]
-	 */
-	simtg::AsyncFloat _out_measuredCurrents;
-	/**
-	 [OUTPUT]  [3]
-	 */
-	simtg::AsyncFloat _out_cssSunDirection;
-	/**
-	 [OUTPUT] 
-	 */
-	simtg::AsyncFloat _out_elevation;
-	/**
-	 [OUTPUT] 
-	 */
-	simtg::AsyncFloat _out_azimuth;
-	/**
-	 [OUTPUT]  [40]
-	 */
-	simtg::AsyncFloat _out_test;
+	simtg::AsyncFloat _initialSunDirection;
 	SunSensor* _SunSensor;
 	Orientation* _Orientation;
+	Actuator* _Actuator;
 
 private:
 	/**
@@ -82,8 +66,7 @@ private:
 	 Delegated serialize method. Permits to serialize additional fields.
 	 @param stream_         a serialization stream
 	 */
-	void serializeExt(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 protected:
 	/**
@@ -102,8 +85,7 @@ protected:
 	 Serialization method:
 	 @param stream_         a serialization stream
 	 */
-	void serializeMembers(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 public:
 	/**
@@ -112,16 +94,14 @@ public:
 	 @param parent_         the model parent
 	 @param description_         the model description
 	 */
-	Satellite(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0,
-			Smp::String8 description_ = "");
+	Satellite(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0, Smp::String8 description_ = "");
 	/**
 	 SMP default Constructor
 	 @param name_         the model instance name
 	 @param description_         the model description
 	 @param parent_         the model parent
 	 */
-	Satellite(Smp::String8 name_, Smp::String8 description_,
-			Smp::IComposite* parent_);
+	Satellite(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_);
 	/**
 	 Default Destructor
 	 */
@@ -130,6 +110,7 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
+	void log(std::string& msg_);
 	/**
 	 InitMethod of Satellite
 	 */
@@ -138,14 +119,12 @@ public:
 	 Publish method of Satellite
 	 @param publication_         a SMP publishing interface
 	 */
-	void Publish(Smp::IPublication* publication_)
-			throw (Smp::IModel::InvalidModelState);
+	void Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Load configuration
 	 @param logger_         a SMP logging interface
 	 */
-	void Configure(Smp::Services::ILogger* logger_)
-			throw (Smp::IModel::InvalidModelState);
+	void Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Connect Model to simulation environment.
 	 @param sim_         a SMP simulation interface
@@ -160,8 +139,7 @@ public:
 	 @param methodId_         a model method identifier
 	 @param params_         a method parameters container
 	 */
-	void callMethod(uint32_t methodId_, BaseType* params_)
-			throw (SchedulableObject::BreakPointReached, simtg::Exception);
+	void callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception);
 
 public:
 	CLASS_INFO(Satellite,simtg::AsyncModelBase,SatSim)
@@ -196,5 +174,5 @@ public:
 //add user defined code here
 /*PROTECTED REGION END*/
 
-#endif //end __SATELLITE.HPP__H  
+#endif //end __SATELLITE__HPP
 

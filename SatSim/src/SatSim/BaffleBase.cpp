@@ -26,12 +26,11 @@ using namespace SatSim;
 
 Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_,
 		Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_), _in_sunAzimuth(
-				"in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0), _in_sunElevation(
-				"in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0), _out_baffleCoefficient(
-				"out_baffleCoefficient", 4, 1, "-", simtg::OUTPUT, &_data, this,
-				0), _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data,
-				this, 0)
+		AsyncModelBase(name_, parent_, description_),
+				_in_sunAzimuth("in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunElevation("in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_baffleCoefficient("out_baffleCoefficient", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -55,12 +54,11 @@ Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_,
 }
 Baffle::Baffle(Smp::String8 name_, Smp::String8 description_,
 		Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_), _in_sunAzimuth(
-				"in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0), _in_sunElevation(
-				"in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0), _out_baffleCoefficient(
-				"out_baffleCoefficient", 4, 1, "-", simtg::OUTPUT, &_data, this,
-				0), _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data,
-				this, 0)
+		AsyncModelBase(name_, description_, parent_),
+				_in_sunAzimuth("in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunElevation("in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_baffleCoefficient("out_baffleCoefficient", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -99,9 +97,11 @@ void Baffle::Publish(Smp::IPublication* publication_)
 		/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_publish_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -117,9 +117,11 @@ void Baffle::Configure(Smp::Services::ILogger* logger_)
 
 	try {
 		configure();
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -142,9 +144,11 @@ void Baffle::Connect(Smp::ISimulator* sim_)
 		/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_connect_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -161,9 +165,11 @@ void Baffle::connectData() throw (Smp::IModel::InvalidModelState) {
 		/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_connectData_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
-	} catch (simtg::Exception& simtgException) {
+	}
+	catch (simtg::Exception& simtgException) {
 		throw simtg::ModelBase::InvalidModelState(_state, simtgException);
-	} catch (Smp::Exception& smpException) {
+	}
+	catch (Smp::Exception& smpException) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
@@ -231,7 +237,8 @@ void Baffle::initScheduling() {
 	/*PROTECTED REGION END*/
 	try {
 		registerMethods(methods);
-	} catch (simtg::Exception& e) {
+	}
+	catch (simtg::Exception& e) {
 		std::cerr << "Exception:" << e.what() << std::endl;
 	}
 

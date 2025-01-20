@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="simtg.simmf.modeldefinition.1.1" xmlns:_1="smfnotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <ModelDefinitionDocument xmi:id="_LVfToNcvEe-g-_tbVlfW3w">
+    <modelDefinition xmi:type="ModelDefinition" xmi:id="_LVfTodcvEe-g-_tbVlfW3w" name="Actuator" schedulingType="SYNCHRONOUS">
+      <typeNotation xmi:type="_1:TypeNotation" xmi:id="_LVfTotcvEe-g-_tbVlfW3w">
+        <color xmi:type="_1:Color" xmi:id="_LVfTo9cvEe-g-_tbVlfW3w" red="192" green="192" blue="192"/>
+      </typeNotation>
+      <properties xmi:type="DataDef" xmi:id="_oyCCcNc1Ee-g-_tbVlfW3w" name="in_measuredCurrents" propCategory="INPUT" defaultValue="0.0 0.0 0.0 0.0">
+        <size>4</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_oyJ-QNc1Ee-g-_tbVlfW3w" side="EAST"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_3dLBMNc1Ee-g-_tbVlfW3w" name="out_actuationAngle" defaultValue="0.0 0.0">
+        <size>2</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_3dLBMdc1Ee-g-_tbVlfW3w"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_F6yhUNc2Ee-g-_tbVlfW3w" name="measuredCurrents" defaultValue="0.0 0.0 0.0 0.0">
+        <size>4</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_F6yhUdc2Ee-g-_tbVlfW3w" side="SOUTH" order="2"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_PWEwANc2Ee-g-_tbVlfW3w" name="cssSunDirections" defaultValue="0.0 0.0 0.0">
+        <size>3</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_PWEwAdc2Ee-g-_tbVlfW3w" side="SOUTH" order="2"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_O19QENc3Ee-g-_tbVlfW3w" name="calculatedPosition" defaultValue="0.0 0.0">
+        <size>2</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_cjwc0Nc3Ee-g-_tbVlfW3w" name="lastPosition" defaultValue="0.0 0.0">
+        <size>2</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_th9qYNc3Ee-g-_tbVlfW3w" name="sumPositions" defaultValue="0.0 0.0">
+        <size>2</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_3AbI4Nc3Ee-g-_tbVlfW3w" name="coefficientProportional" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_851zUNc3Ee-g-_tbVlfW3w" name="coefficientIntegration" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_Bv2gANc4Ee-g-_tbVlfW3w" name="coefficientDifferential" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_WmSmkNc8Ee-g-_tbVlfW3w" name="numSteps" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+      </properties>
+      <functions xmi:type="FuncDef" xmi:id="_LVfTpNcvEe-g-_tbVlfW3w" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
+    </modelDefinition>
+  </ModelDefinitionDocument>
+  <notation:Diagram xmi:id="_LVy1oNcvEe-g-_tbVlfW3w" type="Simmf" element="_LVfToNcvEe-g-_tbVlfW3w" name="Actuator.smf" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_gouZANc1Ee-g-_tbVlfW3w" type="2001" element="_LVfTodcvEe-g-_tbVlfW3w" fontName="Ubuntu" fontHeight="12" bold="true" fillColor="12632256">
+      <children xmi:type="notation:DecorationNode" xmi:id="_gouZAtc1Ee-g-_tbVlfW3w" type="5003"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_gouZA9c1Ee-g-_tbVlfW3w" type="7001"/>
+      <children xmi:type="notation:Node" xmi:id="_oyJXMNc1Ee-g-_tbVlfW3w" type="3004" element="_oyCCcNc1Ee-g-_tbVlfW3w">
+        <children xmi:type="notation:DecorationNode" xmi:id="_oyJXNdc1Ee-g-_tbVlfW3w" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_oyJXNtc1Ee-g-_tbVlfW3w" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_oyJXMdc1Ee-g-_tbVlfW3w"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_oyJXMtc1Ee-g-_tbVlfW3w" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_oyJXM9c1Ee-g-_tbVlfW3w" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oyJXNNc1Ee-g-_tbVlfW3w" x="399" y="188"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gouZAdc1Ee-g-_tbVlfW3w" x="100" y="100"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_LVy1odcvEe-g-_tbVlfW3w"/>
+  </notation:Diagram>
+</xmi:XMI>

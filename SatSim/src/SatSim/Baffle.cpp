@@ -12,6 +12,9 @@
 //add user defined includes here
 #include <stdio.h>
 #include <cmath>
+#include <stdio.h>
+
+#define BLOGFILE "baffles.log"
 /*PROTECTED REGION END*/
 
 #include "Baffle.hpp"
@@ -22,6 +25,17 @@ OBJECT_MAKER(Baffle)
 
 /*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_impl_cpp_after_includeimplementation) ENABLED START*/
 //add user defined includes here
+void BinitLogFile() {
+	FILE *logFile = fopen(BLOGFILE, "w");
+	fclose(logFile);
+}
+
+void BlogToFile(char *msg) {
+	FILE *logFile = fopen(BLOGFILE, "a");
+	fprintf(logFile, msg);
+	fprintf(logFile, "\n");
+	fclose(logFile);
+}
 /*PROTECTED REGION END*/
 
 void Baffle::constructor() {
@@ -52,9 +66,25 @@ void Baffle::constructor() {
 	}
 
 	fclose(file);
+
+	BinitLogFile();
+	// convert degrees to rad
 	for (int i = 0; i < 40; i++) {
-		this->_out_test[i] = this->_zPlusMin[i];
+		/*
+		 sprintf(line, "%f %f", this->_yMinusMin[i],
+		 this->_yMinusMin[i] * M_PI / 180);
+		 BlogToFile(line);
+		 */
+		this->_zPlusMin[i] *= M_PI / 180;
+		this->_zPlusMax[i] *= M_PI / 180;
+		this->_yMinusMin[i] *= M_PI / 180;
+		this->_yMinusMax[i] *= M_PI / 180;
+		this->_zMinusMin[i] *= M_PI / 180;
+		this->_zMinusMax[i] *= M_PI / 180;
+		this->_yPlusMin[i] *= M_PI / 180;
+		this->_yPlusMax[i] *= M_PI / 180;
 	}
+
 	return;
 	/*
 	 */
@@ -84,15 +114,42 @@ void Baffle::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_o6L6NNNWEe-NefUk8IaYnw) ENABLED START*/
 	//add user defined code here
 	// calculate sector
-	int sector = static_cast<int>(remainder(
-			this->_in_sunAzimuth * 180 / M_PI + 4.5, 360) / 9);
+	/*PROTECTED REGION END*/
+
+}
+void Baffle::computeBaffleCoefficients() {
+	/*PROTECTED REGION ID(_ZBm6oNcJEe-2FqChB99MmQ) ENABLED START*/
+	//add user defined code here
+	char msg[512];
+	int sector;
+	float tmp;
+
+	//tmp = remainder(this->_in_sunAzimuth * 180 / M_PI, 360);
+	tmp = this->_in_sunAzimuth * 180 / M_PI + 4.5;
+	if (tmp > 360) {
+		tmp -= 360;
+	}
+	tmp /= 9;
+
+	sector = static_cast<int>(tmp);
+	sprintf(msg, "\nSector id: %d", sector);
+	BlogToFile(msg);
 
 	// calculate k
 	float min[4] = { this->_yMinusMin[sector], this->_yPlusMin[sector],
-			this->_zMinusMin[sector], this->_yPlusMin[sector] };
+			this->_zMinusMin[sector], this->_zPlusMin[sector] };
 	float max[4] = { this->_yMinusMax[sector], this->_yPlusMax[sector],
-			this->_zMinusMax[sector], this->_yPlusMax[sector] };
+			this->_zMinusMax[sector], this->_zPlusMax[sector] };
 	float el = this->_in_sunElevation;
+	float az = this->_in_sunAzimuth;
+
+	sprintf(msg, "mins: %f, %f, %f, %f", min[0], min[1], min[2], min[3]);
+	BlogToFile(msg);
+	sprintf(msg, "maxs: %f, %f, %f, %f", max[0], max[1], max[2], max[3]);
+	BlogToFile(msg);
+
+	sprintf(msg, "Elevation: %f, Azimuth: %f", el, az);
+	BlogToFile(msg);
 
 	for (int i = 0; i < 4; i++) {
 		if (el < min[i]) {
@@ -104,7 +161,6 @@ void Baffle::step() throw (simtg::Exception) {
 					/ sin(max[i] - min[i]);
 		}
 	}
-
 	/*PROTECTED REGION END*/
 
 }
