@@ -1,0 +1,12 @@
+ant/
+bin/
+build/
+delivery/
+generation/
+
+.binprojects
+.classpath
+.cproject
+.project
+core
+simtg@local
