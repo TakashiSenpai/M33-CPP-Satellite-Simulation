@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="simtg.simmf.workbench.cdtconfiguration.1444593997">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="simtg.simmf.workbench.cdtconfiguration.1444593997" moduleId="org.eclipse.cdt.core.settings" name="SimMF">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="SatSim" buildProperties="" description="" id="simtg.simmf.workbench.cdtconfiguration.1444593997" name="SimMF" parent="simtg.simmf.workbench.cdtconfiguration">
+					<folderInfo id="simtg.simmf.workbench.cdtconfiguration.1444593997." name="/" resourcePath="">
+						<toolChain id="simtg.simmf.workbench.cdttoolchainconfig.622568177" name="SimMF" superClass="simtg.simmf.workbench.cdttoolchainconfig">
+							<targetPlatform id="simtg.simmf.workbench.cdtconfiguration.1444593997..2146641194" name=""/>
+							<builder buildPath="${workspace_loc:/SatSim}/SimMF" enableAutoBuild="false" enableCleanBuild="false" enabledIncrementalBuild="false" id="simtg.simmf.workbench.cdtbuilder.1061940434" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="simtg.simmf.workbench.cdtbuilder"/>
+							<tool id="simtg.simmf.workbench.cdtassembler.1394938035" name="GCC Assembler" superClass="simtg.simmf.workbench.cdtassembler">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.958167645" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="simtg.simmf.workbench.cdtarchiver.1302916988" name="GCC Archiver" superClass="simtg.simmf.workbench.cdtarchiver"/>
+							<tool id="simtg.simmf.workbench.cdtcppcompiler.469956391" name="GCC C++ Compiler" superClass="simtg.simmf.workbench.cdtcppcompiler">
+								<option id="gnu.cpp.compiler.option.include.paths.196372861" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/louis/simtg/workspace/SatSim/src"/>
+									<listOptionValue builtIn="false" value="/home/louis/simtg/dependencies/third/ACE_TAO_6.1.0/include"/>
+									<listOptionValue builtIn="false" value="/home/louis/simtg/dependencies/tools/simtg/Ubuntu_16.04/64bit/simtg_2.1.0"/>
+									<listOptionValue builtIn="false" value="/home/louis/simtg/workspace/SatSim/generation/src"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.521101890" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="simtg.simmf.workbench.cdtccompiler.2112608175" name="GCC C Compiler" superClass="simtg.simmf.workbench.cdtccompiler">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1395977936" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="SatSim.simtg.simmf.workbench.cdtprojecttype.837023908" name="SimMF" projectType="simtg.simmf.workbench.cdtprojecttype"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="simtg.simmf.workbench.cdtconfiguration.1444593997;simtg.simmf.workbench.cdtconfiguration.1444593997.;simtg.simmf.workbench.cdtccompiler.2112608175;cdt.managedbuild.tool.gnu.c.compiler.input.1395977936">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="simtg.simmf.workbench.cdtconfiguration.1444593997;simtg.simmf.workbench.cdtconfiguration.1444593997.;simtg.simmf.workbench.cdtcppcompiler.469956391;cdt.managedbuild.tool.gnu.cpp.compiler.input.521101890">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

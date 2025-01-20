@@ -25,6 +25,18 @@
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
       </properties>
+      <properties xmi:type="DataDef" xmi:id="_YDhhgM3kEe-dEfVxFIbKWQ" name="isInEclipse" propCategory="OUTPUT" defaultValue="false">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#bool"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_YDynQM3kEe-dEfVxFIbKWQ" side="EAST" order="3"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_aZhIgM3kEe-dEfVxFIbKWQ" name="sunAzimuth" propCategory="OUTPUT" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_aZ4U4M3kEe-dEfVxFIbKWQ" side="EAST" order="2"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_dJkOQM3kEe-dEfVxFIbKWQ" name="sunLongitude" propCategory="OUTPUT" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_dJ7aoM3kEe-dEfVxFIbKWQ" side="EAST" order="1"/>
+      </properties>
       <functions xmi:type="FuncDef" xmi:id="_5y_NJM3hEe-dEfVxFIbKWQ" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
       <functions xmi:type="FuncDef" xmi:id="_sLJB8M3iEe-dEfVxFIbKWQ" name="css2satFrameConvert" visibility="PUBLIC"/>
       <functions xmi:type="FuncDef" xmi:id="_vP3-QM3iEe-dEfVxFIbKWQ" name="sat2cssFrameConvert" visibility="PUBLIC"/>
@@ -51,6 +63,33 @@
         <styles xmi:type="notation:FontStyle" xmi:id="_ChQk0s3iEe-dEfVxFIbKWQ" fontName="Ubuntu"/>
         <styles xmi:type="notation:FillStyle" xmi:id="_ChQk083iEe-dEfVxFIbKWQ" fillColor="12632256"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ChQk1M3iEe-dEfVxFIbKWQ" x="399" y="130"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_YDiIkM3kEe-dEfVxFIbKWQ" type="3004" element="_YDhhgM3kEe-dEfVxFIbKWQ">
+        <children xmi:type="notation:DecorationNode" xmi:id="_YDiIlc3kEe-dEfVxFIbKWQ" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_YDiIls3kEe-dEfVxFIbKWQ" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_YDiIkc3kEe-dEfVxFIbKWQ"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_YDiIks3kEe-dEfVxFIbKWQ" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_YDiIk83kEe-dEfVxFIbKWQ" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YDiIlM3kEe-dEfVxFIbKWQ" x="399" y="225"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_aZhvkM3kEe-dEfVxFIbKWQ" type="3004" element="_aZhIgM3kEe-dEfVxFIbKWQ">
+        <children xmi:type="notation:DecorationNode" xmi:id="_aZhvlc3kEe-dEfVxFIbKWQ" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_aZhvls3kEe-dEfVxFIbKWQ" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_aZhvkc3kEe-dEfVxFIbKWQ"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_aZhvks3kEe-dEfVxFIbKWQ" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_aZhvk83kEe-dEfVxFIbKWQ" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aZhvlM3kEe-dEfVxFIbKWQ" x="399" y="190"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_dJkOQc3kEe-dEfVxFIbKWQ" type="3004" element="_dJkOQM3kEe-dEfVxFIbKWQ">
+        <children xmi:type="notation:DecorationNode" xmi:id="_dJk1UM3kEe-dEfVxFIbKWQ" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_dJk1Uc3kEe-dEfVxFIbKWQ" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_dJkOQs3kEe-dEfVxFIbKWQ"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_dJkOQ83kEe-dEfVxFIbKWQ" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_dJkORM3kEe-dEfVxFIbKWQ" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dJkORc3kEe-dEfVxFIbKWQ" x="399" y="165"/>
       </children>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_58OBoc3hEe-dEfVxFIbKWQ" x="100" y="100"/>
     </children>

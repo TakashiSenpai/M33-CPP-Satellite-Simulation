@@ -22,6 +22,7 @@
 
 namespace SatSim {
 class Cell;
+class Baffle;
 }
 
 namespace SatSim {
@@ -61,10 +62,23 @@ public:
 	 [LOCAL] 
 	 */
 	float _angle;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncFloat _in_sunAz;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncFloat _in_sunEl;
+	/**
+	 [OUTPUT]  [40]
+	 */
+	simtg::AsyncFloat _out_test;
 	Cell* _Cell_0;
 	Cell* _Cell_1;
 	Cell* _Cell_2;
 	Cell* _Cell_3;
+	Baffle* _Baffle;
 
 private:
 	/**

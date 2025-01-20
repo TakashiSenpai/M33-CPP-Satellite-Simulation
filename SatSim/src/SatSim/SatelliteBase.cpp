@@ -33,7 +33,11 @@ Satellite::Satellite(Smp::String8 name_, simtg::NamedObject* parent_,
 				this, 0), _input_sunDirection("input_sunDirection", 3, 1, "-",
 				simtg::INPUT, &_data, this, 0), _out_measuredCurrents(
 				"out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this,
-				0)
+				0), _out_cssSunDirection("out_cssSunDirection", 3, 1, "-",
+				simtg::OUTPUT, &_data, this, 0), _out_elevation("out_elevation",
+				1, 1, "-", simtg::OUTPUT, &_data, this, 0), _out_azimuth(
+				"out_azimuth", 1, 1, "-", simtg::OUTPUT, &_data, this, 0), _out_test(
+				"out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -68,7 +72,11 @@ Satellite::Satellite(Smp::String8 name_, Smp::String8 description_,
 				this, 0), _input_sunDirection("input_sunDirection", 3, 1, "-",
 				simtg::INPUT, &_data, this, 0), _out_measuredCurrents(
 				"out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this,
-				0)
+				0), _out_cssSunDirection("out_cssSunDirection", 3, 1, "-",
+				simtg::OUTPUT, &_data, this, 0), _out_elevation("out_elevation",
+				1, 1, "-", simtg::OUTPUT, &_data, this, 0), _out_azimuth(
+				"out_azimuth", 1, 1, "-", simtg::OUTPUT, &_data, this, 0), _out_test(
+				"out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -180,6 +188,18 @@ void Satellite::connectData() throw (Smp::IModel::InvalidModelState) {
 				&_Orientation->getInput("in_satSunDirection"), 0, 3, 0);
 		_Orientation->getOutput("out_cssSunDirection").connect(
 				&_SunSensor->getInput("in_sunDirection"), 0, 3, 0);
+		_Orientation->getOutput("out_cssSunDirection").connect(
+				&this->getOutput("out_cssSunDirection"), 0, 3, 0);
+		_Orientation->getOutput("sunAzimuth").connect(
+				&this->getOutput("out_azimuth"));
+		_Orientation->getOutput("sunLongitude").connect(
+				&this->getOutput("out_elevation"));
+		_Orientation->getOutput("sunLongitude").connect(
+				&_SunSensor->getInput("in_sunEl"));
+		_Orientation->getOutput("sunAzimuth").connect(
+				&_SunSensor->getInput("in_sunAz"));
+		_SunSensor->getOutput("out_test").connect(&this->getOutput("out_test"),
+				0, 40, 0);
 
 		/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_connectData_catching) ENABLED START*/
 		//add user defined code here
@@ -206,6 +226,14 @@ void Satellite::initDefaultValues() {
 	}
 	for (int row = 0; row < 4; row++) {
 		_out_measuredCurrents[row] = 0.0;
+	}
+	for (int row = 0; row < 3; row++) {
+		_out_cssSunDirection[row] = 0.0;
+	}
+	_out_elevation = 0.0;
+	_out_azimuth = 0.0;
+	for (int row = 0; row < 40; row++) {
+		_out_test[row] = 0.0;
 	}
 
 	initSubModelsDefaultValues();

@@ -15,6 +15,7 @@
 
 #include "SunSensor.hpp"
 #include "Cell.hpp"
+#include "Baffle.hpp"
 
 using namespace SatSim;
 
@@ -83,6 +84,7 @@ void SunSensor::init() throw (simtg::Exception) {
 	_Cell_1->init();
 	_Cell_2->init();
 	_Cell_3->init();
+	_Baffle->init();
 
 	AsyncModelBase::init();
 

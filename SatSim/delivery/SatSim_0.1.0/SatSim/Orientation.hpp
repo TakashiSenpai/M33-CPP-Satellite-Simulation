@@ -45,6 +45,18 @@ public:
 	 [LOCAL]  [3, 3]
 	 */
 	int32_t _sat2cssFrame[3][3];
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncBool _isInEclipse;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _sunAzimuth;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _sunLongitude;
 
 private:
 	/**

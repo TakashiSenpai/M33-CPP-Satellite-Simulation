@@ -46,6 +46,22 @@ public:
 	 [OUTPUT]  [4]
 	 */
 	simtg::AsyncFloat _out_measuredCurrents;
+	/**
+	 [OUTPUT]  [3]
+	 */
+	simtg::AsyncFloat _out_cssSunDirection;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _out_elevation;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _out_azimuth;
+	/**
+	 [OUTPUT]  [40]
+	 */
+	simtg::AsyncFloat _out_test;
 	SunSensor* _SunSensor;
 	Orientation* _Orientation;
 

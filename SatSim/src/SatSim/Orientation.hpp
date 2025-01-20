@@ -191,5 +191,5 @@ public:
 //add user defined code here
 /*PROTECTED REGION END*/
 
-#endif //end __ORIENTATION__HPP
+#endif //end __ORIENTATION.HPP__H  
 
