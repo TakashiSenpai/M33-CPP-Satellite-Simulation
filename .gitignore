@@ -1,12 +1,12 @@
-ant/
-bin/
-build/
-delivery/
-generation/
+SatSim/ant/*
+SatSim/bin/*
+SatSim/build/*
+SatSim/delivery/*
+SatSim/generation/*
 
-.binprojects
-.classpath
-.cproject
-.project
-core
-simtg@local
+SatSim/.binprojects
+SatSim/.classpath
+SatSim/.cproject
+SatSim/.project
+SatSim/core
+SatSim/simtg@local
