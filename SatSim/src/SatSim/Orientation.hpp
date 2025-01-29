@@ -15,6 +15,7 @@
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
+#include <string>
 
 /*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_header_hpp_include) ENABLED START*/
 //add user defined includes here
@@ -126,9 +127,9 @@ public:
 	void step() throw (simtg::Exception);
 	void css2satFrameConvert();
 	void sat2cssFrameConvert();
-	float* sat2cssFrameConvert(float* in_);
-	float* css2satFrameConvert(float* in_);
 	void rotation(float* angles_);
+	void initLog();
+	void log(std::string msg_);
 	/**
 	 InitMethod of Orientation
 	 */
@@ -192,5 +193,5 @@ public:
 //add user defined code here
 /*PROTECTED REGION END*/
 
-#endif //end __ORIENTATION__HPP
+#endif //end __ORIENTATION.HPP__H  
 

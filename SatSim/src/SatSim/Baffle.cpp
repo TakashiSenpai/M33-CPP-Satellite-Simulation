@@ -103,8 +103,7 @@ void Baffle::configure() throw (simtg::Exception) {
 	/*PROTECTED REGION END*/
 
 }
-void Baffle::serializeExt(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Baffle::serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnwserializeExt) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
@@ -122,16 +121,25 @@ void Baffle::computeBaffleCoefficients() {
 	//add user defined code here
 	char msg[512];
 	int sector;
-	float tmp;
+	float tmp = 0;
+	float el = this->_in_sunElevation;
+	float az = this->_in_sunAzimuth;
 
-	//tmp = remainder(this->_in_sunAzimuth * 180 / M_PI, 360);
-	tmp = this->_in_sunAzimuth * 180 / M_PI + 4.5;
+	sprintf(msg, "\ntmp, az : %f %f", tmp, az);
+	BlogToFile(msg);
+
+	tmp = az * 180 / M_PI + 4.5;
+	BlogToFile(msg);
+
 	if (tmp > 360) {
 		tmp -= 360;
 	}
 	tmp /= 9;
 
 	sector = static_cast<int>(tmp);
+	if (std::isnan(tmp)) {
+		sector = 0;
+	}
 	sprintf(msg, "\nSector id: %d", sector);
 	BlogToFile(msg);
 
@@ -140,8 +148,6 @@ void Baffle::computeBaffleCoefficients() {
 			this->_zMinusMin[sector], this->_zPlusMin[sector] };
 	float max[4] = { this->_yMinusMax[sector], this->_yPlusMax[sector],
 			this->_zMinusMax[sector], this->_zPlusMax[sector] };
-	float el = this->_in_sunElevation;
-	float az = this->_in_sunAzimuth;
 
 	sprintf(msg, "mins: %f, %f, %f, %f", min[0], min[1], min[2], min[3]);
 	BlogToFile(msg);

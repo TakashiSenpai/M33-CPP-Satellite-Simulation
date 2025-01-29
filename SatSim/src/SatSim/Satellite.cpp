@@ -25,17 +25,6 @@ OBJECT_MAKER(Satellite)
 
 /*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_impl_cpp_after_includeimplementation) ENABLED START*/
 //add user defined includes here
-void initLog() {
-	FILE *logFile = fopen("sat.log", "w");
-	fprintf(logFile, "%s\n", "Initializing log file...");
-	fclose(logFile);
-}
-/*
- void writeLog(const std::string &msg) {
- FILE *logFile = fopen("sat.log", "a");
- fprintf(logFile, "%s\n", msg.c_str());
- fclose(logFile);
- }*/
 /*PROTECTED REGION END*/
 
 void Satellite::constructor() {
@@ -69,45 +58,65 @@ void Satellite::step() throw (simtg::Exception) {
 	this->log(msg);
 
 	std::stringstream tmp;
-	tmp << this->_Actuator->_calculatedPosition[0]
-			<< this->_Actuator->_calculatedPosition[1];
+	tmp << this->_Actuator->_calculatedPosition[0] << ", ";
+	tmp << this->_Actuator->_calculatedPosition[1] << ", ";
 	msg = "Calculated position:" + tmp.str();
 	this->log(msg);
+	tmp.str("");
 
+	tmp << "sunDirection: ";
 	for (int i = 0; i < 3; i++) {
 		this->_Orientation->_in_satSunDirection[i] = this->_sunDirection[i];
+		tmp << this->_sunDirection[i] << ", ";
 	}
-
-	this->_Orientation->step();
-	this->_SunSensor->step();
-	this->_Actuator->step();
-
+	msg = tmp.str();
+	this->log(msg);
 	tmp.str("");
-	tmp << this->_Actuator->_out_actuationAngle[0]
-			<< this->_Actuator->_out_actuationAngle[1];
+
+	msg = "Calling orientation step";
+	this->log(msg);
+	this->_Orientation->step();
+
+	msg = "Calling Sun Sensor step";
+	this->log(msg);
+	this->_SunSensor->step();
+	//this->_Actuator->step();
+
+	tmp << this->_Actuator->_out_actuationAngle[0] << ", ";
+	tmp << this->_Actuator->_out_actuationAngle[1];
 	msg = "Actuation angle:" + tmp.str();
 	this->log(msg);
+	tmp.str("");
 
 	this->_Orientation->rotation(this->_Actuator->_out_actuationAngle);
-
-	float out[3];
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			out[i] += this->_Orientation->_rotation[i][j]
-					* this->_sunDirection[j];
-		}
-	}
-	for (int i = 0; i < 3; i++) {
-		this->_sunDirection[i] = out[i];
-	}
-	/*PROTECTED REGION END*/
+	/*
+	 float out[3];
+	 for (int i = 0; i < 3; i++) {
+	 for (int j = 0; j < 3; j++) {
+	 out[i] += this->_Orientation->_rotation[i][j]
+	 * this->_sunDirection[j];
+	 }
+	 }
+	 for (int i = 0; i < 3; i++) {
+	 this->_sunDirection[i] = out[i];
+	 }
+	 /*PROTECTED REGION END*/
 
 }
 void Satellite::log(std::string& msg_) {
 	/*PROTECTED REGION ID(__T9CINczEe-pvalCSSrrfQ) ENABLED START*/
-	//add user defined code here
+//add user defined code here
 	FILE *logFile = fopen("sat.log", "a");
 	fprintf(logFile, "%s\n", msg_.c_str());
+	fclose(logFile);
+	/*PROTECTED REGION END*/
+
+}
+void Satellite::initLog() {
+	/*PROTECTED REGION ID(_1cAi4N5VEe-81o-hP_uF1w) ENABLED START*/
+//add user defined code here
+	FILE *logFile = fopen("sat.log", "w");
+	fprintf(logFile, "%s\n", "Initializing log file...");
 	fclose(logFile);
 	/*PROTECTED REGION END*/
 
@@ -115,7 +124,11 @@ void Satellite::log(std::string& msg_) {
 void Satellite::init() throw (simtg::Exception) {
 
 	/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_startInit) ENABLED START*/
-	// add user defined code here
+// add user defined code here
+	this->initLog();
+	for (int i = 0; i < 3; i++) {
+		this->_sunDirection[i] = this->_initialSunDirection[i];
+	}
 	/*PROTECTED REGION END*/
 
 	_SunSensor->init();
@@ -125,7 +138,7 @@ void Satellite::init() throw (simtg::Exception) {
 	AsyncModelBase::init();
 
 	/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_init) ENABLED START*/
-	//add user defined code here
+//add user defined code here
 	/*PROTECTED REGION END*/
 
 }

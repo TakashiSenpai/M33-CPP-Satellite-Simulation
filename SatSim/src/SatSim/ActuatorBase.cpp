@@ -16,6 +16,7 @@
 #include <simtg/smp/TimeKeeperAdapter.hpp>
 #include <simtg/smp/ConnectionService.hpp>
 #include <simtg/smp/LoggerMacros.hpp>
+#include <simtg/kernel/MethodCallAsyncDataListener.hpp>
 
 using namespace SatSim;
 
@@ -23,10 +24,9 @@ using namespace SatSim;
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-Actuator::Actuator(Smp::String8 name_, simtg::NamedObject* parent_,
-		Smp::String8 description_) :
-		ModelBase(name_, parent_, description_),
-				_in_measuredCurrents("in_measuredCurrents", 4, 1, "-", simtg::INPUT, &_data, 0)
+Actuator::Actuator(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
+		AsyncModelBase(name_, parent_, description_),
+				_in_measuredCurrents("in_measuredCurrents", 4, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -48,10 +48,9 @@ Actuator::Actuator(Smp::String8 name_, simtg::NamedObject* parent_,
 	/*PROTECTED REGION END*/
 
 }
-Actuator::Actuator(Smp::String8 name_, Smp::String8 description_,
-		Smp::IComposite* parent_) :
-		ModelBase(name_, description_, parent_),
-				_in_measuredCurrents("in_measuredCurrents", 4, 1, "-", simtg::INPUT, &_data, 0)
+Actuator::Actuator(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
+		AsyncModelBase(name_, description_, parent_),
+				_in_measuredCurrents("in_measuredCurrents", 4, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -82,8 +81,7 @@ Actuator::~Actuator() {
 	/*PROTECTED REGION END*/
 
 }
-void Actuator::Publish(Smp::IPublication* publication_)
-		throw (Smp::IModel::InvalidModelState) {
+void Actuator::Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Publish(publication_);
 	try {
@@ -103,8 +101,7 @@ void Actuator::Publish(Smp::IPublication* publication_)
 	/*PROTECTED REGION END*/
 
 }
-void Actuator::Configure(Smp::Services::ILogger* logger_)
-		throw (Smp::IModel::InvalidModelState) {
+void Actuator::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Configure(logger_);
 
@@ -123,8 +120,7 @@ void Actuator::Configure(Smp::Services::ILogger* logger_)
 	/*PROTECTED REGION END*/
 
 }
-void Actuator::Connect(Smp::ISimulator* sim_)
-		throw (Smp::IModel::InvalidModelState) {
+void Actuator::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Connect(sim_);
 
@@ -233,9 +229,9 @@ void Actuator::initScheduling() {
 	/*PROTECTED REGION END*/
 
 }
-void Actuator::callMethod(uint32_t methodId_, BaseType* params_)
-		throw (SchedulableObject::BreakPointReached, simtg::Exception) {
+void Actuator::callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception) {
 
+	preCompute();
 	switch (methodId_) {
 	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_callMethod_switch) ENABLED START*/
 	//add user defined code here
@@ -243,14 +239,13 @@ void Actuator::callMethod(uint32_t methodId_, BaseType* params_)
 	default:
 		ModelBase::callMethod(methodId_, params_);
 	}
-
+	postCompute();
 	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_callMethod) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
-void Actuator::serializeMembers(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Actuator::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
 	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_start_serializeMembers) ENABLED START*/
 	// add user defined code here

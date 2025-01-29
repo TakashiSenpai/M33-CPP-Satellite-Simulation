@@ -24,8 +24,7 @@ using namespace SatSim;
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-Cell::Cell(Smp::String8 name_, simtg::NamedObject* parent_,
-		Smp::String8 description_) :
+Cell::Cell(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
 		AsyncModelBase(name_, parent_, description_),
 				_input_sunDirection("input_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _maxCurrent("maxCurrent", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
@@ -50,8 +49,7 @@ Cell::Cell(Smp::String8 name_, simtg::NamedObject* parent_,
 	/*PROTECTED REGION END*/
 
 }
-Cell::Cell(Smp::String8 name_, Smp::String8 description_,
-		Smp::IComposite* parent_) :
+Cell::Cell(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
 		AsyncModelBase(name_, description_, parent_),
 				_input_sunDirection("input_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _maxCurrent("maxCurrent", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
@@ -85,8 +83,7 @@ Cell::~Cell() {
 	/*PROTECTED REGION END*/
 
 }
-void Cell::Publish(Smp::IPublication* publication_)
-		throw (Smp::IModel::InvalidModelState) {
+void Cell::Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Publish(publication_);
 	try {
@@ -106,8 +103,7 @@ void Cell::Publish(Smp::IPublication* publication_)
 	/*PROTECTED REGION END*/
 
 }
-void Cell::Configure(Smp::Services::ILogger* logger_)
-		throw (Smp::IModel::InvalidModelState) {
+void Cell::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Configure(logger_);
 
@@ -220,8 +216,7 @@ void Cell::initScheduling() {
 	/*PROTECTED REGION END*/
 
 }
-void Cell::callMethod(uint32_t methodId_, BaseType* params_)
-		throw (SchedulableObject::BreakPointReached, simtg::Exception) {
+void Cell::callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception) {
 
 	preCompute();
 	switch (methodId_) {
@@ -237,8 +232,7 @@ void Cell::callMethod(uint32_t methodId_, BaseType* params_)
 	/*PROTECTED REGION END*/
 
 }
-void Cell::serializeMembers(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Cell::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
 	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_start_serializeMembers) ENABLED START*/
 	// add user defined code here

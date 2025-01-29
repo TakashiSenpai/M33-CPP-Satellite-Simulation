@@ -5,12 +5,12 @@
       <typeNotation xmi:type="_1:TypeNotation" xmi:id="_5y_NIs3hEe-dEfVxFIbKWQ">
         <color xmi:type="_1:Color" xmi:id="_5y_NI83hEe-dEfVxFIbKWQ" red="192" green="192" blue="192"/>
       </typeNotation>
-      <properties xmi:type="DataDef" xmi:id="_9vmzsM3hEe-dEfVxFIbKWQ" name="in_satSunDirection" defaultValue="0.0 0.0 0.0">
+      <properties xmi:type="DataDef" xmi:id="_9vmzsM3hEe-dEfVxFIbKWQ" name="in_satSunDirection" defaultValue="1.0 0.0 0.0">
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_9wchMM3hEe-dEfVxFIbKWQ"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_ChP9wM3iEe-dEfVxFIbKWQ" name="out_cssSunDirection" propCategory="OUTPUT" defaultValue="0.0 0.0 0.0">
+      <properties xmi:type="DataDef" xmi:id="_ChP9wM3iEe-dEfVxFIbKWQ" name="out_cssSunDirection" propCategory="OUTPUT" defaultValue="1.0 0.0 0.0">
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_Chz-cM3iEe-dEfVxFIbKWQ" side="EAST"/>
@@ -45,21 +45,15 @@
       <functions xmi:type="FuncDef" xmi:id="_5y_NJM3hEe-dEfVxFIbKWQ" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
       <functions xmi:type="FuncDef" xmi:id="_sLJB8M3iEe-dEfVxFIbKWQ" name="css2satFrameConvert" visibility="PUBLIC"/>
       <functions xmi:type="FuncDef" xmi:id="_vP3-QM3iEe-dEfVxFIbKWQ" name="sat2cssFrameConvert" visibility="PUBLIC"/>
-      <functions xmi:type="FuncDef" xmi:id="_pYB4MNdFEe-pvalCSSrrfQ" name="sat2cssFrameConvert" visibility="PUBLIC" returnTypeModifier="P">
-        <params xmi:type="FuncParamDef" xmi:id="_PGwTENdhEe-Ac_ERZlo9fQ" name="in" typeModifier="P">
-          <dataType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        </params>
-        <returnType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-      </functions>
-      <functions xmi:type="FuncDef" xmi:id="_DDvocNdGEe-pvalCSSrrfQ" name="css2satFrameConvert" visibility="PUBLIC" returnTypeModifier="P">
-        <params xmi:type="FuncParamDef" xmi:id="_Nm2a0NdGEe-pvalCSSrrfQ" name="in" typeModifier="P">
-          <dataType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        </params>
-        <returnType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-      </functions>
       <functions xmi:type="FuncDef" xmi:id="_4YkpwNdGEe-pvalCSSrrfQ" name="rotation" visibility="PUBLIC">
         <params xmi:type="FuncParamDef" xmi:id="_m70NENdIEe-pvalCSSrrfQ" name="angles" typeModifier="P">
           <dataType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        </params>
+      </functions>
+      <functions xmi:type="FuncDef" xmi:id="_MXojYN5REe-81o-hP_uF1w" name="initLog" visibility="PUBLIC"/>
+      <functions xmi:type="FuncDef" xmi:id="_SaWTwN5REe-81o-hP_uF1w" name="log" visibility="PUBLIC">
+        <params xmi:type="FuncParamDef" xmi:id="_TpoKUN5REe-81o-hP_uF1w" name="msg">
+          <dataType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#string"/>
         </params>
       </functions>
     </modelDefinition>

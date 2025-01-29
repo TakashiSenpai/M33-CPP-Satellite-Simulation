@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="simtg.simmf.modeldefinition.1.1" xmlns:_1="smfnotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
   <ModelDefinitionDocument xmi:id="_LVfToNcvEe-g-_tbVlfW3w">
-    <modelDefinition xmi:type="ModelDefinition" xmi:id="_LVfTodcvEe-g-_tbVlfW3w" name="Actuator" schedulingType="SYNCHRONOUS">
+    <modelDefinition xmi:type="ModelDefinition" xmi:id="_LVfTodcvEe-g-_tbVlfW3w" name="Actuator">
       <typeNotation xmi:type="_1:TypeNotation" xmi:id="_LVfTotcvEe-g-_tbVlfW3w">
         <color xmi:type="_1:Color" xmi:id="_LVfTo9cvEe-g-_tbVlfW3w" red="192" green="192" blue="192"/>
       </typeNotation>

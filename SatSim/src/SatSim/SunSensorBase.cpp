@@ -26,8 +26,7 @@ using namespace SatSim;
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_,
-		Smp::String8 description_) :
+SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
 		AsyncModelBase(name_, parent_, description_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_measuredCurrents("out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
@@ -67,8 +66,7 @@ SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_,
 	/*PROTECTED REGION END*/
 
 }
-SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_,
-		Smp::IComposite* parent_) :
+SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
 		AsyncModelBase(name_, description_, parent_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_measuredCurrents("out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
@@ -123,8 +121,7 @@ SunSensor::~SunSensor() {
 	/*PROTECTED REGION END*/
 
 }
-void SunSensor::Publish(Smp::IPublication* publication_)
-		throw (Smp::IModel::InvalidModelState) {
+void SunSensor::Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Publish(publication_);
 	try {
@@ -144,8 +141,7 @@ void SunSensor::Publish(Smp::IPublication* publication_)
 	/*PROTECTED REGION END*/
 
 }
-void SunSensor::Configure(Smp::Services::ILogger* logger_)
-		throw (Smp::IModel::InvalidModelState) {
+void SunSensor::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Configure(logger_);
 
@@ -164,8 +160,7 @@ void SunSensor::Configure(Smp::Services::ILogger* logger_)
 	/*PROTECTED REGION END*/
 
 }
-void SunSensor::Connect(Smp::ISimulator* sim_)
-		throw (Smp::IModel::InvalidModelState) {
+void SunSensor::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Connect(sim_);
 
@@ -281,8 +276,7 @@ void SunSensor::initScheduling() {
 	/*PROTECTED REGION END*/
 
 }
-void SunSensor::callMethod(uint32_t methodId_, BaseType* params_)
-		throw (SchedulableObject::BreakPointReached, simtg::Exception) {
+void SunSensor::callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception) {
 
 	preCompute();
 	switch (methodId_) {
@@ -298,8 +292,7 @@ void SunSensor::callMethod(uint32_t methodId_, BaseType* params_)
 	/*PROTECTED REGION END*/
 
 }
-void SunSensor::serializeMembers(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void SunSensor::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
 	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_start_serializeMembers) ENABLED START*/
 	// add user defined code here

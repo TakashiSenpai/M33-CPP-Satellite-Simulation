@@ -11,9 +11,10 @@
 #ifndef __ACTUATOR__HPP
 #define __ACTUATOR__HPP
 
-#include <simtg/model/ModelBase.hpp>
+#include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
+#include <simtg/kernel/AsyncData.hpp>
 
 /*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_header_hpp_include) ENABLED START*/
 //add user defined includes here
@@ -26,13 +27,13 @@ namespace SatSim {
 /*PROTECTED REGION END*/
 
 class Actuator: public
-		simtg::ModelBase {
+		simtg::AsyncModelBase {
 
 public:
 	/**
 	 [INPUT]  [4]
 	 */
-	simtg::Float _in_measuredCurrents;
+	simtg::AsyncFloat _in_measuredCurrents;
 	/**
 	 [LOCAL]  [2]
 	 */
@@ -91,8 +92,7 @@ private:
 	 Delegated serialize method. Permits to serialize additional fields.
 	 @param stream_         a serialization stream
 	 */
-	void serializeExt(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 protected:
 	/**
@@ -111,8 +111,7 @@ protected:
 	 Serialization method:
 	 @param stream_         a serialization stream
 	 */
-	void serializeMembers(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 public:
 	/**
@@ -121,16 +120,14 @@ public:
 	 @param parent_         the model parent
 	 @param description_         the model description
 	 */
-	Actuator(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0,
-			Smp::String8 description_ = "");
+	Actuator(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0, Smp::String8 description_ = "");
 	/**
 	 SMP default Constructor
 	 @param name_         the model instance name
 	 @param description_         the model description
 	 @param parent_         the model parent
 	 */
-	Actuator(Smp::String8 name_, Smp::String8 description_,
-			Smp::IComposite* parent_);
+	Actuator(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_);
 	/**
 	 Default Destructor
 	 */
@@ -147,14 +144,12 @@ public:
 	 Publish method of Actuator
 	 @param publication_         a SMP publishing interface
 	 */
-	void Publish(Smp::IPublication* publication_)
-			throw (Smp::IModel::InvalidModelState);
+	void Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Load configuration
 	 @param logger_         a SMP logging interface
 	 */
-	void Configure(Smp::Services::ILogger* logger_)
-			throw (Smp::IModel::InvalidModelState);
+	void Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Connect Model to simulation environment.
 	 @param sim_         a SMP simulation interface
@@ -169,11 +164,10 @@ public:
 	 @param methodId_         a model method identifier
 	 @param params_         a method parameters container
 	 */
-	void callMethod(uint32_t methodId_, BaseType* params_)
-			throw (SchedulableObject::BreakPointReached, simtg::Exception);
+	void callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception);
 
 public:
-	CLASS_INFO(Actuator,simtg::ModelBase,SatSim)
+	CLASS_INFO(Actuator,simtg::AsyncModelBase,SatSim)
 
 public:
 

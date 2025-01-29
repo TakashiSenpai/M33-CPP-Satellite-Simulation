@@ -41,8 +41,7 @@ void Cell::configure() throw (simtg::Exception) {
 	/*PROTECTED REGION END*/
 
 }
-void Cell::serializeExt(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Cell::serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlgserializeExt) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/

@@ -41,8 +41,7 @@ void Actuator::configure() throw (simtg::Exception) {
 	/*PROTECTED REGION END*/
 
 }
-void Actuator::serializeExt(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Actuator::serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3wserializeExt) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
@@ -92,7 +91,7 @@ void Actuator::init() throw (simtg::Exception) {
 // add user defined code here
 	/*PROTECTED REGION END*/
 
-	ModelBase::init();
+	AsyncModelBase::init();
 
 	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_init) ENABLED START*/
 //add user defined code here

@@ -103,8 +103,7 @@ private:
 	 Delegated serialize method. Permits to serialize additional fields.
 	 @param stream_         a serialization stream
 	 */
-	void serializeExt(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 protected:
 	/**
@@ -123,8 +122,7 @@ protected:
 	 Serialization method:
 	 @param stream_         a serialization stream
 	 */
-	void serializeMembers(simtg::SerializationStream& stream_)
-			throw (simtg::SerializationException);
+	void serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException);
 
 public:
 	/**
@@ -133,16 +131,14 @@ public:
 	 @param parent_         the model parent
 	 @param description_         the model description
 	 */
-	SunSensor(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0,
-			Smp::String8 description_ = "");
+	SunSensor(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0, Smp::String8 description_ = "");
 	/**
 	 SMP default Constructor
 	 @param name_         the model instance name
 	 @param description_         the model description
 	 @param parent_         the model parent
 	 */
-	SunSensor(Smp::String8 name_, Smp::String8 description_,
-			Smp::IComposite* parent_);
+	SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_);
 	/**
 	 Default Destructor
 	 */
@@ -152,6 +148,7 @@ public:
 	 */
 	void step() throw (simtg::Exception);
 	void log(std::string& msg_);
+	void initLog();
 	/**
 	 InitMethod of SunSensor
 	 */
@@ -160,14 +157,12 @@ public:
 	 Publish method of SunSensor
 	 @param publication_         a SMP publishing interface
 	 */
-	void Publish(Smp::IPublication* publication_)
-			throw (Smp::IModel::InvalidModelState);
+	void Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Load configuration
 	 @param logger_         a SMP logging interface
 	 */
-	void Configure(Smp::Services::ILogger* logger_)
-			throw (Smp::IModel::InvalidModelState);
+	void Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState);
 	/**
 	 Connect Model to simulation environment.
 	 @param sim_         a SMP simulation interface
@@ -182,8 +177,7 @@ public:
 	 @param methodId_         a model method identifier
 	 @param params_         a method parameters container
 	 */
-	void callMethod(uint32_t methodId_, BaseType* params_)
-			throw (SchedulableObject::BreakPointReached, simtg::Exception);
+	void callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception);
 
 public:
 	CLASS_INFO(SunSensor,simtg::AsyncModelBase,SatSim)

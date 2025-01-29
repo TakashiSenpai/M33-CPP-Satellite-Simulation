@@ -206,6 +206,7 @@
           <dataType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#string"/>
         </params>
       </functions>
+      <functions xmi:type="FuncDef" xmi:id="_dVZvQN5VEe-81o-hP_uF1w" name="initLog" visibility="PUBLIC"/>
     </modelDefinition>
   </ModelDefinitionDocument>
   <notation:Diagram xmi:id="_Qlo1Zb1WEe-zAc57ptwKlg" type="Simmf" element="_Qlo1YL1WEe-zAc57ptwKlg" name="SunSensor.smf" measurementUnit="Pixel">

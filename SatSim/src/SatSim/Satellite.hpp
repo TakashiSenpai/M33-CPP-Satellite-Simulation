@@ -111,6 +111,7 @@ public:
 	 */
 	void step() throw (simtg::Exception);
 	void log(std::string& msg_);
+	void initLog();
 	/**
 	 InitMethod of Satellite
 	 */
@@ -174,5 +175,5 @@ public:
 //add user defined code here
 /*PROTECTED REGION END*/
 
-#endif //end __SATELLITE__HPP
+#endif //end __SATELLITE.HPP__H  
 

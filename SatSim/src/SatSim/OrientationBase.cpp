@@ -176,12 +176,12 @@ void Orientation::connectData() throw (Smp::IModel::InvalidModelState) {
 void Orientation::initDefaultValues() {
 
 	//set init values of variables
-	for (int row = 0; row < 3; row++) {
-		_in_satSunDirection[row] = 0.0;
-	}
-	for (int row = 0; row < 3; row++) {
-		_out_cssSunDirection[row] = 0.0;
-	}
+	_in_satSunDirection[0] = 1.0;
+	_in_satSunDirection[1] = 0.0;
+	_in_satSunDirection[2] = 0.0;
+	_out_cssSunDirection[0] = 1.0;
+	_out_cssSunDirection[1] = 0.0;
+	_out_cssSunDirection[2] = 0.0;
 	_sat2cssFrame[0][0] = 0;
 	_sat2cssFrame[0][1] = 0;
 	_sat2cssFrame[0][2] = -1;

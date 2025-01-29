@@ -43,6 +43,7 @@ Satellite::Satellite(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 
 	_subModelsSequencer.push_back(_Orientation);
 	_subModelsSequencer.push_back(_SunSensor);
+	_subModelsSequencer.push_back(_Actuator);
 
 	registerData();
 	registerParams();
@@ -75,6 +76,7 @@ Satellite::Satellite(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 
 	_subModelsSequencer.push_back(_Orientation);
 	_subModelsSequencer.push_back(_SunSensor);
+	_subModelsSequencer.push_back(_Actuator);
 
 	registerData();
 	registerParams();

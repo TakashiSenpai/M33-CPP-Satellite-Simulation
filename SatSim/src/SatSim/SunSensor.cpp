@@ -72,8 +72,7 @@ void SunSensor::configure() throw (simtg::Exception) {
 	/*PROTECTED REGION END*/
 
 }
-void SunSensor::serializeExt(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void SunSensor::serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlgserializeExt) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
@@ -82,7 +81,7 @@ void SunSensor::serializeExt(simtg::SerializationStream& stream_)
 void SunSensor::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_Qlo1ZL1WEe-zAc57ptwKlg) ENABLED START*/
 	//add user defined code here
-	std::string msg = "SunSensor stepper called";
+	std::string msg = "\nSunSensor stepper called";
 	this->log(msg);
 
 	this->_Baffle->computeBaffleCoefficients();
@@ -95,8 +94,7 @@ void SunSensor::step() throw (simtg::Exception) {
 
 	msg = "baffle coefficients: ";
 	for (int i = 0; i < 4; i++) {
-		nbr.str("");
-		// clear the stringstream
+		nbr.str("");	 // clear the stringstream
 		nbr << this->_Baffle->_out_baffleCoefficient[i];
 		msg += nbr.str() + ", ";
 	}
@@ -127,8 +125,17 @@ void SunSensor::step() throw (simtg::Exception) {
 void SunSensor::log(std::string& msg_) {
 	/*PROTECTED REGION ID(_gkmjcNc0Ee-pvalCSSrrfQ) ENABLED START*/
 	//add user defined code here
-	FILE *logFile = fopen("sat.log", "a");
+	FILE *logFile = fopen("sunsensor.log", "a");
 	fprintf(logFile, "%s\n", msg_.c_str());
+	fclose(logFile);
+	/*PROTECTED REGION END*/
+
+}
+void SunSensor::initLog() {
+	/*PROTECTED REGION ID(_dVZvQN5VEe-81o-hP_uF1w) ENABLED START*/
+	//add user defined code here
+	FILE *logFile = fopen("sunsensor.log", "w");
+	fprintf(logFile, "%s\n", "Initializing log file...");
 	fclose(logFile);
 	/*PROTECTED REGION END*/
 
@@ -137,6 +144,7 @@ void SunSensor::init() throw (simtg::Exception) {
 
 	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_startInit) ENABLED START*/
 	// add user defined code here
+	this->initLog();
 	/*PROTECTED REGION END*/
 
 	_Cell_0->init();

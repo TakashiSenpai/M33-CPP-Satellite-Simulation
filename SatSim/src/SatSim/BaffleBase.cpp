@@ -24,8 +24,7 @@ using namespace SatSim;
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_,
-		Smp::String8 description_) :
+Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
 		AsyncModelBase(name_, parent_, description_),
 				_in_sunAzimuth("in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _in_sunElevation("in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0)
@@ -52,8 +51,7 @@ Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_,
 	/*PROTECTED REGION END*/
 
 }
-Baffle::Baffle(Smp::String8 name_, Smp::String8 description_,
-		Smp::IComposite* parent_) :
+Baffle::Baffle(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
 		AsyncModelBase(name_, description_, parent_),
 				_in_sunAzimuth("in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _in_sunElevation("in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0)
@@ -89,8 +87,7 @@ Baffle::~Baffle() {
 	/*PROTECTED REGION END*/
 
 }
-void Baffle::Publish(Smp::IPublication* publication_)
-		throw (Smp::IModel::InvalidModelState) {
+void Baffle::Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Publish(publication_);
 	try {
@@ -110,8 +107,7 @@ void Baffle::Publish(Smp::IPublication* publication_)
 	/*PROTECTED REGION END*/
 
 }
-void Baffle::Configure(Smp::Services::ILogger* logger_)
-		throw (Smp::IModel::InvalidModelState) {
+void Baffle::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Configure(logger_);
 
@@ -130,8 +126,7 @@ void Baffle::Configure(Smp::Services::ILogger* logger_)
 	/*PROTECTED REGION END*/
 
 }
-void Baffle::Connect(Smp::ISimulator* sim_)
-		throw (Smp::IModel::InvalidModelState) {
+void Baffle::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelState) {
 
 	ModelBase::Connect(sim_);
 
@@ -247,8 +242,7 @@ void Baffle::initScheduling() {
 	/*PROTECTED REGION END*/
 
 }
-void Baffle::callMethod(uint32_t methodId_, BaseType* params_)
-		throw (SchedulableObject::BreakPointReached, simtg::Exception) {
+void Baffle::callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception) {
 
 	preCompute();
 	switch (methodId_) {
@@ -264,8 +258,7 @@ void Baffle::callMethod(uint32_t methodId_, BaseType* params_)
 	/*PROTECTED REGION END*/
 
 }
-void Baffle::serializeMembers(simtg::SerializationStream& stream_)
-		throw (simtg::SerializationException) {
+void Baffle::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
 	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_start_serializeMembers) ENABLED START*/
 	// add user defined code here
