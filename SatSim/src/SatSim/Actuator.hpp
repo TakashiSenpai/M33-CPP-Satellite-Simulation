@@ -15,6 +15,7 @@
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
+#include <string>
 
 /*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_header_hpp_include) ENABLED START*/
 //add user defined includes here
@@ -136,6 +137,8 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
+	void log(std::string msg_);
+	void initLog();
 	/**
 	 InitMethod of Actuator
 	 */

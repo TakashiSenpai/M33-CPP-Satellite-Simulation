@@ -14,7 +14,6 @@
 #include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
-#include <simtg/kernel/AsyncData.hpp>
 #include <string>
 
 /*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_header_hpp_include) ENABLED START*/
@@ -36,9 +35,9 @@ public:
 	 */
 	float _in_satSunDirection[3];
 	/**
-	 [OUTPUT]  [3]
+	 [LOCAL]  [3]
 	 */
-	simtg::AsyncFloat _out_cssSunDirection;
+	float _out_cssSunDirection[3];
 	/**
 	 [LOCAL]  [3, 3]
 	 */
@@ -48,17 +47,17 @@ public:
 	 */
 	int32_t _css2satFrame[3][3];
 	/**
-	 [OUTPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncBool _isInEclipse;
+	bool _isInEclipse;
 	/**
-	 [OUTPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _sunAzimuth;
+	float _sunAzimuth;
 	/**
-	 [OUTPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _sunLongitude;
+	float _sunElevation;
 	/**
 	 [LOCAL]  [3, 3]
 	 */

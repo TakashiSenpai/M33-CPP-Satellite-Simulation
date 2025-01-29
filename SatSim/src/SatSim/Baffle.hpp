@@ -14,7 +14,6 @@
 #include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
-#include <simtg/kernel/AsyncData.hpp>
 
 /*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_header_hpp_include) ENABLED START*/
 //add user defined includes here
@@ -31,21 +30,13 @@ class Baffle: public
 
 public:
 	/**
-	 [INPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _in_sunAzimuth;
+	float _in_sunAzimuth;
 	/**
-	 [INPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _in_sunElevation;
-	/**
-	 [OUTPUT]  [4]
-	 */
-	simtg::AsyncFloat _out_baffleCoefficient;
-	/**
-	 [OUTPUT]  [40]
-	 */
-	simtg::AsyncFloat _out_test;
+	float _in_sunElevation;
 	/**
 	 [LOCAL]  [40]
 	 */
@@ -78,6 +69,10 @@ public:
 	 [LOCAL]  [40]
 	 */
 	float _yPlusMin[40];
+	/**
+	 [LOCAL]  [4]
+	 */
+	float _out_baffleCoefficient[4];
 
 private:
 	/**

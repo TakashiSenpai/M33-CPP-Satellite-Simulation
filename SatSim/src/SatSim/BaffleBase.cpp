@@ -25,11 +25,7 @@ using namespace SatSim;
 /*PROTECTED REGION END*/
 
 Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_),
-				_in_sunAzimuth("in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _in_sunElevation("in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_baffleCoefficient("out_baffleCoefficient", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
+		AsyncModelBase(name_, parent_, description_)
 
 /*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -52,11 +48,7 @@ Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 des
 
 }
 Baffle::Baffle(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_),
-				_in_sunAzimuth("in_sunAzimuth", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _in_sunElevation("in_sunElevation", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_baffleCoefficient("out_baffleCoefficient", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
+		AsyncModelBase(name_, description_, parent_)
 
 /*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -178,12 +170,6 @@ void Baffle::initDefaultValues() {
 	//set init values of variables
 	_in_sunAzimuth = 0.0;
 	_in_sunElevation = 0.0;
-	for (int row = 0; row < 4; row++) {
-		_out_baffleCoefficient[row] = 0.0;
-	}
-	for (int row = 0; row < 40; row++) {
-		_out_test[row] = 0.0;
-	}
 	for (int row = 0; row < 40; row++) {
 		_yMinusMin[row] = 0.0;
 	}
@@ -207,6 +193,9 @@ void Baffle::initDefaultValues() {
 	}
 	for (int row = 0; row < 40; row++) {
 		_yPlusMin[row] = 0.0;
+	}
+	for (int row = 0; row < 4; row++) {
+		_out_baffleCoefficient[row] = 0.0;
 	}
 
 	initSubModelsDefaultValues();
@@ -264,6 +253,8 @@ void Baffle::serializeMembers(simtg::SerializationStream& stream_) throw (simtg:
 	// add user defined code here
 	/*PROTECTED REGION END*/
 
+	stream_.value(_in_sunAzimuth);
+	stream_.value(_in_sunElevation);
 	stream_.array(&_yMinusMin[0], 40);
 	stream_.array(&_yMinusMax[0], 40);
 	stream_.array(&_zMinusMin[0], 40);
@@ -272,6 +263,7 @@ void Baffle::serializeMembers(simtg::SerializationStream& stream_) throw (simtg:
 	stream_.array(&_zPlusMin[0], 40);
 	stream_.array(&_yPlusMax[0], 40);
 	stream_.array(&_yPlusMin[0], 40);
+	stream_.array(&_out_baffleCoefficient[0], 4);
 
 	serializeExt(stream_);
 

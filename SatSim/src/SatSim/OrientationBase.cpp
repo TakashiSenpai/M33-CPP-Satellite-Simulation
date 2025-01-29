@@ -25,11 +25,7 @@ using namespace SatSim;
 /*PROTECTED REGION END*/
 
 Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_),
-				_out_cssSunDirection("out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _isInEclipse("isInEclipse", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _sunAzimuth("sunAzimuth", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _sunLongitude("sunLongitude", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+		AsyncModelBase(name_, parent_, description_)
 
 /*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -52,11 +48,7 @@ Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_, Smp::S
 
 }
 Orientation::Orientation(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_),
-				_out_cssSunDirection("out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _isInEclipse("isInEclipse", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _sunAzimuth("sunAzimuth", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _sunLongitude("sunLongitude", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+		AsyncModelBase(name_, description_, parent_)
 
 /*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -202,7 +194,7 @@ void Orientation::initDefaultValues() {
 	_css2satFrame[2][2] = 0;
 	_isInEclipse = false;
 	_sunAzimuth = 0.0;
-	_sunLongitude = 0.0;
+	_sunElevation = 0.0;
 	for (int row = 0; row < 3; row++) {
 		for (int col = 0; col < 3; col++) {
 			_rotation[row][col] = 0.0;
@@ -265,8 +257,12 @@ void Orientation::serializeMembers(simtg::SerializationStream& stream_) throw (s
 	/*PROTECTED REGION END*/
 
 	stream_.array(&_in_satSunDirection[0], 3);
+	stream_.array(&_out_cssSunDirection[0], 3);
 	stream_.array(&_sat2cssFrame[0][0], 9);
 	stream_.array(&_css2satFrame[0][0], 9);
+	stream_.value(_isInEclipse);
+	stream_.value(_sunAzimuth);
+	stream_.value(_sunElevation);
 	stream_.array(&_rotation[0][0], 9);
 
 	serializeExt(stream_);

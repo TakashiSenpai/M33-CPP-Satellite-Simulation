@@ -34,6 +34,11 @@ OBJECT_MAKER(SunSensor)
 void SunSensor::constructor() {
 	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlgdelegated_constructor) ENABLED START*/
 	//add user defined code here
+	this->Cells[0] = this->_Cell_0;
+	this->Cells[1] = this->_Cell_1;
+	this->Cells[2] = this->_Cell_2;
+	this->Cells[3] = this->_Cell_3;
+
 	float tmp[] = { sin(static_cast<float>(this->_angle * M_PI / 180)), cos(
 			static_cast<float>(this->_angle * M_PI / 180)), cos(
 			static_cast<float>(this->_angle * M_PI / 180)) };
@@ -81,43 +86,67 @@ void SunSensor::serializeExt(simtg::SerializationStream& stream_) throw (simtg::
 void SunSensor::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_Qlo1ZL1WEe-zAc57ptwKlg) ENABLED START*/
 	//add user defined code here
-	std::string msg = "\nSunSensor stepper called";
-	this->log(msg);
+	std::stringstream nbr;
+	std::string msg;
 
+	// debug
+	msg = "\nSunSensor stepper called";
+	this->log(msg);
+	msg = "Input sun direction: ";
+	for (int i = 0; i < 3; i++) {
+		nbr << this->_in_sunDirection[i] << ", ";
+	}
+	msg += nbr.str();
+	nbr.str("");
+	msg += "Az/El:";
+	nbr << this->_in_sunAz << ", " << this->_in_sunEl;
+	msg += nbr.str();
+	this->log(msg);
+	nbr.str("");
+
+	// update baffle coefficients
+	this->_Baffle->_in_sunAzimuth = this->_in_sunAz;
+	this->_Baffle->_in_sunElevation = this->_in_sunEl;
 	this->_Baffle->computeBaffleCoefficients();
 
 	this->_stepNbr++;
-	std::stringstream nbr;
 	nbr << this->_stepNbr;
 	msg = "step number" + nbr.str();
 	this->log(msg);
+	nbr.str("");
 
+	// debug
 	msg = "baffle coefficients: ";
 	for (int i = 0; i < 4; i++) {
-		nbr.str("");	 // clear the stringstream
-		nbr << this->_Baffle->_out_baffleCoefficient[i];
-		msg += nbr.str() + ", ";
+		nbr << this->_Baffle->_out_baffleCoefficient[i] << ", ";
 	}
+	msg += nbr.str();
 	this->log(msg);
+	nbr.str("");
 
-	this->_Cell_0->_baffleCoefficient =
-			this->_Baffle->_out_baffleCoefficient[0];
-	this->_Cell_1->_baffleCoefficient =
-			this->_Baffle->_out_baffleCoefficient[1];
-	this->_Cell_2->_baffleCoefficient =
-			this->_Baffle->_out_baffleCoefficient[2];
-	this->_Cell_3->_baffleCoefficient =
-			this->_Baffle->_out_baffleCoefficient[3];
+	// Calculate the current for each cell
+	for (int cell_id = 0; cell_id < 4; cell_id++) {
+		// Update the cells' parameters
+		this->Cells[cell_id]->_baffleCoefficient = this->_Baffle->_out_baffleCoefficient[cell_id];
+		for (int i = 0; i < 3; i++) {
+			this->Cells[cell_id]->_input_sunDirection[i] = this->_in_sunDirection[i];
+		}
 
-	this->_Cell_0->measureCurrent();
-	this->_Cell_1->measureCurrent();
-	this->_Cell_2->measureCurrent();
-	this->_Cell_3->measureCurrent();
+		// calculate the current
+		this->Cells[cell_id]->measureCurrent();
 
-	this->_out_measuredCurrents[0] = this->_Cell_0->_measuredCurrent;
-	this->_out_measuredCurrents[1] = this->_Cell_1->_measuredCurrent;
-	this->_out_measuredCurrents[2] = this->_Cell_2->_measuredCurrent;
-	this->_out_measuredCurrents[3] = this->_Cell_3->_measuredCurrent;
+		// extract the current value
+		this->_out_measuredCurrents[cell_id] = this->Cells[cell_id]->_measuredCurrent;
+	}
+
+	// debug
+	nbr << "Measured currents: ";
+	for (int i = 0; i < 4; i++) {
+		nbr << this->_out_measuredCurrents[i] << ", ";
+	}
+	msg = nbr.str();
+	this->log(msg);
+	nbr.str("");
 
 	/*PROTECTED REGION END*/
 

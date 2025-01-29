@@ -57,18 +57,17 @@ void Cell::measureCurrent() {
 	/*PROTECTED REGION ID(_NUBoAM3bEe-dEfVxFIbKWQ) ENABLED START*/
 	//add user defined code here
 	float dot = 0;
-
 	for (int i = 0; i < 3; i++) {
 		dot += this->_normalVector[i] * this->_input_sunDirection[i];
-		std::cout << "dot product:" << dot << std::endl;
-		this->_measuredCurrent = dot * this->_maxCurrent;
-		this->_measuredCurrent *= (1
-				- pow(2 * acos(dot) / M_PI, this->_incidenceCoefficient));
-		this->_measuredCurrent *= this->_baffleCoefficient;
-		// Edge case: if cell upside down (shun on from behind), clamp current to 0
-		if (this->_measuredCurrent < 0) {
-			this->_measuredCurrent = 0;
-		}
+	}
+
+	this->_measuredCurrent = dot * this->_maxCurrent;
+	this->_measuredCurrent *= (1 - pow(2 * acos(dot) / M_PI, this->_incidenceCoefficient));
+	this->_measuredCurrent *= this->_baffleCoefficient;
+
+	// Edge case: if cell upside down (shun on from behind), clamp current to 0
+	if (this->_measuredCurrent < 0) {
+		this->_measuredCurrent = 0;
 	}
 	/*PROTECTED REGION END*/
 

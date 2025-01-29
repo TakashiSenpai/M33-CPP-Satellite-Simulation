@@ -43,8 +43,7 @@ void Baffle::constructor() {
 	//add user defined code here
 	FILE *file;
 	char line[512];
-	const char* filePath =
-			"/home/louis/simtg/workspace/SatSim/src/SatSim/BaffleDefinition.csv";
+	const char* filePath = "BaffleDefinition.csv";
 	file = fopen(filePath, "r");
 
 	if (file == NULL) {
@@ -137,8 +136,10 @@ void Baffle::computeBaffleCoefficients() {
 	tmp /= 9;
 
 	sector = static_cast<int>(tmp);
-	if (std::isnan(tmp)) {
+	if (sector < 0 || sector > 40) {
 		sector = 0;
+		sprintf(msg, "\nFaulty Sector");
+		BlogToFile(msg);
 	}
 	sprintf(msg, "\nSector id: %d", sector);
 	BlogToFile(msg);

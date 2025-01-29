@@ -8,7 +8,7 @@
       <properties xmi:type="DataDef" xmi:id="_oyCCcNc1Ee-g-_tbVlfW3w" name="in_measuredCurrents" propCategory="INPUT" defaultValue="0.0 0.0 0.0 0.0">
         <size>4</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_oyJ-QNc1Ee-g-_tbVlfW3w" side="EAST"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_oyJ-QNc1Ee-g-_tbVlfW3w"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_3dLBMNc1Ee-g-_tbVlfW3w" name="out_actuationAngle" defaultValue="0.0 0.0">
         <size>2</size>
@@ -50,6 +50,12 @@
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_LVfTpNcvEe-g-_tbVlfW3w" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
+      <functions xmi:type="FuncDef" xmi:id="_DzYM4N5dEe-81o-hP_uF1w" name="log" visibility="PUBLIC">
+        <params xmi:type="FuncParamDef" xmi:id="_FD4ygN5dEe-81o-hP_uF1w" name="msg">
+          <dataType xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#string"/>
+        </params>
+      </functions>
+      <functions xmi:type="FuncDef" xmi:id="_FiZ6gN5dEe-81o-hP_uF1w" name="initLog" visibility="PUBLIC"/>
     </modelDefinition>
   </ModelDefinitionDocument>
   <notation:Diagram xmi:id="_LVy1oNcvEe-g-_tbVlfW3w" type="Simmf" element="_LVfToNcvEe-g-_tbVlfW3w" name="Actuator.smf" measurementUnit="Pixel">
@@ -63,7 +69,7 @@
         <styles xmi:type="notation:DescriptionStyle" xmi:id="_oyJXMdc1Ee-g-_tbVlfW3w"/>
         <styles xmi:type="notation:FontStyle" xmi:id="_oyJXMtc1Ee-g-_tbVlfW3w" fontName="Ubuntu"/>
         <styles xmi:type="notation:FillStyle" xmi:id="_oyJXM9c1Ee-g-_tbVlfW3w" fillColor="12632256"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oyJXNNc1Ee-g-_tbVlfW3w" x="399" y="188"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oyJXNNc1Ee-g-_tbVlfW3w" x="-11" y="140"/>
       </children>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gouZAdc1Ee-g-_tbVlfW3w" x="100" y="100"/>
     </children>

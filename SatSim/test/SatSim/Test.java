@@ -10,7 +10,7 @@ public class Test extends BaseTest {
 
 	protected void test() throws SimopsException {
 		
-		float sunPos[] = {(float)-1, (float)0, (float)-1};
+		float sunPos[] = {(float)0, (float)1, (float)-1};
 		double norm = Math.sqrt(Math.pow(sunPos[0], 2) + Math.pow(sunPos[1], 2) + Math.pow(sunPos[2], 2));
 		sunPos[0] /= (float) norm;
 		sunPos[1] /= (float) norm;
@@ -28,7 +28,6 @@ public class Test extends BaseTest {
 		//sim.init();
 		sim.activateMethodCyclically(sat + ".step", 1);
 		
-
 		for (int i=0; i<10; i++){
 			sim.timeStep(1);
 		}

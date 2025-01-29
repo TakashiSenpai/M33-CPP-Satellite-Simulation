@@ -58,12 +58,13 @@ void Satellite::step() throw (simtg::Exception) {
 	this->log(msg);
 
 	std::stringstream tmp;
-	tmp << this->_Actuator->_calculatedPosition[0] << ", ";
-	tmp << this->_Actuator->_calculatedPosition[1] << ", ";
-	msg = "Calculated position:" + tmp.str();
-	this->log(msg);
-	tmp.str("");
-
+	/*
+	 tmp << this->_Actuator->_calculatedPosition[0] << ", ";
+	 tmp << this->_Actuator->_calculatedPosition[1] << ", ";
+	 msg = "Calculated position:" + tmp.str();
+	 this->log(msg);
+	 tmp.str("");
+	 */
 	tmp << "sunDirection: ";
 	for (int i = 0; i < 3; i++) {
 		this->_Orientation->_in_satSunDirection[i] = this->_sunDirection[i];
@@ -77,10 +78,25 @@ void Satellite::step() throw (simtg::Exception) {
 	this->log(msg);
 	this->_Orientation->step();
 
+	// Transmit the sun direction to the sun sensor
+	for (int i = 0; i < 3; i++) {
+		this->_SunSensor->_in_sunDirection[i] = this->_Orientation->_out_cssSunDirection[i];
+	}
+
+	this->_SunSensor->_in_sunAz = this->_Orientation->_sunAzimuth;
+	this->_SunSensor->_in_sunEl = this->_Orientation->_sunElevation;
+
 	msg = "Calling Sun Sensor step";
 	this->log(msg);
 	this->_SunSensor->step();
-	//this->_Actuator->step();
+
+	for (int i = 0; i < 4; i++) {
+		this->_Actuator->_in_measuredCurrents[i] = this->_SunSensor->_out_measuredCurrents[i];
+	}
+
+	msg = "Calling Actuator step";
+	this->log(msg);
+	this->_Actuator->step();
 
 	tmp << this->_Actuator->_out_actuationAngle[0] << ", ";
 	tmp << this->_Actuator->_out_actuationAngle[1];
@@ -89,17 +105,17 @@ void Satellite::step() throw (simtg::Exception) {
 	tmp.str("");
 
 	this->_Orientation->rotation(this->_Actuator->_out_actuationAngle);
+	float out[3];
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			out[i] += this->_Orientation->_rotation[i][j]
+					* this->_sunDirection[j];
+		}
+	}
+	for (int i = 0; i < 3; i++) {
+		this->_sunDirection[i] = out[i];
+	}
 	/*
-	 float out[3];
-	 for (int i = 0; i < 3; i++) {
-	 for (int j = 0; j < 3; j++) {
-	 out[i] += this->_Orientation->_rotation[i][j]
-	 * this->_sunDirection[j];
-	 }
-	 }
-	 for (int i = 0; i < 3; i++) {
-	 this->_sunDirection[i] = out[i];
-	 }
 	 /*PROTECTED REGION END*/
 
 }

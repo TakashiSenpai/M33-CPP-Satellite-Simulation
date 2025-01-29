@@ -27,12 +27,7 @@ using namespace SatSim;
 /*PROTECTED REGION END*/
 
 SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_),
-				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_measuredCurrents("out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
+		AsyncModelBase(name_, parent_, description_)
 
 /*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -45,9 +40,9 @@ SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 	_Cell_3 = new Cell("Cell_3", this, "");
 	_Baffle = new Baffle("Baffle", this, "");
 
+	_subModelsSequencer.push_back(_Cell_0);
 	_subModelsSequencer.push_back(_Cell_1);
 	_subModelsSequencer.push_back(_Cell_2);
-	_subModelsSequencer.push_back(_Cell_0);
 	_subModelsSequencer.push_back(_Cell_3);
 	_subModelsSequencer.push_back(_Baffle);
 
@@ -67,12 +62,7 @@ SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 
 }
 SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_),
-				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_measuredCurrents("out_measuredCurrents", 4, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_test("out_test", 40, 1, "-", simtg::OUTPUT, &_data, this, 0)
+		AsyncModelBase(name_, description_, parent_)
 
 /*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -85,9 +75,9 @@ SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 	_Cell_3 = new Cell("Cell_3", this, "");
 	_Baffle = new Baffle("Baffle", this, "");
 
+	_subModelsSequencer.push_back(_Cell_0);
 	_subModelsSequencer.push_back(_Cell_1);
 	_subModelsSequencer.push_back(_Cell_2);
-	_subModelsSequencer.push_back(_Cell_0);
 	_subModelsSequencer.push_back(_Cell_3);
 	_subModelsSequencer.push_back(_Baffle);
 
@@ -190,13 +180,6 @@ void SunSensor::connectData() throw (Smp::IModel::InvalidModelState) {
 
 	try {
 		//data connections 
-		this->getInput("in_sunDirection").connect(&_Cell_1->getInput("input_sunDirection"), 0, 3, 0);
-		this->getInput("in_sunDirection").connect(&_Cell_2->getInput("input_sunDirection"), 0, 3, 0);
-		this->getInput("in_sunDirection").connect(&_Cell_0->getInput("input_sunDirection"), 0, 3, 0);
-		this->getInput("in_sunDirection").connect(&_Cell_3->getInput("input_sunDirection"), 0, 3, 0);
-		_Baffle->getOutput("out_baffleCoefficient").connect(&this->getOutput("out_test"), 0, 4, 0);
-		this->getInput("in_sunAz").connect(&_Baffle->getInput("in_sunAzimuth"));
-		this->getInput("in_sunEl").connect(&_Baffle->getInput("in_sunElevation"));
 
 		/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_connectData_catching) ENABLED START*/
 		//add user defined code here
@@ -238,10 +221,8 @@ void SunSensor::initDefaultValues() {
 	_angle = 22.0;
 	_in_sunAz = 0.0;
 	_in_sunEl = 0.0;
-	for (int row = 0; row < 40; row++) {
-		_out_test[row] = 0.0;
-	}
 	_stepNbr = 0;
+	_in_isInEclipse = false;
 
 	initSubModelsDefaultValues();
 
@@ -298,12 +279,17 @@ void SunSensor::serializeMembers(simtg::SerializationStream& stream_) throw (sim
 	// add user defined code here
 	/*PROTECTED REGION END*/
 
+	stream_.array(&_in_sunDirection[0], 3);
+	stream_.array(&_out_measuredCurrents[0], 4);
 	stream_.array(&_orientation_0[0], 3);
 	stream_.array(&_orientation_1[0], 3);
 	stream_.array(&_orientation_2[0], 3);
 	stream_.array(&_orientation_3[0], 3);
 	stream_.value(_angle);
+	stream_.value(_in_sunAz);
+	stream_.value(_in_sunEl);
 	stream_.value(_stepNbr);
+	stream_.value(_in_isInEclipse);
 
 	_Cell_0->serialize(stream_);
 	_Cell_1->serialize(stream_);

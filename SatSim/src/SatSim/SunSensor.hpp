@@ -14,7 +14,6 @@
 #include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
-#include <simtg/kernel/AsyncData.hpp>
 #include <string>
 
 /*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_header_hpp_include) ENABLED START*/
@@ -37,13 +36,13 @@ class SunSensor: public
 
 public:
 	/**
-	 [INPUT]  [3]
+	 [LOCAL]  [3]
 	 */
-	simtg::AsyncFloat _in_sunDirection;
+	float _in_sunDirection[3];
 	/**
-	 [OUTPUT]  [4]
+	 [LOCAL]  [4]
 	 */
-	simtg::AsyncFloat _out_measuredCurrents;
+	float _out_measuredCurrents[4];
 	/**
 	 [LOCAL]  [3]
 	 */
@@ -65,21 +64,21 @@ public:
 	 */
 	float _angle;
 	/**
-	 [INPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _in_sunAz;
+	float _in_sunAz;
 	/**
-	 [INPUT] 
+	 [LOCAL] 
 	 */
-	simtg::AsyncFloat _in_sunEl;
-	/**
-	 [OUTPUT]  [40]
-	 */
-	simtg::AsyncFloat _out_test;
+	float _in_sunEl;
 	/**
 	 [LOCAL] 
 	 */
 	int32_t _stepNbr;
+	/**
+	 [LOCAL] 
+	 */
+	bool _in_isInEclipse;
 	Cell* _Cell_0;
 	Cell* _Cell_1;
 	Cell* _Cell_2;
@@ -186,6 +185,7 @@ public:
 
 	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
+	Cell* Cells[4];
 	/*PROTECTED REGION END*/
 
 	/**

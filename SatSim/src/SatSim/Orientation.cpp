@@ -97,7 +97,7 @@ void Orientation::step() throw (simtg::Exception) {
 			(this->_out_cssSunDirection[1] <= 0) ?
 													acos(this->_out_cssSunDirection[2] / uPrimeNorm) :
 													M_PI + acos(-this->_out_cssSunDirection[2] / uPrimeNorm);
-	this->_sunLongitude = acos(this->_out_cssSunDirection[0]);
+	this->_sunElevation = acos(this->_out_cssSunDirection[0]);
 
 	/*PROTECTED REGION END*/
 

@@ -41,8 +41,8 @@ Satellite::Satellite(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 	_Orientation = new Orientation("Orientation", this, "");
 	_Actuator = new Actuator("Actuator", this, "");
 
-	_subModelsSequencer.push_back(_Orientation);
 	_subModelsSequencer.push_back(_SunSensor);
+	_subModelsSequencer.push_back(_Orientation);
 	_subModelsSequencer.push_back(_Actuator);
 
 	registerData();
@@ -74,8 +74,8 @@ Satellite::Satellite(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 	_Orientation = new Orientation("Orientation", this, "");
 	_Actuator = new Actuator("Actuator", this, "");
 
-	_subModelsSequencer.push_back(_Orientation);
 	_subModelsSequencer.push_back(_SunSensor);
+	_subModelsSequencer.push_back(_Orientation);
 	_subModelsSequencer.push_back(_Actuator);
 
 	registerData();
@@ -175,10 +175,6 @@ void Satellite::connectData() throw (Smp::IModel::InvalidModelState) {
 
 	try {
 		//data connections 
-		_Orientation->getOutput("out_cssSunDirection").connect(&_SunSensor->getInput("in_sunDirection"), 0, 3, 0);
-		_Orientation->getOutput("sunLongitude").connect(&_SunSensor->getInput("in_sunEl"));
-		_Orientation->getOutput("sunAzimuth").connect(&_SunSensor->getInput("in_sunAz"));
-		_SunSensor->getOutput("out_measuredCurrents").connect(&_Actuator->getInput("in_measuredCurrents"), 0, 4, 0);
 
 		/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_connectData_catching) ENABLED START*/
 		//add user defined code here
