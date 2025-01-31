@@ -16,13 +16,13 @@
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
 
-/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
 
-/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -31,29 +31,29 @@ class Cell: public
 
 public:
 	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _out_measuredCurrent;
+	/**
 	 [INPUT]  [3]
 	 */
-	simtg::AsyncFloat _input_sunDirection;
+	simtg::AsyncFloat _in_cssSunDirection;
 	/**
-	 [STATE] 
+	 [INPUT] 
 	 */
-	simtg::AsyncFloat _maxCurrent;
-	/**
-	 [LOCAL] 
-	 */
-	float _incidenceCoefficient;
-	/**
-	 [LOCAL]  [3]
-	 */
-	float _normalVector[3];
+	simtg::AsyncFloat _in_baffleCoefficient;
 	/**
 	 [LOCAL] 
 	 */
-	float _measuredCurrent;
+	float _maxCurrent;
 	/**
 	 [LOCAL] 
 	 */
-	float _baffleCoefficient;
+	float _largeIncidenceExponent;
+	/**
+	 [STATE]  [3]
+	 */
+	simtg::AsyncFloat _normalVector;
 
 private:
 	/**
@@ -116,7 +116,6 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
-	void measureCurrent();
 	/**
 	 InitMethod of Cell
 	 */
@@ -152,7 +151,7 @@ public:
 
 public:
 
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
 	/*PROTECTED REGION END*/
 
@@ -161,14 +160,14 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -176,7 +175,7 @@ public:
 // end class Cell
 }//end SatSim
 
-/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 

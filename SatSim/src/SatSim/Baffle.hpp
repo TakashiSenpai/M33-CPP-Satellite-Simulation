@@ -14,14 +14,15 @@
 #include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
+#include <simtg/kernel/AsyncData.hpp>
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -30,49 +31,53 @@ class Baffle: public
 
 public:
 	/**
-	 [LOCAL] 
+	 [INPUT] 
 	 */
-	float _in_sunAzimuth;
+	simtg::AsyncFloat _in_sunAz;
 	/**
-	 [LOCAL] 
+	 [LOCAL]  [2, 40]
 	 */
-	float _in_sunElevation;
+	float _yMinusFov[2][40];
 	/**
-	 [LOCAL]  [40]
+	 [LOCAL]  [2, 40]
 	 */
-	float _yMinusMin[40];
+	float _yPlusFov[2][40];
 	/**
-	 [LOCAL]  [40]
+	 [LOCAL]  [2, 40]
 	 */
-	float _yMinusMax[40];
+	float _zMinusFov[2][40];
 	/**
-	 [LOCAL]  [40]
+	 [LOCAL]  [2, 40]
 	 */
-	float _zMinusMin[40];
+	float _zPlusFov[2][40];
 	/**
-	 [LOCAL]  [40]
+	 [INPUT] 
 	 */
-	float _zMinusMax[40];
+	simtg::AsyncFloat _in_sunEl;
 	/**
-	 [LOCAL]  [40]
+	 [STATE]  [4]
 	 */
-	float _zPlusMax[40];
+	simtg::AsyncFloat _baffleCoefficients;
 	/**
-	 [LOCAL]  [40]
+	 [STATE] 
 	 */
-	float _zPlusMin[40];
+	simtg::AsyncInt _sector;
 	/**
-	 [LOCAL]  [40]
+	 [OUTPUT] 
 	 */
-	float _yPlusMax[40];
+	simtg::AsyncFloat _out_baffleCoefficientPlusY;
 	/**
-	 [LOCAL]  [40]
+	 [OUTPUT] 
 	 */
-	float _yPlusMin[40];
+	simtg::AsyncFloat _out_baffleCoefficientPlusZ;
 	/**
-	 [LOCAL]  [4]
+	 [OUTPUT] 
 	 */
-	float _out_baffleCoefficient[4];
+	simtg::AsyncFloat _out_baffleCoefficientMinusY;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _out_baffleCoefficientMinusZ;
 
 private:
 	/**
@@ -135,7 +140,6 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
-	void computeBaffleCoefficients();
 	/**
 	 InitMethod of Baffle
 	 */
@@ -171,7 +175,7 @@ public:
 
 public:
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
 	/*PROTECTED REGION END*/
 
@@ -180,14 +184,14 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -195,7 +199,7 @@ public:
 // end class Baffle
 }//end SatSim
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 

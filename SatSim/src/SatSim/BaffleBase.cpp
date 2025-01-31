@@ -8,7 +8,7 @@
  *
  */
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_auto_cpp_before_includeauto) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_auto_cpp_before_includeauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -20,14 +20,22 @@
 
 using namespace SatSim;
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_auto_cpp_after_includeauto) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_auto_cpp_after_includeauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_)
+		AsyncModelBase(name_, parent_, description_),
+				_in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _baffleCoefficients("baffleCoefficients", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _sector("sector", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _out_baffleCoefficientPlusY("out_baffleCoefficientPlusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_baffleCoefficientPlusZ("out_baffleCoefficientPlusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_baffleCoefficientMinusY("out_baffleCoefficientMinusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_baffleCoefficientMinusZ("out_baffleCoefficientMinusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_defConst_constructor_init) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 {
@@ -42,15 +50,23 @@ Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 des
 
 	constructor();
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_defConst) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_defConst) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 Baffle::Baffle(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_)
+		AsyncModelBase(name_, description_, parent_),
+				_in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _baffleCoefficients("baffleCoefficients", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _sector("sector", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _out_baffleCoefficientPlusY("out_baffleCoefficientPlusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_baffleCoefficientPlusZ("out_baffleCoefficientPlusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_baffleCoefficientMinusY("out_baffleCoefficientMinusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_baffleCoefficientMinusZ("out_baffleCoefficientMinusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_namedConst_constructor_init) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 {
@@ -65,7 +81,7 @@ Baffle::Baffle(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* p
 
 	constructor();
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_namedConst) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_namedConst) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -74,7 +90,7 @@ Baffle::~Baffle() {
 
 	destructor();
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_defDestr) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_defDestr) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -83,7 +99,7 @@ void Baffle::Publish(Smp::IPublication* publication_) throw (Smp::IModel::Invali
 
 	ModelBase::Publish(publication_);
 	try {
-		/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_publish_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_publish_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -94,7 +110,7 @@ void Baffle::Publish(Smp::IPublication* publication_) throw (Smp::IModel::Invali
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_publish) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_publish) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -113,7 +129,7 @@ void Baffle::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::Inva
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_configure) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_configure) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -128,7 +144,7 @@ void Baffle::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelStat
 		//interface connections
 		//system interface connections
 
-		/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_connect_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_connect_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -139,7 +155,7 @@ void Baffle::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelStat
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_connect) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_connect) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -149,7 +165,7 @@ void Baffle::connectData() throw (Smp::IModel::InvalidModelState) {
 	try {
 		//data connections 
 
-		/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_connectData_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_connectData_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -160,7 +176,7 @@ void Baffle::connectData() throw (Smp::IModel::InvalidModelState) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_connectData) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_connectData) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -168,46 +184,47 @@ void Baffle::connectData() throw (Smp::IModel::InvalidModelState) {
 void Baffle::initDefaultValues() {
 
 	//set init values of variables
-	_in_sunAzimuth = 0.0;
-	_in_sunElevation = 0.0;
-	for (int row = 0; row < 40; row++) {
-		_yMinusMin[row] = 0.0;
+	_in_sunAz = 0.0;
+	for (int row = 0; row < 2; row++) {
+		for (int col = 0; col < 40; col++) {
+			_yMinusFov[row][col] = 0.0;
+		}
 	}
-	for (int row = 0; row < 40; row++) {
-		_yMinusMax[row] = 0.0;
+	for (int row = 0; row < 2; row++) {
+		for (int col = 0; col < 40; col++) {
+			_yPlusFov[row][col] = 0.0;
+		}
 	}
-	for (int row = 0; row < 40; row++) {
-		_zMinusMin[row] = 0.0;
+	for (int row = 0; row < 2; row++) {
+		for (int col = 0; col < 40; col++) {
+			_zMinusFov[row][col] = 0.0;
+		}
 	}
-	for (int row = 0; row < 40; row++) {
-		_zMinusMax[row] = 0.0;
+	for (int row = 0; row < 2; row++) {
+		for (int col = 0; col < 40; col++) {
+			_zPlusFov[row][col] = 0.0;
+		}
 	}
-	for (int row = 0; row < 40; row++) {
-		_zPlusMax[row] = 0.0;
-	}
-	for (int row = 0; row < 40; row++) {
-		_zPlusMin[row] = 0.0;
-	}
-	for (int row = 0; row < 40; row++) {
-		_yPlusMax[row] = 0.0;
-	}
-	for (int row = 0; row < 40; row++) {
-		_yPlusMin[row] = 0.0;
-	}
+	_in_sunEl = 0.0;
 	for (int row = 0; row < 4; row++) {
-		_out_baffleCoefficient[row] = 0.0;
+		_baffleCoefficients[row] = 0.0;
 	}
+	_sector = 0;
+	_out_baffleCoefficientPlusY = 0.0;
+	_out_baffleCoefficientPlusZ = 0.0;
+	_out_baffleCoefficientMinusY = 0.0;
+	_out_baffleCoefficientMinusZ = 0.0;
 
 	initSubModelsDefaultValues();
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_initDefaultValues) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_initDefaultValues) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Baffle::initSubModelsDefaultValues() {
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_initSubModelsDefaultValues) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_initSubModelsDefaultValues) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -216,7 +233,7 @@ void Baffle::initScheduling() {
 
 	std::list<MethodInfo> methods;
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_initScheduling_before_pushback) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_initScheduling_before_pushback) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 	try {
@@ -226,7 +243,7 @@ void Baffle::initScheduling() {
 		std::cerr << "Exception:" << e.what() << std::endl;
 	}
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_initSheduling) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_initSheduling) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -235,44 +252,37 @@ void Baffle::callMethod(uint32_t methodId_, BaseType* params_) throw (Schedulabl
 
 	preCompute();
 	switch (methodId_) {
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_callMethod_switch) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_callMethod_switch) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 	default:
 		ModelBase::callMethod(methodId_, params_);
 	}
 	postCompute();
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_callMethod) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_callMethod) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Baffle::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_start_serializeMembers) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_start_serializeMembers) ENABLED START*/
 	// add user defined code here
 	/*PROTECTED REGION END*/
 
-	stream_.value(_in_sunAzimuth);
-	stream_.value(_in_sunElevation);
-	stream_.array(&_yMinusMin[0], 40);
-	stream_.array(&_yMinusMax[0], 40);
-	stream_.array(&_zMinusMin[0], 40);
-	stream_.array(&_zMinusMax[0], 40);
-	stream_.array(&_zPlusMax[0], 40);
-	stream_.array(&_zPlusMin[0], 40);
-	stream_.array(&_yPlusMax[0], 40);
-	stream_.array(&_yPlusMin[0], 40);
-	stream_.array(&_out_baffleCoefficient[0], 4);
+	stream_.array(&_yMinusFov[0][0], 80);
+	stream_.array(&_yPlusFov[0][0], 80);
+	stream_.array(&_zMinusFov[0][0], 80);
+	stream_.array(&_zPlusFov[0][0], 80);
 
 	serializeExt(stream_);
 
-	/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_serializeMembers) ENABLED START*/
+	/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_serializeMembers) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 
-/*PROTECTED REGION ID(_o6L6MdNWEe-NefUk8IaYnw_auto_cpp_end_extensionsauto) ENABLED START*/
+/*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_auto_cpp_end_extensionsauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/

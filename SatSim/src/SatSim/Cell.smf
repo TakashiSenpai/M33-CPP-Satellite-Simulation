@@ -1,50 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="simtg.simmf.modeldefinition.1.1" xmlns:_1="smfnotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
-  <ModelDefinitionDocument xmi:id="_FFfWgL1XEe-zAc57ptwKlg">
-    <modelDefinition xmi:type="ModelDefinition" xmi:id="_FFfWgb1XEe-zAc57ptwKlg" name="Cell">
-      <typeNotation xmi:type="_1:TypeNotation" xmi:id="_FFfWgr1XEe-zAc57ptwKlg">
-        <color xmi:type="_1:Color" xmi:id="_FFfWg71XEe-zAc57ptwKlg" red="192" green="192" blue="192"/>
+  <ModelDefinitionDocument xmi:id="_DuiE0N_sEe-b8OOJcDFPdw">
+    <modelDefinition xmi:type="ModelDefinition" xmi:id="_DuiE0d_sEe-b8OOJcDFPdw" name="Cell">
+      <typeNotation xmi:type="_1:TypeNotation" xmi:id="_DuiE0t_sEe-b8OOJcDFPdw">
+        <color xmi:type="_1:Color" xmi:id="_DuiE09_sEe-b8OOJcDFPdw" red="192" green="192" blue="192"/>
       </typeNotation>
-      <properties xmi:type="DataDef" xmi:id="_j9qyUL1cEe-zAc57ptwKlg" name="input_sunDirection" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
+      <properties xmi:type="DataDef" xmi:id="_D9jtYN_uEe-l77663yCzzw" name="out_measuredCurrent" propCategory="OUTPUT" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_EBubsN_uEe-l77663yCzzw" side="EAST"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_HrQHIN_uEe-l77663yCzzw" name="in_cssSunDirection" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_j9t1oL1cEe-zAc57ptwKlg"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_HsL7QN_uEe-l77663yCzzw" order="1"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_qBG7cL1cEe-zAc57ptwKlg" name="maxCurrent" propCategory="STATE" defaultValue="31e-3">
+      <properties xmi:type="DataDef" xmi:id="_4CSF0N_7Ee-l77663yCzzw" name="in_baffleCoefficient" propCategory="INPUT" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_4FOsIN_7Ee-l77663yCzzw"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_KbNnIOALEe-l77663yCzzw" name="maxCurrent" defaultValue="31e-3">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_xHMNUL1cEe-zAc57ptwKlg" name="incidenceCoefficient" defaultValue="9.6">
+      <properties xmi:type="DataDef" xmi:id="_PuPnAOALEe-l77663yCzzw" name="largeIncidenceExponent" defaultValue="9.6">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_7TS08L1cEe-zAc57ptwKlg" name="normalVector" defaultValue="0.0 0.0 0.0">
+      <properties xmi:type="DataDef" xmi:id="_05fVoOALEe-l77663yCzzw" name="normalVector" propCategory="STATE" defaultValue="0.0 0.0 0.0">
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_RROkwM3YEe-dEfVxFIbKWQ" name="measuredCurrent" defaultValue="0.0">
-        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-      </properties>
-      <properties xmi:type="DataDef" xmi:id="_SyVKYNcIEe-2FqChB99MmQ" name="baffleCoefficient" defaultValue="1.0">
-        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-      </properties>
-      <functions xmi:type="FuncDef" xmi:id="_FFfWhL1XEe-zAc57ptwKlg" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
-      <functions xmi:type="FuncDef" xmi:id="_NUBoAM3bEe-dEfVxFIbKWQ" name="measureCurrent" visibility="PUBLIC"/>
+      <functions xmi:type="FuncDef" xmi:id="_DuiE1N_sEe-b8OOJcDFPdw" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>
   </ModelDefinitionDocument>
-  <notation:Diagram xmi:id="_FFfWhb1XEe-zAc57ptwKlg" type="Simmf" element="_FFfWgL1XEe-zAc57ptwKlg" name="Cell.smf" measurementUnit="Pixel">
-    <children xmi:type="notation:Shape" xmi:id="_FNLS4L1XEe-zAc57ptwKlg" type="2001" element="_FFfWgb1XEe-zAc57ptwKlg" fontName="Ubuntu" fontHeight="12" bold="true" fillColor="12632256">
-      <children xmi:type="notation:DecorationNode" xmi:id="_FNL58L1XEe-zAc57ptwKlg" type="5003"/>
-      <children xmi:type="notation:DecorationNode" xmi:id="_FNL58b1XEe-zAc57ptwKlg" type="7001"/>
-      <children xmi:type="notation:Node" xmi:id="_j9tOkL1cEe-zAc57ptwKlg" type="3004" element="_j9qyUL1cEe-zAc57ptwKlg">
-        <children xmi:type="notation:DecorationNode" xmi:id="_j9tOlb1cEe-zAc57ptwKlg" type="5005">
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_j9tOlr1cEe-zAc57ptwKlg" y="5"/>
+  <notation:Diagram xmi:id="_DuiE1d_sEe-b8OOJcDFPdw" type="Simmf" element="_DuiE0N_sEe-b8OOJcDFPdw" name="Cell.smf" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_CygPgN_uEe-l77663yCzzw" type="2001" element="_DuiE0d_sEe-b8OOJcDFPdw" fontName="Ubuntu" fontHeight="12" bold="true" fillColor="12632256">
+      <children xmi:type="notation:DecorationNode" xmi:id="_CygPgt_uEe-l77663yCzzw" type="5003"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_CygPg9_uEe-l77663yCzzw" type="7001"/>
+      <children xmi:type="notation:Node" xmi:id="_D9pM8N_uEe-l77663yCzzw" type="3004" element="_D9jtYN_uEe-l77663yCzzw">
+        <children xmi:type="notation:DecorationNode" xmi:id="_D9pM9d_uEe-l77663yCzzw" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_D9pM9t_uEe-l77663yCzzw" y="5"/>
         </children>
-        <styles xmi:type="notation:DescriptionStyle" xmi:id="_j9tOkb1cEe-zAc57ptwKlg"/>
-        <styles xmi:type="notation:FontStyle" xmi:id="_j9tOkr1cEe-zAc57ptwKlg" fontName="Ubuntu"/>
-        <styles xmi:type="notation:FillStyle" xmi:id="_j9tOk71cEe-zAc57ptwKlg" fillColor="12632256"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j9tOlL1cEe-zAc57ptwKlg" x="-11" y="67"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_D9pM8d_uEe-l77663yCzzw"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_D9pM8t_uEe-l77663yCzzw" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_D9pM89_uEe-l77663yCzzw" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D9pM9N_uEe-l77663yCzzw" x="399" y="128"/>
       </children>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FNLS4b1XEe-zAc57ptwKlg" x="100" y="100"/>
+      <children xmi:type="notation:Node" xmi:id="_HrRVQN_uEe-l77663yCzzw" type="3004" element="_HrQHIN_uEe-l77663yCzzw">
+        <children xmi:type="notation:DecorationNode" xmi:id="_HrRVRd_uEe-l77663yCzzw" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_HrRVRt_uEe-l77663yCzzw" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_HrRVQd_uEe-l77663yCzzw"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_HrRVQt_uEe-l77663yCzzw" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_HrRVQ9_uEe-l77663yCzzw" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HrRVRN_uEe-l77663yCzzw" x="-11" y="92"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CygPgd_uEe-l77663yCzzw" x="100" y="100"/>
     </children>
-    <styles xmi:type="notation:DiagramStyle" xmi:id="_FFfWhr1XEe-zAc57ptwKlg"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_Duir4N_sEe-b8OOJcDFPdw"/>
   </notation:Diagram>
 </xmi:XMI>

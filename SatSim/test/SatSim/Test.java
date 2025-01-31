@@ -10,40 +10,83 @@ public class Test extends BaseTest {
 
 	protected void test() throws SimopsException {
 		
-		float sunPos[] = {(float)0, (float)1, (float)-1};
+		/*
+		 * Create Satellite Object in the simulation
+		 */
+		String project = "SatSim";
+		String objClass = "Satellite";
+		String objName = "sat";
+		sim.createObject(project, objClass, objName);
+		
+		/*
+		 * Generate initial sun position
+		 */
+		float sunPos[] = {(float)10, (float)0, (float)-1};
 		double norm = Math.sqrt(Math.pow(sunPos[0], 2) + Math.pow(sunPos[1], 2) + Math.pow(sunPos[2], 2));
 		sunPos[0] /= (float) norm;
 		sunPos[1] /= (float) norm;
 		sunPos[2] /= (float) norm;
 		
-		String sat = "o";
-		sim.createObject("SatSim", "Satellite", "o");
-		sim.writeFloatArray("o.In.initialSunDirection", sunPos);
+		/*
+		 * Initialize simulation
+		 */		
+		sim.writeFloatArray(objName + ".In.in_sunDirection", sunPos);
+		sim.init();
 		
-		//sim.init();
-		//sim.createResSampler(1, 0.1, "sampler");
-		//sim.addToSampler("sampler", "o.Out.out_measuredCurrents");
-		//sim.openResSampler("sampler", "testSamples.res", true);
+		/*
+		 * Simulation loop
+		 */		
+		float outSunPos[];
+		float measuredCurrents[] = {0,0,0,0};
+		float baffleCoefficients[] = {0, 0, 0, 0};
+		float cssSunDir[];
+		float sunAz, sunEl;
+		int sector;
+		float normalVector[];
 		
-		//sim.init();
-		sim.activateMethodCyclically(sat + ".step", 1);
 		
-		for (int i=0; i<10; i++){
-			sim.timeStep(1);
+		int nSteps = 5;
+		for (int i=0; i<nSteps; i++){
+			System.out.println("\nStep " + i);
+			sim.step();
+			
+			// retrieve values from the simulation
+			outSunPos 		   = sim.readFloatArray(objName + ".Out.out_sunDirection");
+			cssSunDir 		   = sim.readFloatArray(objName + ".Orientation.Out.out_cssSunDirection");
+			sunAz = sim.readFloat(objName + ".Orientation.Out.out_sunAz");
+			sunEl = sim.readFloat(objName + ".Orientation.Out.out_sunEl");
+			sector = sim.readInt(objName + ".SunSensor.Baffle.State.sector");
+			
+			normalVector = sim.readFloatArray(objName + ".SunSensor.Cell_PlusY.State.normalVector");
+			System.out.printf("Cell_+Y normal vector: %f, %f, %f\n", normalVector[0], normalVector[1], normalVector[2]);
+			normalVector = sim.readFloatArray(objName + ".SunSensor.Cell_MinusY.State.normalVector");
+			System.out.printf("Cell_-Y normal vector: %f, %f, %f\n", normalVector[0], normalVector[1], normalVector[2]);
+			normalVector = sim.readFloatArray(objName + ".SunSensor.Cell_PlusZ.State.normalVector");
+			System.out.printf("Cell_+Z normal vector: %f, %f, %f\n", normalVector[0], normalVector[1], normalVector[2]);
+			normalVector = sim.readFloatArray(objName + ".SunSensor.Cell_MinusZ.State.normalVector");
+			System.out.printf("Cell_-Z normal vector: %f, %f, %f\n", normalVector[0], normalVector[1], normalVector[2]);
+			
+			measuredCurrents[0] = sim.readFloat(objName + ".SunSensor.Out.out_measuredCurrentPlusY");
+			measuredCurrents[1] = sim.readFloat(objName + ".SunSensor.Out.out_measuredCurrentMinusY");
+			measuredCurrents[2] = sim.readFloat(objName + ".SunSensor.Out.out_measuredCurrentPlusZ");
+			measuredCurrents[3] = sim.readFloat(objName + ".SunSensor.Out.out_measuredCurrentMinusZ");
+			
+			baffleCoefficients[0] = sim.readFloat(objName + ".SunSensor.Baffle.Out.out_baffleCoefficientPlusY");
+			baffleCoefficients[1] = sim.readFloat(objName + ".SunSensor.Baffle.Out.out_baffleCoefficientMinusY");
+			baffleCoefficients[2] = sim.readFloat(objName + ".SunSensor.Baffle.Out.out_baffleCoefficientPlusZ");
+			baffleCoefficients[3] = sim.readFloat(objName + ".SunSensor.Baffle.Out.out_baffleCoefficientMinusZ");
+			
+			System.out.printf("SAT Sun direction: %f, %f, %f\n", outSunPos[0], outSunPos[1], outSunPos[2]);
+			System.out.printf("CSS Sun direction: %f, %f, %f\n", cssSunDir[0], cssSunDir[1], cssSunDir[2]);
+			System.out.printf("Sun Azimuth: %f rad, Elevation: %f rad\n", sunAz, sunEl);
+			System.out.printf("Out measured currents: %f, %f, %f, %f\n", measuredCurrents[0], measuredCurrents[1], measuredCurrents[2], measuredCurrents[3]);
+			System.out.printf("Baffle sector: %d\n", sector);
+			System.out.printf("Baffle coefficients: %f, %f, %f, %f\n", baffleCoefficients[0], baffleCoefficients[1], baffleCoefficients[2], baffleCoefficients[3]);
+			
+			// update the Sun's position for the next step
+			sim.writeFloatArray(objName + ".In.in_sunDirection", outSunPos); 
 		}
-
-		//sim.closeSampler("sampler");
 		
-		//float out[] = sim.readFloatArray("o.Out.out_measuredCurrents");	
-		//float out2[] = sim.readFloatArray("o.Out.out_cssSunDirection");
-		//float az = sim.readFloat("o.Out.out_azimuth");
-		//float el = sim.readFloat("o.Out.out_elevation");
-		//float k[] = sim.readFloatArray("o.Out.out_test");
-		//System.out.printf("%f %f %f %f\n", out[0], out[1], out[2], out[3]);
-		//System.out.printf("%f %f %f\n", out2[0], out2[1], out2[2]);
-		//System.out.printf("az %f, el %f\n", az, el);	
-		//System.out.printf("%f, %f, %f, %f\n", k[0], k[1], k[2], k[3]);
-		
-		System.out.println("Success!");
+		System.out.println("\nTest finished");
 	}
 }

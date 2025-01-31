@@ -15,21 +15,19 @@
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
-#include <string>
 
-/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
 class SunSensor;
 class Orientation;
-class Actuator;
 }
 
 namespace SatSim {
 
-/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -38,16 +36,15 @@ class Satellite: public
 
 public:
 	/**
-	 [PARAM]  [3]
-	 */
-	simtg::AsyncFloat _sunDirection;
-	/**
 	 [INPUT]  [3]
 	 */
-	simtg::AsyncFloat _initialSunDirection;
+	simtg::AsyncFloat _in_sunDirection;
+	/**
+	 [OUTPUT]  [3]
+	 */
+	simtg::AsyncFloat _out_sunDirection;
 	SunSensor* _SunSensor;
 	Orientation* _Orientation;
-	Actuator* _Actuator;
 
 private:
 	/**
@@ -110,8 +107,6 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
-	void log(std::string& msg_);
-	void initLog();
 	/**
 	 InitMethod of Satellite
 	 */
@@ -147,7 +142,7 @@ public:
 
 public:
 
-	/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
 	/*PROTECTED REGION END*/
 
@@ -156,14 +151,14 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -171,7 +166,7 @@ public:
 // end class Satellite
 }//end SatSim
 
-/*PROTECTED REGION ID(_Jcirwb1WEe-zAc57ptwKlg_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 

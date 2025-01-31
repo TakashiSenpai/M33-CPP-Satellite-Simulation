@@ -14,15 +14,15 @@
 #include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
-#include <string>
+#include <simtg/kernel/AsyncData.hpp>
 
-/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
 
-/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -31,37 +31,25 @@ class Orientation: public
 
 public:
 	/**
-	 [LOCAL]  [3]
+	 [INPUT]  [3]
 	 */
-	float _in_satSunDirection[3];
+	simtg::AsyncFloat _in_sunDirection;
 	/**
-	 [LOCAL]  [3]
+	 [OUTPUT]  [3]
 	 */
-	float _out_cssSunDirection[3];
+	simtg::AsyncFloat _out_cssSunDirection;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _out_sunAz;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncFloat _out_sunEl;
 	/**
 	 [LOCAL]  [3, 3]
 	 */
 	int32_t _sat2cssFrame[3][3];
-	/**
-	 [LOCAL]  [3, 3]
-	 */
-	int32_t _css2satFrame[3][3];
-	/**
-	 [LOCAL] 
-	 */
-	bool _isInEclipse;
-	/**
-	 [LOCAL] 
-	 */
-	float _sunAzimuth;
-	/**
-	 [LOCAL] 
-	 */
-	float _sunElevation;
-	/**
-	 [LOCAL]  [3, 3]
-	 */
-	float _rotation[3][3];
 
 private:
 	/**
@@ -124,11 +112,6 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
-	void css2satFrameConvert();
-	void sat2cssFrameConvert();
-	void rotation(float* angles_);
-	void initLog();
-	void log(std::string msg_);
 	/**
 	 InitMethod of Orientation
 	 */
@@ -164,7 +147,7 @@ public:
 
 public:
 
-	/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
 	/*PROTECTED REGION END*/
 
@@ -173,14 +156,14 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -188,7 +171,7 @@ public:
 // end class Orientation
 }//end SatSim
 
-/*PROTECTED REGION ID(_5y_NIc3hEe-dEfVxFIbKWQ_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 

@@ -8,7 +8,7 @@
  *
  */
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_auto_cpp_before_includeauto) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_auto_cpp_before_includeauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -17,34 +17,41 @@
 #include <simtg/smp/ConnectionService.hpp>
 #include <simtg/smp/LoggerMacros.hpp>
 #include <simtg/kernel/MethodCallAsyncDataListener.hpp>
-#include "Cell.hpp"
 #include "Baffle.hpp"
+#include "Cell.hpp"
 
 using namespace SatSim;
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_auto_cpp_after_includeauto) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_auto_cpp_after_includeauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
-		AsyncModelBase(name_, parent_, description_)
+		AsyncModelBase(name_, parent_, description_),
+				_in_cssSunDirection("in_cssSunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_measuredCurrentPlusY("out_measuredCurrentPlusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_measuredCurrentPlusZ("out_measuredCurrentPlusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_measuredCurrentMinusY("out_measuredCurrentMinusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_measuredCurrentMinusZ("out_measuredCurrentMinusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_defConst_constructor_init) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 {
 
-	_Cell_0 = new Cell("Cell_0", this, "");
-	_Cell_1 = new Cell("Cell_1", this, "");
-	_Cell_2 = new Cell("Cell_2", this, "");
-	_Cell_3 = new Cell("Cell_3", this, "");
 	_Baffle = new Baffle("Baffle", this, "");
+	_Cell_PlusY = new Cell("Cell_PlusY", this, "");
+	_Cell_MinusY = new Cell("Cell_MinusY", this, "");
+	_Cell_PlusZ = new Cell("Cell_PlusZ", this, "");
+	_Cell_MinusZ = new Cell("Cell_MinusZ", this, "");
 
-	_subModelsSequencer.push_back(_Cell_0);
-	_subModelsSequencer.push_back(_Cell_1);
-	_subModelsSequencer.push_back(_Cell_2);
-	_subModelsSequencer.push_back(_Cell_3);
 	_subModelsSequencer.push_back(_Baffle);
+	_subModelsSequencer.push_back(_Cell_PlusY);
+	_subModelsSequencer.push_back(_Cell_PlusZ);
+	_subModelsSequencer.push_back(_Cell_MinusY);
+	_subModelsSequencer.push_back(_Cell_MinusZ);
 
 	registerData();
 	registerParams();
@@ -56,30 +63,37 @@ SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 
 	constructor();
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_defConst) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_defConst) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
-		AsyncModelBase(name_, description_, parent_)
+		AsyncModelBase(name_, description_, parent_),
+				_in_cssSunDirection("in_cssSunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunAz("in_sunAz", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunEl("in_sunEl", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_measuredCurrentPlusY("out_measuredCurrentPlusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_measuredCurrentPlusZ("out_measuredCurrentPlusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_measuredCurrentMinusY("out_measuredCurrentMinusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_measuredCurrentMinusZ("out_measuredCurrentMinusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_namedConst_constructor_init) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 {
 
-	_Cell_0 = new Cell("Cell_0", this, "");
-	_Cell_1 = new Cell("Cell_1", this, "");
-	_Cell_2 = new Cell("Cell_2", this, "");
-	_Cell_3 = new Cell("Cell_3", this, "");
 	_Baffle = new Baffle("Baffle", this, "");
+	_Cell_PlusY = new Cell("Cell_PlusY", this, "");
+	_Cell_MinusY = new Cell("Cell_MinusY", this, "");
+	_Cell_PlusZ = new Cell("Cell_PlusZ", this, "");
+	_Cell_MinusZ = new Cell("Cell_MinusZ", this, "");
 
-	_subModelsSequencer.push_back(_Cell_0);
-	_subModelsSequencer.push_back(_Cell_1);
-	_subModelsSequencer.push_back(_Cell_2);
-	_subModelsSequencer.push_back(_Cell_3);
 	_subModelsSequencer.push_back(_Baffle);
+	_subModelsSequencer.push_back(_Cell_PlusY);
+	_subModelsSequencer.push_back(_Cell_PlusZ);
+	_subModelsSequencer.push_back(_Cell_MinusY);
+	_subModelsSequencer.push_back(_Cell_MinusZ);
 
 	registerData();
 	registerParams();
@@ -91,22 +105,22 @@ SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 
 	constructor();
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_namedConst) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_namedConst) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 SunSensor::~SunSensor() {
 
-	delete _Cell_0;
-	delete _Cell_1;
-	delete _Cell_2;
-	delete _Cell_3;
 	delete _Baffle;
+	delete _Cell_PlusY;
+	delete _Cell_MinusY;
+	delete _Cell_PlusZ;
+	delete _Cell_MinusZ;
 
 	destructor();
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_defDestr) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_defDestr) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -115,7 +129,7 @@ void SunSensor::Publish(Smp::IPublication* publication_) throw (Smp::IModel::Inv
 
 	ModelBase::Publish(publication_);
 	try {
-		/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_publish_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_publish_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -126,7 +140,7 @@ void SunSensor::Publish(Smp::IPublication* publication_) throw (Smp::IModel::Inv
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_publish) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_publish) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -145,7 +159,7 @@ void SunSensor::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::I
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_configure) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_configure) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -160,7 +174,7 @@ void SunSensor::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelS
 		//interface connections
 		//system interface connections
 
-		/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_connect_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_connect_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -171,7 +185,7 @@ void SunSensor::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelS
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_connect) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_connect) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -180,8 +194,22 @@ void SunSensor::connectData() throw (Smp::IModel::InvalidModelState) {
 
 	try {
 		//data connections 
+		this->getInput("in_sunEl").connect(&_Baffle->getInput("in_sunEl"));
+		this->getInput("in_sunAz").connect(&_Baffle->getInput("in_sunAz"));
+		this->getInput("in_cssSunDirection").connect(&_Cell_PlusY->getInput("in_cssSunDirection"), 0, 3, 0);
+		this->getInput("in_cssSunDirection").connect(&_Cell_MinusY->getInput("in_cssSunDirection"), 0, 3, 0);
+		this->getInput("in_cssSunDirection").connect(&_Cell_PlusZ->getInput("in_cssSunDirection"), 0, 3, 0);
+		this->getInput("in_cssSunDirection").connect(&_Cell_MinusZ->getInput("in_cssSunDirection"), 0, 3, 0);
+		_Baffle->getOutput("out_baffleCoefficientPlusY").connect(&_Cell_PlusY->getInput("in_baffleCoefficient"));
+		_Baffle->getOutput("out_baffleCoefficientMinusZ").connect(&_Cell_MinusZ->getInput("in_baffleCoefficient"));
+		_Cell_PlusY->getOutput("out_measuredCurrent").connect(&this->getOutput("out_measuredCurrentPlusY"));
+		_Cell_MinusY->getOutput("out_measuredCurrent").connect(&this->getOutput("out_measuredCurrentMinusY"));
+		_Cell_PlusZ->getOutput("out_measuredCurrent").connect(&this->getOutput("out_measuredCurrentPlusZ"));
+		_Cell_MinusZ->getOutput("out_measuredCurrent").connect(&this->getOutput("out_measuredCurrentMinusZ"));
+		_Baffle->getOutput("out_baffleCoefficientPlusZ").connect(&_Cell_PlusZ->getInput("in_baffleCoefficient"));
+		_Baffle->getOutput("out_baffleCoefficientMinusY").connect(&_Cell_MinusY->getInput("in_baffleCoefficient"));
 
-		/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_connectData_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_connectData_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -192,7 +220,7 @@ void SunSensor::connectData() throw (Smp::IModel::InvalidModelState) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_connectData) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_connectData) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -201,39 +229,38 @@ void SunSensor::initDefaultValues() {
 
 	//set init values of variables
 	for (int row = 0; row < 3; row++) {
-		_in_sunDirection[row] = 0.0;
+		_in_cssSunDirection[row] = 0.0;
 	}
-	for (int row = 0; row < 4; row++) {
-		_out_measuredCurrents[row] = 0.0;
-	}
-	_orientation_0[0] = 1.0;
-	_orientation_0[1] = -1.0;
-	_orientation_0[2] = 0.0;
-	_orientation_1[0] = 1.0;
-	_orientation_1[1] = 1.0;
-	_orientation_1[2] = 0.0;
-	_orientation_2[0] = 1.0;
-	_orientation_2[1] = 0.0;
-	_orientation_2[2] = -1.0;
-	_orientation_3[0] = 1.0;
-	_orientation_3[1] = 0.0;
-	_orientation_3[2] = 1.0;
-	_angle = 22.0;
 	_in_sunAz = 0.0;
 	_in_sunEl = 0.0;
-	_stepNbr = 0;
-	_in_isInEclipse = false;
+	_orientationPlusY[0] = 1.0;
+	_orientationPlusY[1] = 1.0;
+	_orientationPlusY[2] = 0.0;
+	_orientationPlusZ[0] = 1.0;
+	_orientationPlusZ[1] = 0.0;
+	_orientationPlusZ[2] = 1.0;
+	_orientationMinusY[0] = 1.0;
+	_orientationMinusY[1] = -1.0;
+	_orientationMinusY[2] = 0.0;
+	_orientationMinusZ[0] = 1.0;
+	_orientationMinusZ[1] = 0.0;
+	_orientationMinusZ[2] = -1.0;
+	_angle = 22;
+	_out_measuredCurrentPlusY = 0.0;
+	_out_measuredCurrentPlusZ = 0.0;
+	_out_measuredCurrentMinusY = 0.0;
+	_out_measuredCurrentMinusZ = 0.0;
 
 	initSubModelsDefaultValues();
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_initDefaultValues) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_initDefaultValues) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void SunSensor::initSubModelsDefaultValues() {
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_initSubModelsDefaultValues) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_initSubModelsDefaultValues) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -242,7 +269,7 @@ void SunSensor::initScheduling() {
 
 	std::list<MethodInfo> methods;
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_initScheduling_before_pushback) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_initScheduling_before_pushback) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 	try {
@@ -252,7 +279,7 @@ void SunSensor::initScheduling() {
 		std::cerr << "Exception:" << e.what() << std::endl;
 	}
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_initSheduling) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_initSheduling) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -261,50 +288,44 @@ void SunSensor::callMethod(uint32_t methodId_, BaseType* params_) throw (Schedul
 
 	preCompute();
 	switch (methodId_) {
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_callMethod_switch) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_callMethod_switch) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 	default:
 		ModelBase::callMethod(methodId_, params_);
 	}
 	postCompute();
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_callMethod) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_callMethod) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void SunSensor::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_start_serializeMembers) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_start_serializeMembers) ENABLED START*/
 	// add user defined code here
 	/*PROTECTED REGION END*/
 
-	stream_.array(&_in_sunDirection[0], 3);
-	stream_.array(&_out_measuredCurrents[0], 4);
-	stream_.array(&_orientation_0[0], 3);
-	stream_.array(&_orientation_1[0], 3);
-	stream_.array(&_orientation_2[0], 3);
-	stream_.array(&_orientation_3[0], 3);
+	stream_.array(&_orientationPlusY[0], 3);
+	stream_.array(&_orientationPlusZ[0], 3);
+	stream_.array(&_orientationMinusY[0], 3);
+	stream_.array(&_orientationMinusZ[0], 3);
 	stream_.value(_angle);
-	stream_.value(_in_sunAz);
-	stream_.value(_in_sunEl);
-	stream_.value(_stepNbr);
-	stream_.value(_in_isInEclipse);
 
-	_Cell_0->serialize(stream_);
-	_Cell_1->serialize(stream_);
-	_Cell_2->serialize(stream_);
-	_Cell_3->serialize(stream_);
 	_Baffle->serialize(stream_);
+	_Cell_PlusY->serialize(stream_);
+	_Cell_MinusY->serialize(stream_);
+	_Cell_PlusZ->serialize(stream_);
+	_Cell_MinusZ->serialize(stream_);
 
 	serializeExt(stream_);
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_serializeMembers) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_serializeMembers) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_auto_cpp_end_extensionsauto) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_auto_cpp_end_extensionsauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/

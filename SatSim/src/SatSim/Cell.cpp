@@ -8,7 +8,7 @@
  *
  */
 
-/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_impl_cpp_before_includeimplementation) ENABLED START*/
+/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_impl_cpp_before_includeimplementation) ENABLED START*/
 //add user defined includes here
 #include <cmath>
 /*PROTECTED REGION END*/
@@ -19,73 +19,68 @@ using namespace SatSim;
 
 OBJECT_MAKER(Cell)
 
-/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_impl_cpp_after_includeimplementation) ENABLED START*/
+/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_impl_cpp_after_includeimplementation) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 void Cell::constructor() {
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlgdelegated_constructor) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdwdelegated_constructor) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Cell::destructor() {
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlgdelegated_destructor) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdwdelegated_destructor) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Cell::configure() throw (simtg::Exception) {
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlgdelegated_configure) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdwdelegated_configure) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Cell::serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlgserializeExt) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdwserializeExt) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Cell::step() throw (simtg::Exception) {
-	/*PROTECTED REGION ID(_FFfWhL1XEe-zAc57ptwKlg) ENABLED START*/
-	//add user defined code here
-	/*PROTECTED REGION END*/
-
-}
-void Cell::measureCurrent() {
-	/*PROTECTED REGION ID(_NUBoAM3bEe-dEfVxFIbKWQ) ENABLED START*/
+	/*PROTECTED REGION ID(_DuiE1N_sEe-b8OOJcDFPdw) ENABLED START*/
 	//add user defined code here
 	float dot = 0;
 	for (int i = 0; i < 3; i++) {
-		dot += this->_normalVector[i] * this->_input_sunDirection[i];
+		dot += this->_normalVector[i] * this->_in_cssSunDirection[i];
 	}
 
-	this->_measuredCurrent = dot * this->_maxCurrent;
-	this->_measuredCurrent *= (1 - pow(2 * acos(dot) / M_PI, this->_incidenceCoefficient));
-	this->_measuredCurrent *= this->_baffleCoefficient;
+	this->_out_measuredCurrent = dot * this->_maxCurrent;
+	this->_out_measuredCurrent *= (1 - pow(2 * acos(dot) / M_PI, this->_largeIncidenceExponent));
+	this->_out_measuredCurrent *= this->_in_baffleCoefficient;
 
 	// Edge case: if cell upside down (shun on from behind), clamp current to 0
-	if (this->_measuredCurrent < 0) {
-		this->_measuredCurrent = 0;
+	if (this->_out_measuredCurrent < 0) {
+		this->_out_measuredCurrent = 0;
 	}
+
 	/*PROTECTED REGION END*/
 
 }
 void Cell::init() throw (simtg::Exception) {
 
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_startInit) ENABLED START*/
-// add user defined code here
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_startInit) ENABLED START*/
+	// add user defined code here
 	/*PROTECTED REGION END*/
 
 	AsyncModelBase::init();
 
-	/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_init) ENABLED START*/
-//add user defined code here
+	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_init) ENABLED START*/
+	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 
-/*PROTECTED REGION ID(_FFfWgb1XEe-zAc57ptwKlg_impl_cpp_end_extensionsimplementation) ENABLED START*/
+/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_impl_cpp_end_extensionsimplementation) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/

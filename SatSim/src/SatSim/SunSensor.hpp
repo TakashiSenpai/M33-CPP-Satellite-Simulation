@@ -14,20 +14,20 @@
 #include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
-#include <string>
+#include <simtg/kernel/AsyncData.hpp>
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
-class Cell;
 class Baffle;
+class Cell;
 }
 
 namespace SatSim {
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -36,54 +36,58 @@ class SunSensor: public
 
 public:
 	/**
-	 [LOCAL]  [3]
+	 [INPUT]  [3]
 	 */
-	float _in_sunDirection[3];
+	simtg::AsyncFloat _in_cssSunDirection;
 	/**
-	 [LOCAL]  [4]
+	 [INPUT] 
 	 */
-	float _out_measuredCurrents[4];
+	simtg::AsyncFloat _in_sunAz;
 	/**
-	 [LOCAL]  [3]
+	 [INPUT] 
 	 */
-	float _orientation_0[3];
-	/**
-	 [LOCAL]  [3]
-	 */
-	float _orientation_1[3];
+	simtg::AsyncFloat _in_sunEl;
 	/**
 	 [LOCAL]  [3]
 	 */
-	float _orientation_2[3];
+	float _orientationPlusY[3];
 	/**
 	 [LOCAL]  [3]
 	 */
-	float _orientation_3[3];
+	float _orientationPlusZ[3];
+	/**
+	 [LOCAL]  [3]
+	 */
+	float _orientationMinusY[3];
+	/**
+	 [LOCAL]  [3]
+	 */
+	float _orientationMinusZ[3];
 	/**
 	 [LOCAL] 
 	 */
 	float _angle;
 	/**
-	 [LOCAL] 
+	 [OUTPUT] 
 	 */
-	float _in_sunAz;
+	simtg::AsyncFloat _out_measuredCurrentPlusY;
 	/**
-	 [LOCAL] 
+	 [OUTPUT] 
 	 */
-	float _in_sunEl;
+	simtg::AsyncFloat _out_measuredCurrentPlusZ;
 	/**
-	 [LOCAL] 
+	 [OUTPUT] 
 	 */
-	int32_t _stepNbr;
+	simtg::AsyncFloat _out_measuredCurrentMinusY;
 	/**
-	 [LOCAL] 
+	 [OUTPUT] 
 	 */
-	bool _in_isInEclipse;
-	Cell* _Cell_0;
-	Cell* _Cell_1;
-	Cell* _Cell_2;
-	Cell* _Cell_3;
+	simtg::AsyncFloat _out_measuredCurrentMinusZ;
 	Baffle* _Baffle;
+	Cell* _Cell_PlusY;
+	Cell* _Cell_MinusY;
+	Cell* _Cell_PlusZ;
+	Cell* _Cell_MinusZ;
 
 private:
 	/**
@@ -146,8 +150,6 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
-	void log(std::string& msg_);
-	void initLog();
 	/**
 	 InitMethod of SunSensor
 	 */
@@ -183,9 +185,8 @@ public:
 
 public:
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
-	Cell* Cells[4];
 	/*PROTECTED REGION END*/
 
 	/**
@@ -193,14 +194,14 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -208,7 +209,7 @@ public:
 // end class SunSensor
 }//end SatSim
 
-/*PROTECTED REGION ID(_Qlo1Yb1WEe-zAc57ptwKlg_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 
