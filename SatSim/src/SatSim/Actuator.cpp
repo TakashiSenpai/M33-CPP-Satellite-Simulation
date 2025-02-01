@@ -8,10 +8,9 @@
  *
  */
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_impl_cpp_before_includeimplementation) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_impl_cpp_before_includeimplementation) ENABLED START*/
 //add user defined includes here
 #include <cmath>
-#include <sstream>
 /*PROTECTED REGION END*/
 
 #include "Actuator.hpp"
@@ -20,114 +19,101 @@ using namespace SatSim;
 
 OBJECT_MAKER(Actuator)
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_impl_cpp_after_includeimplementation) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_impl_cpp_after_includeimplementation) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 void Actuator::constructor() {
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3wdelegated_constructor) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urewdelegated_constructor) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Actuator::destructor() {
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3wdelegated_destructor) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urewdelegated_destructor) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Actuator::configure() throw (simtg::Exception) {
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3wdelegated_configure) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urewdelegated_configure) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Actuator::serializeExt(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3wserializeExt) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8UrewserializeExt) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Actuator::step() throw (simtg::Exception) {
-	/*PROTECTED REGION ID(_LVfTpNcvEe-g-_tbVlfW3w) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dNOCcEe-JhMcKl8Urew) ENABLED START*/
+
 	//add user defined code here
-	std::stringstream msg;
+	/*
+	 * Rotate Satellite THIS IS A BIT BAD, BETTER USE QUATERNIONS!
+	 */
 
-	msg << "\nCalling Actuator stepper";
-	this->log(msg.str());
-	msg.str("");
+	float angles[2];
+	angles[0] = this->_in_rotationAngles[0];
+	angles[1] = this->_in_rotationAngles[1];
 
-	this->_numSteps++;
+	// build the rotation matrices
+	this->_rotY.at(0, 0) = cos(angles[0]);
+	this->_rotY.at(0, 1) = 0;
+	this->_rotY.at(0, 2) = sin(angles[0]);
+	this->_rotY.at(1, 0) = 0;
+	this->_rotY.at(1, 1) = 1;
+	this->_rotY.at(1, 2) = 0;
+	this->_rotY.at(2, 0) = -sin(angles[0]);
+	this->_rotY.at(2, 1) = 0;
+	this->_rotY.at(2, 2) = cos(angles[0]);
 
-	float yPosition = this->_in_measuredCurrents[1] - this->_in_measuredCurrents[0];
-	float zPosition = this->_in_measuredCurrents[3] - this->_in_measuredCurrents[2];
+	this->_rotX.at(0, 0) = 1;
+	this->_rotX.at(0, 1) = 0;
+	this->_rotX.at(0, 2) = 0;
+	this->_rotX.at(1, 0) = 0;
+	this->_rotX.at(1, 1) = cos(angles[1]);
+	this->_rotX.at(1, 2) = -sin(angles[1]);
+	this->_rotX.at(2, 0) = 0;
+	this->_rotX.at(2, 1) = sin(angles[1]);
+	this->_rotX.at(2, 2) = cos(angles[1]);
 
-	msg << "Measured positions: ";
-	msg << yPosition << ", ";
-	msg << zPosition;
-	this->log(msg.str());
-	msg.str("");
-
-	int actuationDirection = 0;
-	if (abs(yPosition) < abs(zPosition)) {
-		actuationDirection = 1;
+	for (int i = 0; i < 3; i++) {
+		this->_sunDirectionRotY[i] = 0;
+		for (int j = 0; j < 3; j++) {
+			this->_sunDirectionRotY[i] += this->_rotY.at(i, j) * this->_in_sunDirection[j];
+		}
 	}
-	float scalingFactor = 1 / sqrt(pow(yPosition, 2) + pow(zPosition, 2));
-	this->_calculatedPosition[0] = scalingFactor * yPosition;
-	this->_calculatedPosition[1] = scalingFactor * zPosition;
 
-	this->_sumPositions[0] += this->_calculatedPosition[0];
-	this->_sumPositions[1] += this->_calculatedPosition[1];
+	for (int i = 0; i < 3; i++) {
+		this->_sunDirectionRotX[i] = 0;
+		for (int j = 0; j < 3; j++) {
+			this->_sunDirectionRotX[i] += this->_rotX.at(i, j) * this->_sunDirectionRotY[j];
+		}
+	}
 
-	float prop = this->_coefficientProportional * this->_calculatedPosition[actuationDirection];
-	float inte = 1 / this->_numSteps * this->_coefficientIntegration * this->_sumPositions[actuationDirection];
-	float diff = this->_coefficientDifferential * (this->_calculatedPosition[actuationDirection] - this->_lastPosition[actuationDirection]);
-
-	this->_out_actuationAngle[actuationDirection] = M_PI / 18 * (prop); // + inte + diff);
-	this->_out_actuationAngle[1 - actuationDirection] = 0;
-
-	this->_lastPosition[0] += this->_calculatedPosition[0];
-	this->_lastPosition[1] += this->_calculatedPosition[1];
-
-	/*PROTECTED REGION END*/
-
-}
-void Actuator::log(std::string msg_) {
-	/*PROTECTED REGION ID(_DzYM4N5dEe-81o-hP_uF1w) ENABLED START*/
-	//add user defined code here
-	FILE *logFile = fopen("actuator.log", "a");
-	fprintf(logFile, "%s\n", msg_.c_str());
-	fclose(logFile);
-	/*PROTECTED REGION END*/
-
-}
-void Actuator::initLog() {
-	/*PROTECTED REGION ID(_FiZ6gN5dEe-81o-hP_uF1w) ENABLED START*/
-	//add user defined code here
-	FILE *logFile = fopen("actuator.log", "w");
-	fprintf(logFile, "%s\n", "Initializing log file...");
-	fclose(logFile);
+	for (int i = 0; i < 3; i++) {
+		this->_out_sunDirection[i] = this->_sunDirectionRotX[i];
+	}
 	/*PROTECTED REGION END*/
 
 }
 void Actuator::init() throw (simtg::Exception) {
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_startInit) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_startInit) ENABLED START*/
 	// add user defined code here
-	this->initLog();
-	this->_coefficientProportional = 1;
-	this->_coefficientDifferential = 0;
-	this->_coefficientIntegration = 0;
 	/*PROTECTED REGION END*/
 
 	AsyncModelBase::init();
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_init) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_init) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_impl_cpp_end_extensionsimplementation) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_impl_cpp_end_extensionsimplementation) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/

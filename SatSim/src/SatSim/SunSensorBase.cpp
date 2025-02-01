@@ -200,13 +200,13 @@ void SunSensor::connectData() throw (Smp::IModel::InvalidModelState) {
 		_Baffle->getOutput("out_baffleCoefficientMinusZ").connect(&_Cell_MinusZ->getInput("in_baffleCoefficient"));
 		_Baffle->getOutput("out_baffleCoefficientPlusZ").connect(&_Cell_PlusZ->getInput("in_baffleCoefficient"));
 		_Baffle->getOutput("out_baffleCoefficientMinusY").connect(&_Cell_MinusY->getInput("in_baffleCoefficient"));
-		this->getInput("in_sunDirection").connect(&_Orientation->getInput("in_sunDirection"), 0, 3, 0);
+		this->getInput("in_sunDirection").connect(&_Orientation->getInput("in_satFrameVector"), 0, 3, 0);
 		_Orientation->getOutput("out_sunEl").connect(&_Baffle->getInput("in_sunEl"));
 		_Orientation->getOutput("out_sunAz").connect(&_Baffle->getInput("in_sunAz"));
-		_Orientation->getOutput("out_cssSunDirection").connect(&_Cell_PlusY->getInput("in_cssSunDirection"), 0, 3, 0);
-		_Orientation->getOutput("out_cssSunDirection").connect(&_Cell_MinusY->getInput("in_cssSunDirection"), 0, 3, 0);
-		_Orientation->getOutput("out_cssSunDirection").connect(&_Cell_PlusZ->getInput("in_cssSunDirection"), 0, 3, 0);
-		_Orientation->getOutput("out_cssSunDirection").connect(&_Cell_MinusZ->getInput("in_cssSunDirection"), 0, 3, 0);
+		_Orientation->getOutput("out_cssFrameVector").connect(&_Cell_PlusY->getInput("in_cssSunDirection"), 0, 3, 0);
+		_Orientation->getOutput("out_cssFrameVector").connect(&_Cell_MinusY->getInput("in_cssSunDirection"), 0, 3, 0);
+		_Orientation->getOutput("out_cssFrameVector").connect(&_Cell_PlusZ->getInput("in_cssSunDirection"), 0, 3, 0);
+		_Orientation->getOutput("out_cssFrameVector").connect(&_Cell_MinusZ->getInput("in_cssSunDirection"), 0, 3, 0);
 		_Cell_PlusY->getOutput("out_measuredCurrent").connect(&_ADC->getInput("in_measuredCurrentPlusY"));
 		_Cell_MinusY->getOutput("out_measuredCurrent").connect(&_ADC->getInput("in_measuredCurrentMinusY"));
 		_Cell_PlusZ->getOutput("out_measuredCurrent").connect(&_ADC->getInput("in_measuredCurrentPlusZ"));

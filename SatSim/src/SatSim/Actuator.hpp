@@ -15,15 +15,14 @@
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
-#include <string>
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -32,49 +31,33 @@ class Actuator: public
 
 public:
 	/**
-	 [INPUT]  [4]
+	 [OUTPUT]  [3]
 	 */
-	simtg::AsyncFloat _in_measuredCurrents;
+	simtg::AsyncFloat _out_sunDirection;
 	/**
-	 [LOCAL]  [2]
+	 [INPUT]  [2]
 	 */
-	float _out_actuationAngle[2];
+	simtg::AsyncFloat _in_rotationAngles;
 	/**
-	 [LOCAL]  [4]
+	 [INPUT]  [3]
 	 */
-	float _measuredCurrents[4];
+	simtg::AsyncFloat _in_sunDirection;
 	/**
-	 [LOCAL]  [3]
+	 [STATE]  [3, 3]
 	 */
-	float _cssSunDirections[3];
+	simtg::AsyncFloat _rotX;
 	/**
-	 [LOCAL]  [2]
+	 [STATE]  [3, 3]
 	 */
-	float _calculatedPosition[2];
+	simtg::AsyncFloat _rotY;
 	/**
-	 [LOCAL]  [2]
+	 [STATE]  [3]
 	 */
-	float _lastPosition[2];
+	simtg::AsyncFloat _sunDirectionRotY;
 	/**
-	 [LOCAL]  [2]
+	 [STATE]  [3]
 	 */
-	float _sumPositions[2];
-	/**
-	 [LOCAL] 
-	 */
-	float _coefficientProportional;
-	/**
-	 [LOCAL] 
-	 */
-	float _coefficientIntegration;
-	/**
-	 [LOCAL] 
-	 */
-	float _coefficientDifferential;
-	/**
-	 [LOCAL] 
-	 */
-	int32_t _numSteps;
+	simtg::AsyncFloat _sunDirectionRotX;
 
 private:
 	/**
@@ -137,8 +120,6 @@ public:
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
-	void log(std::string msg_);
-	void initLog();
 	/**
 	 InitMethod of Actuator
 	 */
@@ -174,7 +155,7 @@ public:
 
 public:
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
 	/*PROTECTED REGION END*/
 
@@ -183,14 +164,14 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -198,7 +179,7 @@ public:
 // end class Actuator
 }//end SatSim
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 

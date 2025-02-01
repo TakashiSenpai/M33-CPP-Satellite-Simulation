@@ -18,6 +18,7 @@
 #include <simtg/smp/LoggerMacros.hpp>
 #include <simtg/kernel/MethodCallAsyncDataListener.hpp>
 #include "SunSensor.hpp"
+#include "AttitudeControlSystem.hpp"
 
 using namespace SatSim;
 
@@ -36,8 +37,10 @@ Satellite::Satellite(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 {
 
 	_SunSensor = new SunSensor("SunSensor", this, "");
+	_ACS = new AttitudeControlSystem("ACS", this, "");
 
 	_subModelsSequencer.push_back(_SunSensor);
+	_subModelsSequencer.push_back(_ACS);
 
 	registerData();
 	registerParams();
@@ -65,8 +68,10 @@ Satellite::Satellite(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 {
 
 	_SunSensor = new SunSensor("SunSensor", this, "");
+	_ACS = new AttitudeControlSystem("ACS", this, "");
 
 	_subModelsSequencer.push_back(_SunSensor);
+	_subModelsSequencer.push_back(_ACS);
 
 	registerData();
 	registerParams();
@@ -86,6 +91,7 @@ Satellite::Satellite(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 Satellite::~Satellite() {
 
 	delete _SunSensor;
+	delete _ACS;
 
 	destructor();
 
@@ -163,7 +169,9 @@ void Satellite::connectData() throw (Smp::IModel::InvalidModelState) {
 
 	try {
 		//data connections 
-		this->getInput("in_sunDirection").connect(&this->getOutput("out_sunDirection"), 0, 3, 0);
+		_SunSensor->getOutput("out_controlSignal").connect(&_ACS->getInput("in_controlSignal"), 0, 2, 0);
+		_ACS->getOutput("out_sunDirection").connect(&this->getOutput("out_sunDirection"), 0, 3, 0);
+		this->getInput("in_sunDirection").connect(&_ACS->getInput("in_sunDirection"), 0, 3, 0);
 		this->getInput("in_sunDirection").connect(&_SunSensor->getInput("in_sunDirection"), 0, 3, 0);
 
 		/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_connectData_catching) ENABLED START*/
@@ -248,6 +256,7 @@ void Satellite::serializeMembers(simtg::SerializationStream& stream_) throw (sim
 	/*PROTECTED REGION END*/
 
 	_SunSensor->serialize(stream_);
+	_ACS->serialize(stream_);
 
 	serializeExt(stream_);
 

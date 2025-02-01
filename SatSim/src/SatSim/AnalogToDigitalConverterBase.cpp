@@ -185,6 +185,7 @@ void AnalogToDigitalConverter::initDefaultValues() {
 	for (int row = 0; row < 2; row++) {
 		_out_controlSignal[row] = 0.0;
 	}
+	_maxCurrent = 31e-3;
 
 	initSubModelsDefaultValues();
 
@@ -240,6 +241,8 @@ void AnalogToDigitalConverter::serializeMembers(simtg::SerializationStream& stre
 	/*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_start_serializeMembers) ENABLED START*/
 	// add user defined code here
 	/*PROTECTED REGION END*/
+
+	stream_.value(_maxCurrent);
 
 	serializeExt(stream_);
 

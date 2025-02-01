@@ -26,10 +26,12 @@ using namespace SatSim;
 
 Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
 		AsyncModelBase(name_, parent_, description_),
-				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_cssSunDirection("out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+				_in_satFrameVector("in_satFrameVector", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_cssFrameVector("out_cssFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunAz("out_sunAz", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunEl("out_sunEl", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _in_cssFrameVector("in_cssFrameVector", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_satFrameVector("out_satFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -53,10 +55,12 @@ Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_, Smp::S
 }
 Orientation::Orientation(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
 		AsyncModelBase(name_, description_, parent_),
-				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_cssSunDirection("out_cssSunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+				_in_satFrameVector("in_satFrameVector", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_cssFrameVector("out_cssFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunAz("out_sunAz", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunEl("out_sunEl", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _in_cssFrameVector("in_cssFrameVector", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _out_satFrameVector("out_satFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -177,10 +181,10 @@ void Orientation::initDefaultValues() {
 
 	//set init values of variables
 	for (int row = 0; row < 3; row++) {
-		_in_sunDirection[row] = 0.0;
+		_in_satFrameVector[row] = 0.0;
 	}
 	for (int row = 0; row < 3; row++) {
-		_out_cssSunDirection[row] = 0.0;
+		_out_cssFrameVector[row] = 0.0;
 	}
 	_out_sunAz = 0.0;
 	_out_sunEl = 0.0;
@@ -193,6 +197,21 @@ void Orientation::initDefaultValues() {
 	_sat2cssFrame[2][0] = 1;
 	_sat2cssFrame[2][1] = 0;
 	_sat2cssFrame[2][2] = 0;
+	_css2satFrame[0][0] = 0;
+	_css2satFrame[0][1] = 0;
+	_css2satFrame[0][2] = 1;
+	_css2satFrame[1][0] = 0;
+	_css2satFrame[1][1] = 1;
+	_css2satFrame[1][2] = 0;
+	_css2satFrame[2][0] = -1;
+	_css2satFrame[2][1] = 0;
+	_css2satFrame[2][2] = 0;
+	for (int row = 0; row < 3; row++) {
+		_in_cssFrameVector[row] = 0.0;
+	}
+	for (int row = 0; row < 3; row++) {
+		_out_satFrameVector[row] = 0.0;
+	}
 
 	initSubModelsDefaultValues();
 
@@ -250,6 +269,7 @@ void Orientation::serializeMembers(simtg::SerializationStream& stream_) throw (s
 	/*PROTECTED REGION END*/
 
 	stream_.array(&_sat2cssFrame[0][0], 9);
+	stream_.array(&_css2satFrame[0][0], 9);
 
 	serializeExt(stream_);
 

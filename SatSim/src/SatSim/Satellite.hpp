@@ -22,6 +22,7 @@
 
 namespace SatSim {
 class SunSensor;
+class AttitudeControlSystem;
 }
 
 namespace SatSim {
@@ -43,6 +44,7 @@ public:
 	 */
 	simtg::AsyncFloat _out_sunDirection;
 	SunSensor* _SunSensor;
+	AttitudeControlSystem* _ACS;
 
 private:
 	/**

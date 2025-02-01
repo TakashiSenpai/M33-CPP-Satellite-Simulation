@@ -26,6 +26,9 @@
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_cliEQOCUEe-JhMcKl8Urew" side="EAST"/>
       </properties>
+      <properties xmi:type="DataDef" xmi:id="_DnbYMOClEe-JhMcKl8Urew" name="maxCurrent" defaultValue="31e-3">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
       <functions xmi:type="FuncDef" xmi:id="_Nfy0NOCUEe-JhMcKl8Urew" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>
   </ModelDefinitionDocument>

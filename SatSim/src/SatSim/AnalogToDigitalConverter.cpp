@@ -49,8 +49,10 @@ void AnalogToDigitalConverter::serializeExt(simtg::SerializationStream& stream_)
 void AnalogToDigitalConverter::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_Nfy0NOCUEe-JhMcKl8Urew) ENABLED START*/
 	//add user defined code here
-	this->_out_controlSignal[0] = this->_in_measuredCurrentPlusY - this->_in_measuredCurrentMinusY;
-	this->_out_controlSignal[1] = this->_in_measuredCurrentPlusZ - this->_in_measuredCurrentMinusZ;
+	// output signal should remain between 0 and 1
+	this->_out_controlSignal[0] = (this->_in_measuredCurrentPlusY - this->_in_measuredCurrentMinusY) / this->_maxCurrent;
+	this->_out_controlSignal[1] = (this->_in_measuredCurrentPlusZ - this->_in_measuredCurrentMinusZ) / this->_maxCurrent;
+
 	/*PROTECTED REGION END*/
 
 }

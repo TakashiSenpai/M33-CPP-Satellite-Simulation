@@ -8,7 +8,7 @@
  *
  */
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_auto_cpp_before_includeauto) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_auto_cpp_before_includeauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
@@ -20,15 +20,21 @@
 
 using namespace SatSim;
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_auto_cpp_after_includeauto) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_auto_cpp_after_includeauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 Actuator::Actuator(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 description_) :
 		AsyncModelBase(name_, parent_, description_),
-				_in_measuredCurrents("in_measuredCurrents", 4, 1, "-", simtg::INPUT, &_data, this, 0)
+				_out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _in_rotationAngles("in_rotationAngles", 2, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _rotX("rotX", 3, 3, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _rotY("rotY", 3, 3, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _sunDirectionRotY("sunDirectionRotY", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _sunDirectionRotX("sunDirectionRotX", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_defConst_constructor_init) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 {
@@ -43,16 +49,22 @@ Actuator::Actuator(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8
 
 	constructor();
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_defConst) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_defConst) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 Actuator::Actuator(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_) :
 		AsyncModelBase(name_, description_, parent_),
-				_in_measuredCurrents("in_measuredCurrents", 4, 1, "-", simtg::INPUT, &_data, this, 0)
+				_out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _in_rotationAngles("in_rotationAngles", 2, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _rotX("rotX", 3, 3, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _rotY("rotY", 3, 3, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _sunDirectionRotY("sunDirectionRotY", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _sunDirectionRotX("sunDirectionRotX", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_namedConst_constructor_init) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 {
@@ -67,7 +79,7 @@ Actuator::Actuator(Smp::String8 name_, Smp::String8 description_, Smp::IComposit
 
 	constructor();
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_namedConst) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_namedConst) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -76,7 +88,7 @@ Actuator::~Actuator() {
 
 	destructor();
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_defDestr) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_defDestr) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -85,7 +97,7 @@ void Actuator::Publish(Smp::IPublication* publication_) throw (Smp::IModel::Inva
 
 	ModelBase::Publish(publication_);
 	try {
-		/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_publish_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_publish_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -96,7 +108,7 @@ void Actuator::Publish(Smp::IPublication* publication_) throw (Smp::IModel::Inva
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_publish) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_publish) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -115,7 +127,7 @@ void Actuator::Configure(Smp::Services::ILogger* logger_) throw (Smp::IModel::In
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_configure) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_configure) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -130,7 +142,7 @@ void Actuator::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelSt
 		//interface connections
 		//system interface connections
 
-		/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_connect_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_connect_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -141,7 +153,7 @@ void Actuator::Connect(Smp::ISimulator* sim_) throw (Smp::IModel::InvalidModelSt
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_connect) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_connect) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -151,7 +163,7 @@ void Actuator::connectData() throw (Smp::IModel::InvalidModelState) {
 	try {
 		//data connections 
 
-		/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_connectData_catching) ENABLED START*/
+		/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_connectData_catching) ENABLED START*/
 		//add user defined code here
 		/*PROTECTED REGION END*/
 	}
@@ -162,7 +174,7 @@ void Actuator::connectData() throw (Smp::IModel::InvalidModelState) {
 		throw simtg::ModelBase::InvalidModelState(_state, smpException);
 	}
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_connectData) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_connectData) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -170,42 +182,42 @@ void Actuator::connectData() throw (Smp::IModel::InvalidModelState) {
 void Actuator::initDefaultValues() {
 
 	//set init values of variables
-	for (int row = 0; row < 4; row++) {
-		_in_measuredCurrents[row] = 0.0;
+	for (int row = 0; row < 3; row++) {
+		_out_sunDirection[row] = 0.0;
 	}
 	for (int row = 0; row < 2; row++) {
-		_out_actuationAngle[row] = 0.0;
-	}
-	for (int row = 0; row < 4; row++) {
-		_measuredCurrents[row] = 0.0;
+		_in_rotationAngles[row] = 0.0;
 	}
 	for (int row = 0; row < 3; row++) {
-		_cssSunDirections[row] = 0.0;
+		_in_sunDirection[row] = 0.0;
 	}
-	for (int row = 0; row < 2; row++) {
-		_calculatedPosition[row] = 0.0;
+	for (int row = 0; row < 3; row++) {
+		for (int col = 0; col < 3; col++) {
+			_rotX.at(row, col) = 0.0;
+		}
 	}
-	for (int row = 0; row < 2; row++) {
-		_lastPosition[row] = 0.0;
+	for (int row = 0; row < 3; row++) {
+		for (int col = 0; col < 3; col++) {
+			_rotY.at(row, col) = 0.0;
+		}
 	}
-	for (int row = 0; row < 2; row++) {
-		_sumPositions[row] = 0.0;
+	for (int row = 0; row < 3; row++) {
+		_sunDirectionRotY[row] = 0.0;
 	}
-	_coefficientProportional = 0.0;
-	_coefficientIntegration = 0.0;
-	_coefficientDifferential = 0.0;
-	_numSteps = 0;
+	for (int row = 0; row < 3; row++) {
+		_sunDirectionRotX[row] = 0.0;
+	}
 
 	initSubModelsDefaultValues();
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_initDefaultValues) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_initDefaultValues) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Actuator::initSubModelsDefaultValues() {
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_initSubModelsDefaultValues) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_initSubModelsDefaultValues) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -214,7 +226,7 @@ void Actuator::initScheduling() {
 
 	std::list<MethodInfo> methods;
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_initScheduling_before_pushback) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_initScheduling_before_pushback) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 	try {
@@ -224,7 +236,7 @@ void Actuator::initScheduling() {
 		std::cerr << "Exception:" << e.what() << std::endl;
 	}
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_initSheduling) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_initSheduling) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
@@ -233,43 +245,32 @@ void Actuator::callMethod(uint32_t methodId_, BaseType* params_) throw (Schedula
 
 	preCompute();
 	switch (methodId_) {
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_callMethod_switch) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_callMethod_switch) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 	default:
 		ModelBase::callMethod(methodId_, params_);
 	}
 	postCompute();
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_callMethod) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_callMethod) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 void Actuator::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::SerializationException) {
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_start_serializeMembers) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_start_serializeMembers) ENABLED START*/
 	// add user defined code here
 	/*PROTECTED REGION END*/
 
-	stream_.array(&_out_actuationAngle[0], 2);
-	stream_.array(&_measuredCurrents[0], 4);
-	stream_.array(&_cssSunDirections[0], 3);
-	stream_.array(&_calculatedPosition[0], 2);
-	stream_.array(&_lastPosition[0], 2);
-	stream_.array(&_sumPositions[0], 2);
-	stream_.value(_coefficientProportional);
-	stream_.value(_coefficientIntegration);
-	stream_.value(_coefficientDifferential);
-	stream_.value(_numSteps);
-
 	serializeExt(stream_);
 
-	/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_serializeMembers) ENABLED START*/
+	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_serializeMembers) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 }
 
-/*PROTECTED REGION ID(_LVfTodcvEe-g-_tbVlfW3w_auto_cpp_end_extensionsauto) ENABLED START*/
+/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_auto_cpp_end_extensionsauto) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/

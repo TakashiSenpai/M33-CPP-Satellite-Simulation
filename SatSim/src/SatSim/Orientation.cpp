@@ -56,9 +56,9 @@ void Orientation::step() throw (simtg::Exception) {
 
 	// Use simple matrix multiplication
 	for (int i = 0; i < 3; i++) {
-		this->_out_cssSunDirection[i] = 0.0;
+		this->_out_cssFrameVector[i] = 0.0;
 		for (int j = 0; j < 3; j++) {
-			this->_out_cssSunDirection[i] += this->_sat2cssFrame[i][j] * this->_in_sunDirection[j];
+			this->_out_cssFrameVector[i] += this->_sat2cssFrame[i][j] * this->_in_satFrameVector[j];
 		}
 	}
 
@@ -69,17 +69,29 @@ void Orientation::step() throw (simtg::Exception) {
 	// Projection of the sun direction in the (Y_c, Z_c) plane
 	float uPrime[3] = {
 			0,
-			this->_out_cssSunDirection[1],
-			this->_out_cssSunDirection[2]
+			this->_out_cssFrameVector[1],
+			this->_out_cssFrameVector[2]
 	};
 	float uPrimeNorm = sqrt(pow(uPrime[1], 2) + pow(uPrime[2], 2));
 
 	// calculate azimuth and elevation
-	this->_out_sunEl = acos(this->_out_cssSunDirection[0]);
+	this->_out_sunEl = acos(this->_out_cssFrameVector[0]);
 	this->_out_sunAz =
-			(this->_out_cssSunDirection[1] <= 0) ?
-													acos(this->_out_cssSunDirection[2] / uPrimeNorm) :
-													M_PI + acos(-this->_out_cssSunDirection[2] / uPrimeNorm);
+			(this->_out_cssFrameVector[1] <= 0) ?
+													acos(this->_out_cssFrameVector[2] / uPrimeNorm) :
+													M_PI + acos(-this->_out_cssFrameVector[2] / uPrimeNorm);
+
+	/*
+	 * Convert Sun sensor Sun direction to satellite coordinate frame
+	 */
+
+	// Use simple matrix multiplication
+	for (int i = 0; i < 3; i++) {
+		this->_out_satFrameVector[i] = 0.0;
+		for (int j = 0; j < 3; j++) {
+			this->_out_satFrameVector[i] += this->_css2satFrame[i][j] * this->_in_cssFrameVector[j];
+		}
+	}
 
 	/*PROTECTED REGION END*/
 

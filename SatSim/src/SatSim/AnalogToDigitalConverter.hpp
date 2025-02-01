@@ -50,6 +50,10 @@ public:
 	 [OUTPUT]  [2]
 	 */
 	simtg::AsyncFloat _out_controlSignal;
+	/**
+	 [LOCAL] 
+	 */
+	float _maxCurrent;
 
 private:
 	/**

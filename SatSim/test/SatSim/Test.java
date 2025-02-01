@@ -21,7 +21,7 @@ public class Test extends BaseTest {
 		/*
 		 * Generate initial sun position
 		 */
-		float sunPos[] = {(float)1, (float)0, (float)-1};
+		float sunPos[] = {(float)0, (float)1, (float)-1};
 		double norm = Math.sqrt(Math.pow(sunPos[0], 2) + Math.pow(sunPos[1], 2) + Math.pow(sunPos[2], 2));
 		sunPos[0] /= (float) norm;
 		sunPos[1] /= (float) norm;
@@ -36,7 +36,7 @@ public class Test extends BaseTest {
 		/*
 		 * Simulation loop
 		 */		
-		float outSunPos[];
+		float satSunPos[];
 		float measuredCurrents[] = {0,0,0,0};
 		float baffleCoefficients[] = {0, 0, 0, 0};
 		float cssSunDir[];
@@ -44,6 +44,9 @@ public class Test extends BaseTest {
 		int sector;
 		float normalVector[][] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}};
 		float controlSignal[];
+		float rotationAngles[];
+		float newSunPos[];
+		float acsSunDir[];
 		
 		// Check initialization
 		System.out.println("\nInitial parameters:");
@@ -62,8 +65,9 @@ public class Test extends BaseTest {
 			sim.step();
 			
 			// retrieve values from the simulation
-			outSunPos = sim.readFloatArray(objName + ".Out.out_sunDirection");
-			cssSunDir = sim.readFloatArray(objName + ".SunSensor.Orientation.Out.out_cssSunDirection");
+			satSunPos = sim.readFloatArray(objName + ".In.in_sunDirection");
+			cssSunDir = sim.readFloatArray(objName + ".SunSensor.Orientation.Out.out_cssFrameVector");
+			acsSunDir = sim.readFloatArray(objName + ".ACS.Actuator.In.in_sunDirection");
 			sunAz = sim.readFloat(objName + ".SunSensor.Orientation.Out.out_sunAz");
 			sunEl = sim.readFloat(objName + ".SunSensor.Orientation.Out.out_sunEl");
 			sector = sim.readInt(objName + ".SunSensor.Baffle.State.sector");
@@ -79,17 +83,24 @@ public class Test extends BaseTest {
 			baffleCoefficients[3] = sim.readFloat(objName + ".SunSensor.Baffle.Out.out_baffleCoefficientMinusZ");
 			
 			controlSignal = sim.readFloatArray(objName + ".SunSensor.Out.out_controlSignal");
+			rotationAngles = sim.readFloatArray(objName + ".ACS.Controller.Out.out_rotationAngles");
+			newSunPos = sim.readFloatArray(objName + ".ACS.Actuator.Out.out_sunDirection");
 			
-			System.out.printf("SAT Sun direction: %f, %f, %f\n", outSunPos[0], outSunPos[1], outSunPos[2]);
+			System.out.printf("SAT Sun direction: %f, %f, %f\n", satSunPos[0], satSunPos[1], satSunPos[2]);
 			System.out.printf("CSS Sun direction: %f, %f, %f\n", cssSunDir[0], cssSunDir[1], cssSunDir[2]);
+			System.out.printf("ACS Sun direction: %f, %f, %f\n", acsSunDir[0], acsSunDir[1], acsSunDir[2]);
 			System.out.printf("Sun Azimuth: %f deg, Elevation: %f deg\n", sunAz*180/Math.PI, sunEl*180/Math.PI);
 			System.out.printf("Out measured currents: +Y = %f, -Y = %f, +Z = %f, -Z = %f\n", measuredCurrents[0], measuredCurrents[1], measuredCurrents[2], measuredCurrents[3]);
 			System.out.printf("Baffle sector: %d\n", sector);
 			System.out.printf("Baffle coefficients: %f, %f, %f, %f\n", baffleCoefficients[0], baffleCoefficients[1], baffleCoefficients[2], baffleCoefficients[3]);
 			System.out.printf("Control signal Y: %f, Z: %f\n", controlSignal[0], controlSignal[1]);
+			System.out.printf("Rotation angles: Ys: %f, Xs: %f\n", rotationAngles[0], rotationAngles[1]);
+			System.out.printf("New Sun direction: %f, %f, %f\n", newSunPos[0], newSunPos[1], newSunPos[2]);
 			
 			// update the Sun's position for the next step
-			sim.writeFloatArray(objName + ".In.in_sunDirection", outSunPos); 
+			satSunPos = sim.readFloatArray(objName + ".Out.out_sunDirection");
+			System.out.printf("New Sun direction: %f, %f, %f\n", satSunPos[0], satSunPos[1], satSunPos[2]);
+			sim.writeFloatArray(objName + ".In.in_sunDirection", satSunPos); 
 		}
 		
 		System.out.println("\nTest finished");

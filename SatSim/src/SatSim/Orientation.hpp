@@ -33,11 +33,11 @@ public:
 	/**
 	 [INPUT]  [3]
 	 */
-	simtg::AsyncFloat _in_sunDirection;
+	simtg::AsyncFloat _in_satFrameVector;
 	/**
 	 [OUTPUT]  [3]
 	 */
-	simtg::AsyncFloat _out_cssSunDirection;
+	simtg::AsyncFloat _out_cssFrameVector;
 	/**
 	 [OUTPUT] 
 	 */
@@ -50,6 +50,18 @@ public:
 	 [LOCAL]  [3, 3]
 	 */
 	int32_t _sat2cssFrame[3][3];
+	/**
+	 [LOCAL]  [3, 3]
+	 */
+	int32_t _css2satFrame[3][3];
+	/**
+	 [INPUT]  [3]
+	 */
+	simtg::AsyncFloat _in_cssFrameVector;
+	/**
+	 [OUTPUT]  [3]
+	 */
+	simtg::AsyncFloat _out_satFrameVector;
 
 private:
 	/**

@@ -14,6 +14,7 @@
 
 #include "Satellite.hpp"
 #include "SunSensor.hpp"
+#include "AttitudeControlSystem.hpp"
 
 using namespace SatSim;
 
@@ -60,6 +61,7 @@ void Satellite::init() throw (simtg::Exception) {
 	/*PROTECTED REGION END*/
 
 	_SunSensor->init();
+	_ACS->init();
 
 	AsyncModelBase::init();
 
