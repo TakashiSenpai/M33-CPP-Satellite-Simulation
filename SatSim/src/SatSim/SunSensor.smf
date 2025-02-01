@@ -212,6 +212,9 @@
         <properties xmi:type="DataUsage" xmi:id="_sZOmhOCUEe-JhMcKl8Urew">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_Nfy0MeCUEe-JhMcKl8Urew#_ckErsOCUEe-JhMcKl8Urew"/>
         </properties>
+        <properties xmi:type="DataUsage" xmi:id="_LnQlcOC5Ee-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_Nfy0MeCUEe-JhMcKl8Urew#_DnbYMOClEe-JhMcKl8Urew"/>
+        </properties>
       </containedUsages>
       <properties xmi:type="DataDef" xmi:id="_KkvSMN_tEe-l77663yCzzw" name="in_sunDirection" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
         <size>3</size>

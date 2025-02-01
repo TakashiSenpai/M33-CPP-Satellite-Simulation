@@ -58,6 +58,30 @@ public:
 	 [STATE]  [3]
 	 */
 	simtg::AsyncFloat _sunDirectionRotX;
+	/**
+	 [STATE]  [4]
+	 */
+	simtg::AsyncFloat _qPosOldArr;
+	/**
+	 [STATE]  [4]
+	 */
+	simtg::AsyncFloat _qPosNewArr;
+	/**
+	 [STATE]  [4]
+	 */
+	simtg::AsyncFloat _qRotArr;
+	/**
+	 [STATE]  [4]
+	 */
+	simtg::AsyncFloat _qRotStarArr;
+	/**
+	 [LOCAL] 
+	 */
+	float _maxRotationAngle;
+	/**
+	 [STATE] 
+	 */
+	simtg::AsyncFloat _angle;
 
 private:
 	/**

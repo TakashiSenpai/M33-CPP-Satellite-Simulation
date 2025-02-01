@@ -33,6 +33,11 @@ Actuator::Actuator(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8
 						, _rotY("rotY", 3, 3, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _sunDirectionRotY("sunDirectionRotY", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _sunDirectionRotX("sunDirectionRotX", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qPosOldArr("qPosOldArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qPosNewArr("qPosNewArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qRotArr("qRotArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qRotStarArr("qRotStarArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _angle("angle", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -63,6 +68,11 @@ Actuator::Actuator(Smp::String8 name_, Smp::String8 description_, Smp::IComposit
 						, _rotY("rotY", 3, 3, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _sunDirectionRotY("sunDirectionRotY", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _sunDirectionRotX("sunDirectionRotX", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qPosOldArr("qPosOldArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qPosNewArr("qPosNewArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qRotArr("qRotArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _qRotStarArr("qRotStarArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _angle("angle", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -207,6 +217,20 @@ void Actuator::initDefaultValues() {
 	for (int row = 0; row < 3; row++) {
 		_sunDirectionRotX[row] = 0.0;
 	}
+	for (int row = 0; row < 4; row++) {
+		_qPosOldArr[row] = 0.0;
+	}
+	for (int row = 0; row < 4; row++) {
+		_qPosNewArr[row] = 0.0;
+	}
+	for (int row = 0; row < 4; row++) {
+		_qRotArr[row] = 0.0;
+	}
+	for (int row = 0; row < 4; row++) {
+		_qRotStarArr[row] = 0.0;
+	}
+	_maxRotationAngle = 10.0;
+	_angle = 0.0;
 
 	initSubModelsDefaultValues();
 
@@ -262,6 +286,8 @@ void Actuator::serializeMembers(simtg::SerializationStream& stream_) throw (simt
 	/*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_start_serializeMembers) ENABLED START*/
 	// add user defined code here
 	/*PROTECTED REGION END*/
+
+	stream_.value(_maxRotationAngle);
 
 	serializeExt(stream_);
 

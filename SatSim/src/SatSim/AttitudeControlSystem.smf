@@ -33,9 +33,6 @@
         <properties xmi:type="DataUsage" xmi:id="_70nkMeCZEe-JhMcKl8Urew">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_6P4s8eCXEe-JhMcKl8Urew#_BkGhcOCYEe-JhMcKl8Urew"/>
         </properties>
-        <properties xmi:type="DataUsage" xmi:id="_o2Y4QOCcEe-JhMcKl8Urew">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_6P4s8eCXEe-JhMcKl8Urew#_hvl0sOCcEe-JhMcKl8Urew"/>
-        </properties>
         <properties xmi:type="DataUsage" xmi:id="_9FiAMOCeEe-JhMcKl8Urew">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_6P4s8eCXEe-JhMcKl8Urew#_rgjGgOCeEe-JhMcKl8Urew"/>
         </properties>
@@ -56,6 +53,9 @@
         </properties>
         <properties xmi:type="DataUsage" xmi:id="_AfNfgeCkEe-JhMcKl8Urew">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_6P4s8eCXEe-JhMcKl8Urew#_o4P8oOCgEe-JhMcKl8Urew"/>
+        </properties>
+        <properties xmi:type="DataUsage" xmi:id="_QJaEgODFEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_6P4s8eCXEe-JhMcKl8Urew#_N8FGwODEEe-JhMcKl8Urew"/>
         </properties>
       </containedUsages>
       <containedUsages xmi:type="ModelUsage" xmi:id="_6J1WAOCcEe-JhMcKl8Urew" name="Actuator">
@@ -80,6 +80,24 @@
         </properties>
         <properties xmi:type="DataUsage" xmi:id="_1AA0IuCqEe-JhMcKl8Urew">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_7RW7keCYEe-JhMcKl8Urew#_ySalcOCqEe-JhMcKl8Urew"/>
+        </properties>
+        <properties xmi:type="DataUsage" xmi:id="_qBgdMODAEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_7RW7keCYEe-JhMcKl8Urew#_wC3_MOC_Ee-JhMcKl8Urew"/>
+        </properties>
+        <properties xmi:type="DataUsage" xmi:id="_qBsDYODAEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_7RW7keCYEe-JhMcKl8Urew#_0liSEOC_Ee-JhMcKl8Urew"/>
+        </properties>
+        <properties xmi:type="DataUsage" xmi:id="_qBsDYeDAEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_7RW7keCYEe-JhMcKl8Urew#_2xJOAOC_Ee-JhMcKl8Urew"/>
+        </properties>
+        <properties xmi:type="DataUsage" xmi:id="_qBsDYuDAEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_7RW7keCYEe-JhMcKl8Urew#_4mm60OC_Ee-JhMcKl8Urew"/>
+        </properties>
+        <properties xmi:type="DataUsage" xmi:id="_dYPIMODDEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_7RW7keCYEe-JhMcKl8Urew#_2jjzEODBEe-JhMcKl8Urew"/>
+        </properties>
+        <properties xmi:type="DataUsage" xmi:id="_dYPIMeDDEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_7RW7keCYEe-JhMcKl8Urew#_GgLAwODCEe-JhMcKl8Urew"/>
         </properties>
       </containedUsages>
       <properties xmi:type="DataDef" xmi:id="_IybecOCaEe-JhMcKl8Urew" name="in_controlSignal" propCategory="INPUT" defaultValue="0.0 0.0">

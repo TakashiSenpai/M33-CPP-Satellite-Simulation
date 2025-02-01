@@ -38,6 +38,28 @@
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
+      <properties xmi:type="DataDef" xmi:id="_wC3_MOC_Ee-JhMcKl8Urew" name="qPosOldArr" propCategory="STATE" defaultValue="0.0 0.0 0.0 0.0">
+        <size>4</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_0liSEOC_Ee-JhMcKl8Urew" name="qPosNewArr" propCategory="STATE" defaultValue="0.0 0.0 0.0 0.0">
+        <size>4</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_2xJOAOC_Ee-JhMcKl8Urew" name="qRotArr" propCategory="STATE" defaultValue="0.0 0.0 0.0 0.0">
+        <size>4</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_4mm60OC_Ee-JhMcKl8Urew" name="qRotStarArr" propCategory="STATE" defaultValue="0.0 0.0 0.0 0.0">
+        <size>4</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_2jjzEODBEe-JhMcKl8Urew" name="maxRotationAngle" defaultValue="10.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_GgLAwODCEe-JhMcKl8Urew" name="angle" propCategory="STATE" defaultValue="0.0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
       <functions xmi:type="FuncDef" xmi:id="_rn_dNOCcEe-JhMcKl8Urew" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>
   </ModelDefinitionDocument>

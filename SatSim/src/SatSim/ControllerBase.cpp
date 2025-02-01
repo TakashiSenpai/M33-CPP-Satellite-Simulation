@@ -28,6 +28,7 @@ Controller::Controller(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Str
 		AsyncModelBase(name_, parent_, description_),
 				_in_controlSignal("in_controlSignal", 2, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_rotationAngles("out_rotationAngles", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_6P4s8eCXEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -53,6 +54,7 @@ Controller::Controller(Smp::String8 name_, Smp::String8 description_, Smp::IComp
 		AsyncModelBase(name_, description_, parent_),
 				_in_controlSignal("in_controlSignal", 2, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_rotationAngles("out_rotationAngles", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_6P4s8eCXEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -178,7 +180,6 @@ void Controller::initDefaultValues() {
 	for (int row = 0; row < 2; row++) {
 		_out_rotationAngles[row] = 0.0;
 	}
-	_maxRotationAngle = 10.0;
 	for (int row = 0; row < 2; row++) {
 		_setPoint[row] = 0.0;
 	}
@@ -186,13 +187,16 @@ void Controller::initDefaultValues() {
 	_coefficientIntegral = 0.0;
 	_coefficientDifferential = 0.0;
 	for (int row = 0; row < 2; row++) {
-		_prop[row] = 1.0;
+		_prop[row] = 0.0;
 	}
 	for (int row = 0; row < 2; row++) {
-		_inte[row] = 1.0;
+		_inte[row] = 0.0;
 	}
 	for (int row = 0; row < 2; row++) {
-		_diff[row] = 1.0;
+		_diff[row] = 0.0;
+	}
+	for (int row = 0; row < 2; row++) {
+		_error[row] = 0.0;
 	}
 
 	initSubModelsDefaultValues();
@@ -250,7 +254,6 @@ void Controller::serializeMembers(simtg::SerializationStream& stream_) throw (si
 	// add user defined code here
 	/*PROTECTED REGION END*/
 
-	stream_.value(_maxRotationAngle);
 	stream_.array(&_setPoint[0], 2);
 	stream_.value(_coefficientProportional);
 	stream_.value(_coefficientIntegral);

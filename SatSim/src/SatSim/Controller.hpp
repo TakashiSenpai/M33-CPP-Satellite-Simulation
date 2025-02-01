@@ -39,10 +39,6 @@ public:
 	 */
 	simtg::AsyncFloat _out_rotationAngles;
 	/**
-	 [LOCAL] 
-	 */
-	float _maxRotationAngle;
-	/**
 	 [LOCAL]  [2]
 	 */
 	float _setPoint[2];
@@ -70,6 +66,10 @@ public:
 	 [LOCAL]  [2]
 	 */
 	float _diff[2];
+	/**
+	 [STATE]  [2]
+	 */
+	simtg::AsyncFloat _error;
 
 private:
 	/**

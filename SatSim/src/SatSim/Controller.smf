@@ -15,9 +15,6 @@
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_Bk2vYOCYEe-JhMcKl8Urew" side="EAST"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_hvl0sOCcEe-JhMcKl8Urew" name="maxRotationAngle" defaultValue="10.0">
-        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-      </properties>
       <properties xmi:type="DataDef" xmi:id="_rgjGgOCeEe-JhMcKl8Urew" name="setPoint" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
@@ -31,15 +28,19 @@
       <properties xmi:type="DataDef" xmi:id="_5oc1UOCeEe-JhMcKl8Urew" name="coefficientDifferential" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_qX7cIOCfEe-JhMcKl8Urew" name="prop" defaultValue="1.0 1.0">
+      <properties xmi:type="DataDef" xmi:id="_qX7cIOCfEe-JhMcKl8Urew" name="prop" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_nU8W0OCgEe-JhMcKl8Urew" name="inte" defaultValue="1.0 1.0">
+      <properties xmi:type="DataDef" xmi:id="_nU8W0OCgEe-JhMcKl8Urew" name="inte" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_o4P8oOCgEe-JhMcKl8Urew" name="diff" defaultValue="1.0 1.0">
+      <properties xmi:type="DataDef" xmi:id="_o4P8oOCgEe-JhMcKl8Urew" name="diff" defaultValue="0.0 0.0">
+        <size>2</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_N8FGwODEEe-JhMcKl8Urew" name="error" propCategory="STATE" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>

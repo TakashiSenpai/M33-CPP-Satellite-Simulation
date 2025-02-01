@@ -52,26 +52,27 @@ void Controller::serializeExt(simtg::SerializationStream& stream_) throw (simtg:
 void Controller::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_6P4s9OCXEe-JhMcKl8Urew) ENABLED START*/
 	//add user defined code here
-	float error[2] = {
-			this->_setPoint[YS] - this->_in_controlSignal[YS],
-			this->_setPoint[XS] - this->_in_controlSignal[XS]
-	};
-	errorHistoryY.push_back(error[YS]);
-	errorHistoryX.push_back(error[XS]);
+	this->_error[YS] = this->_setPoint[YS] - this->_in_controlSignal[YS];
+	this->_error[XS] = this->_setPoint[XS] - this->_in_controlSignal[XS];
 
-	this->_prop[YS] = this->_coefficientProportional * error[YS];
+	errorHistoryY.push_back(this->_error[YS]);
+	errorHistoryX.push_back(this->_error[XS]);
+
+	this->_prop[YS] = this->_coefficientProportional * this->_error[YS];
 	this->_inte[YS] += this->_coefficientIntegral * errorHistoryY.back(); // time interval is assumed to be unity
-	this->_diff[YS] = this->_coefficientDifferential * (errorHistoryY.back() - errorHistoryY.at(errorHistoryY.size() - 2));
+	//this->_diff[YS] = this->_coefficientDifferential * (errorHistoryY.back() - errorHistoryY.at(errorHistoryY.size() - 2));
+
+	this->_prop[XS] = this->_coefficientProportional * this->_error[XS];
+	this->_inte[XS] += this->_coefficientIntegral * errorHistoryX.back(); // time interval is assumed to be unity
+	//this->_diff[XS] = this->_coefficientDifferential * (errorHistoryX.back() - errorHistoryX.at(errorHistoryX.size() - 2));
 
 	float controlVariableY;
-	controlVariableY = this->_prop[YS] + this->_inte[YS] + this->_diff[YS];
-
-	// clamp the maximum angle
-	if (controlVariableY > this->_maxRotationAngle) {
-		controlVariableY = this->_maxRotationAngle;
-	}
+	float controlVariableX;
+	controlVariableY = this->_prop[YS] + this->_inte[YS];// + this->_diff[YS];
+	controlVariableX = this->_prop[XS] + this->_inte[XS];// + this->_diff[XS];
 
 	this->_out_rotationAngles[YS] = controlVariableY;
+	this->_out_rotationAngles[XS] = controlVariableX;
 	/*PROTECTED REGION END*/
 
 }
