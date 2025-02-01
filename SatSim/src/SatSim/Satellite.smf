@@ -5,19 +5,12 @@
       <typeNotation xmi:type="_1:TypeNotation" xmi:id="_xuql8d_rEe-b8OOJcDFPdw">
         <color xmi:type="_1:Color" xmi:id="_xuql8t_rEe-b8OOJcDFPdw" red="192" green="192" blue="192"/>
       </typeNotation>
-      <connections xmi:type="Connection" xmi:id="_bXxxkN_tEe-l77663yCzzw" name="connection" end1="_aDpQMN_tEe-l77663yCzzw" end2="_ZwkjMN_tEe-l77663yCzzw">
-        <startIndexEnd1>0</startIndexEnd1>
-        <startIndexEnd2>0</startIndexEnd2>
-        <range>3</range>
-      </connections>
-      <connections xmi:type="Connection" xmi:id="_cbfRUN_tEe-l77663yCzzw" name="connection_1" end1="_74AYAN_sEe-l77663yCzzw" end2="_aDopIN_tEe-l77663yCzzw">
-        <startIndexEnd1>0</startIndexEnd1>
-        <startIndexEnd2>0</startIndexEnd2>
-        <range>3</range>
-      </connections>
-      <connections xmi:type="Connection" xmi:id="_s1g28N_xEe-l77663yCzzw" name="connection_2" end1="_f9TD0d_wEe-l77663yCzzw" end2="_f9PZcN_wEe-l77663yCzzw"/>
-      <connections xmi:type="Connection" xmi:id="_taKcIN_xEe-l77663yCzzw" name="connection_3" end1="_f9TD0t_wEe-l77663yCzzw" end2="_f9TD0N_wEe-l77663yCzzw"/>
       <connections xmi:type="Connection" xmi:id="_cy5dAN_zEe-l77663yCzzw" name="connection_4" end1="_74AYAN_sEe-l77663yCzzw" end2="_-QggcN_sEe-l77663yCzzw">
+        <startIndexEnd1>0</startIndexEnd1>
+        <startIndexEnd2>0</startIndexEnd2>
+        <range>3</range>
+      </connections>
+      <connections xmi:type="Connection" xmi:id="_NaghAOCTEe-JhMcKl8Urew" name="connection" end1="_74AYAN_sEe-l77663yCzzw" end2="_ZwkjMN_tEe-l77663yCzzw">
         <startIndexEnd1>0</startIndexEnd1>
         <startIndexEnd2>0</startIndexEnd2>
         <range>3</range>
@@ -26,12 +19,6 @@
         <definition xmi:type="ModelDefinition" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_-xPEYN_rEe-b8OOJcDFPdw"/>
         <properties xmi:type="DataUsage" xmi:id="_ZwkjMN_tEe-l77663yCzzw">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_KkvSMN_tEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_f9PZcN_wEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_MKoKkN_wEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_f9TD0N_wEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_O7fvsN_wEe-l77663yCzzw"/>
         </properties>
         <properties xmi:type="DataUsage" xmi:id="_d2oMEOANEe-l77663yCzzw">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_DolAQOAMEe-l77663yCzzw"/>
@@ -48,35 +35,8 @@
         <properties xmi:type="DataUsage" xmi:id="_d2qBQ-ANEe-l77663yCzzw">
           <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_SiOVEOAMEe-l77663yCzzw"/>
         </properties>
-        <properties xmi:type="DataUsage" xmi:id="_mGx9AOAQEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_0O4LAOAOEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_mGx9AeAQEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_22CagOAOEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_mGx9AuAQEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_4_uD0OAOEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_mGx9A-AQEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_7asRcOAOEe-l77663yCzzw"/>
-        </properties>
-      </containedUsages>
-      <containedUsages xmi:type="ModelUsage" xmi:id="_aDhUYN_tEe-l77663yCzzw" name="Orientation">
-        <definition xmi:type="ModelDefinition" href="simmf:/SatSim/model/_5UEREN_rEe-b8OOJcDFPdw#_5UEREN_rEe-b8OOJcDFPdw"/>
-        <properties xmi:type="DataUsage" xmi:id="_aDopIN_tEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_5UEREN_rEe-b8OOJcDFPdw#_TivvAN_tEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_aDpQMN_tEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_5UEREN_rEe-b8OOJcDFPdw#_WJuYUN_tEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_f9TD0d_wEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_5UEREN_rEe-b8OOJcDFPdw#_EosDIN_wEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_f9TD0t_wEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_5UEREN_rEe-b8OOJcDFPdw#_GziKEN_wEe-l77663yCzzw"/>
-        </properties>
-        <properties xmi:type="DataUsage" xmi:id="_nEkzEN_xEe-l77663yCzzw">
-          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_5UEREN_rEe-b8OOJcDFPdw#_e1J6kN_xEe-l77663yCzzw"/>
+        <properties xmi:type="DataUsage" xmi:id="_VbaKcOCVEe-JhMcKl8Urew">
+          <definition xmi:type="DataDef" href="simmf:/SatSim/model/_-xPEYN_rEe-b8OOJcDFPdw#_IBAa0OCVEe-JhMcKl8Urew"/>
         </properties>
       </containedUsages>
       <properties xmi:type="DataDef" xmi:id="_74AYAN_sEe-l77663yCzzw" name="in_sunDirection" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
@@ -107,71 +67,10 @@
             <styles xmi:type="notation:FillStyle" xmi:id="_Zw5TU9_tEe-l77663yCzzw" fillColor="12632256"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Zw5TVN_tEe-l77663yCzzw"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_f9VgEN_wEe-l77663yCzzw" type="3005" element="_f9PZcN_wEe-l77663yCzzw">
-            <children xmi:type="notation:DecorationNode" xmi:id="_f9VgFd_wEe-l77663yCzzw" type="5006">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_f9VgFt_wEe-l77663yCzzw" y="5"/>
-            </children>
-            <styles xmi:type="notation:DescriptionStyle" xmi:id="_f9VgEd_wEe-l77663yCzzw"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_f9VgEt_wEe-l77663yCzzw" fontName="Ubuntu"/>
-            <styles xmi:type="notation:FillStyle" xmi:id="_f9VgE9_wEe-l77663yCzzw" fillColor="12632256"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f9VgFN_wEe-l77663yCzzw"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_f9VgF9_wEe-l77663yCzzw" type="3005" element="_f9TD0N_wEe-l77663yCzzw">
-            <children xmi:type="notation:DecorationNode" xmi:id="_f9VgHN_wEe-l77663yCzzw" type="5006">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_f9VgHd_wEe-l77663yCzzw" y="5"/>
-            </children>
-            <styles xmi:type="notation:DescriptionStyle" xmi:id="_f9VgGN_wEe-l77663yCzzw"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_f9VgGd_wEe-l77663yCzzw" fontName="Ubuntu"/>
-            <styles xmi:type="notation:FillStyle" xmi:id="_f9VgGt_wEe-l77663yCzzw" fillColor="12632256"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f9VgG9_wEe-l77663yCzzw"/>
-          </children>
           <styles xmi:type="notation:DescriptionStyle" xmi:id="_ZwlxUd_tEe-l77663yCzzw"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_ZwmYYN_tEe-l77663yCzzw" fontName="Ubuntu"/>
           <styles xmi:type="notation:FillStyle" xmi:id="_ZwmYYd_tEe-l77663yCzzw" fillColor="12632256"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZwmYYt_tEe-l77663yCzzw" x="543" y="123"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_aDrscN_tEe-l77663yCzzw" type="3002" element="_aDhUYN_tEe-l77663yCzzw">
-          <children xmi:type="notation:DecorationNode" xmi:id="_aDrsdd_tEe-l77663yCzzw" type="5004"/>
-          <children xmi:type="notation:Node" xmi:id="_aD02YN_tEe-l77663yCzzw" type="3005" element="_aDopIN_tEe-l77663yCzzw">
-            <children xmi:type="notation:DecorationNode" xmi:id="_aD02Zd_tEe-l77663yCzzw" type="5006">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_aD02Zt_tEe-l77663yCzzw" y="5"/>
-            </children>
-            <styles xmi:type="notation:DescriptionStyle" xmi:id="_aD02Yd_tEe-l77663yCzzw"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_aD02Yt_tEe-l77663yCzzw" fontName="Ubuntu"/>
-            <styles xmi:type="notation:FillStyle" xmi:id="_aD02Y9_tEe-l77663yCzzw" fillColor="12632256"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aD02ZN_tEe-l77663yCzzw"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_aD02Z9_tEe-l77663yCzzw" type="3005" element="_aDpQMN_tEe-l77663yCzzw">
-            <children xmi:type="notation:DecorationNode" xmi:id="_aD4gwN_tEe-l77663yCzzw" type="5006">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_aD4gwd_tEe-l77663yCzzw" y="5"/>
-            </children>
-            <styles xmi:type="notation:DescriptionStyle" xmi:id="_aD02aN_tEe-l77663yCzzw"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_aD02ad_tEe-l77663yCzzw" fontName="Ubuntu"/>
-            <styles xmi:type="notation:FillStyle" xmi:id="_aD02at_tEe-l77663yCzzw" fillColor="12632256"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aD02a9_tEe-l77663yCzzw"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_f9f4IN_wEe-l77663yCzzw" type="3005" element="_f9TD0d_wEe-l77663yCzzw">
-            <children xmi:type="notation:DecorationNode" xmi:id="_f9hGQN_wEe-l77663yCzzw" type="5006">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_f9hGQd_wEe-l77663yCzzw" y="5"/>
-            </children>
-            <styles xmi:type="notation:DescriptionStyle" xmi:id="_f9f4Id_wEe-l77663yCzzw"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_f9f4It_wEe-l77663yCzzw" fontName="Ubuntu"/>
-            <styles xmi:type="notation:FillStyle" xmi:id="_f9f4I9_wEe-l77663yCzzw" fillColor="12632256"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f9f4JN_wEe-l77663yCzzw"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_f9kJkN_wEe-l77663yCzzw" type="3005" element="_f9TD0t_wEe-l77663yCzzw">
-            <children xmi:type="notation:DecorationNode" xmi:id="_f9kJld_wEe-l77663yCzzw" type="5006">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_f9kJlt_wEe-l77663yCzzw" y="5"/>
-            </children>
-            <styles xmi:type="notation:DescriptionStyle" xmi:id="_f9kJkd_wEe-l77663yCzzw"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_f9kJkt_wEe-l77663yCzzw" fontName="Ubuntu"/>
-            <styles xmi:type="notation:FillStyle" xmi:id="_f9kJk9_wEe-l77663yCzzw" fillColor="12632256"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f9kJlN_wEe-l77663yCzzw"/>
-          </children>
-          <styles xmi:type="notation:DescriptionStyle" xmi:id="_aDrscd_tEe-l77663yCzzw"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_aDrsct_tEe-l77663yCzzw" fontName="Ubuntu"/>
-          <styles xmi:type="notation:FillStyle" xmi:id="_aDrsc9_tEe-l77663yCzzw" fillColor="12632256"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aDrsdN_tEe-l77663yCzzw" x="135" y="123"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZwmYYt_tEe-l77663yCzzw" x="255" y="135"/>
         </children>
       </children>
       <children xmi:type="notation:Node" xmi:id="_74oDEN_sEe-l77663yCzzw" type="3004" element="_74AYAN_sEe-l77663yCzzw">
@@ -195,30 +94,15 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f28hAd_sEe-b8OOJcDFPdw" x="100" y="100" width="933" height="477"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_xvkk4d_rEe-b8OOJcDFPdw"/>
-    <edges xmi:type="notation:Edge" xmi:id="_bX1b8N_tEe-l77663yCzzw" type="4004" element="_bXxxkN_tEe-l77663yCzzw" source="_aD02Z9_tEe-l77663yCzzw" target="_Zw5TUN_tEe-l77663yCzzw">
-      <styles xmi:type="notation:RoutingStyle" xmi:id="_bX1b8d_tEe-l77663yCzzw" routing="Rectilinear"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_bX1b8t_tEe-l77663yCzzw" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bX1b89_tEe-l77663yCzzw" points="[6, 1, -309, -72]$[315, 73, 0, 0]"/>
-    </edges>
-    <edges xmi:type="notation:Edge" xmi:id="_cbhGgN_tEe-l77663yCzzw" type="4004" element="_cbfRUN_tEe-l77663yCzzw" source="_74oDEN_sEe-l77663yCzzw" target="_aD02YN_tEe-l77663yCzzw">
-      <styles xmi:type="notation:RoutingStyle" xmi:id="_cbhGgd_tEe-l77663yCzzw" routing="Rectilinear"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_cbhGgt_tEe-l77663yCzzw" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_cbhGg9_tEe-l77663yCzzw" points="[6, 3, -124, -78]$[130, 81, 0, 0]"/>
-    </edges>
-    <edges xmi:type="notation:Edge" xmi:id="_s1g28d_xEe-l77663yCzzw" type="4004" element="_s1g28N_xEe-l77663yCzzw" source="_f9f4IN_wEe-l77663yCzzw" target="_f9VgEN_wEe-l77663yCzzw">
-      <styles xmi:type="notation:RoutingStyle" xmi:id="_s1g28t_xEe-l77663yCzzw" routing="Rectilinear"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_s1g289_xEe-l77663yCzzw" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_s1g29N_xEe-l77663yCzzw" points="[6, -1, -297, 6]$[303, -7, 0, 0]"/>
-    </edges>
-    <edges xmi:type="notation:Edge" xmi:id="_taNfcN_xEe-l77663yCzzw" type="4004" element="_taKcIN_xEe-l77663yCzzw" source="_f9kJkN_wEe-l77663yCzzw" target="_f9VgF9_wEe-l77663yCzzw">
-      <styles xmi:type="notation:RoutingStyle" xmi:id="_taNfcd_xEe-l77663yCzzw" routing="Rectilinear"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_taNfct_xEe-l77663yCzzw" fontName="Ubuntu"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_taNfc9_xEe-l77663yCzzw" points="[6, -1, -297, 6]$[303, -7, 0, 0]"/>
-    </edges>
     <edges xmi:type="notation:Edge" xmi:id="_cy75QN_zEe-l77663yCzzw" type="4004" element="_cy5dAN_zEe-l77663yCzzw" source="_74oDEN_sEe-l77663yCzzw" target="_-QkK0N_sEe-l77663yCzzw">
       <styles xmi:type="notation:RoutingStyle" xmi:id="_cy75Qd_zEe-l77663yCzzw" routing="Rectilinear"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_cy75Qt_zEe-l77663yCzzw" fontName="Ubuntu"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_cy75Q9_zEe-l77663yCzzw" points="[-4, 6, -941, 6]$[937, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_NahIEOCTEe-JhMcKl8Urew" type="4004" element="_NaghAOCTEe-JhMcKl8Urew" source="_74oDEN_sEe-l77663yCzzw" target="_Zw5TUN_tEe-l77663yCzzw">
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_NahIEeCTEe-JhMcKl8Urew" routing="Rectilinear"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_NahIEuCTEe-JhMcKl8Urew" fontName="Ubuntu"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NahIE-CTEe-JhMcKl8Urew" points="[6, 2, -248, -126]$[254, 128, 0, 0]"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>

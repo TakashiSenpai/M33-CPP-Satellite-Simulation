@@ -16,6 +16,8 @@
 #include "SunSensor.hpp"
 #include "Baffle.hpp"
 #include "Cell.hpp"
+#include "Orientation.hpp"
+#include "AnalogToDigitalConverter.hpp"
 
 using namespace SatSim;
 
@@ -85,6 +87,8 @@ void SunSensor::init() throw (simtg::Exception) {
 	_Cell_MinusY->init();
 	_Cell_PlusZ->init();
 	_Cell_MinusZ->init();
+	_Orientation->init();
+	_ADC->init();
 
 	AsyncModelBase::init();
 

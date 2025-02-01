@@ -1,5 +1,5 @@
 /*
- * File SunSensor.hpp
+ * File AnalogToDigitalConverter.hpp
  *
  * Project SatSim
  *
@@ -8,70 +8,48 @@
  *
  */
 
-#ifndef __SUNSENSOR__HPP
-#define __SUNSENSOR__HPP
+#ifndef __ANALOGTODIGITALCONVERTER__HPP
+#define __ANALOGTODIGITALCONVERTER__HPP
 
 #include <simtg/model/AsyncModelBase.hpp>
 #include <SatSim/SatSim.hpp>
 #include <simtg/kernel/Data.hpp>
 #include <simtg/kernel/AsyncData.hpp>
 
-/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_header_hpp_include) ENABLED START*/
+/*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_header_hpp_include) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
 namespace SatSim {
-class Baffle;
-class Cell;
-class Orientation;
-class AnalogToDigitalConverter;
-}
 
-namespace SatSim {
-
-/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_hpp_inside_namespace) ENABLED START*/
+/*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_hpp_inside_namespace) ENABLED START*/
 //add user defined includes here
 /*PROTECTED REGION END*/
 
-class SunSensor: public
+class AnalogToDigitalConverter: public
 		simtg::AsyncModelBase {
 
 public:
 	/**
-	 [INPUT]  [3]
+	 [INPUT] 
 	 */
-	simtg::AsyncFloat _in_sunDirection;
+	simtg::AsyncFloat _in_measuredCurrentPlusY;
 	/**
-	 [LOCAL]  [3]
+	 [INPUT] 
 	 */
-	float _orientationPlusY[3];
+	simtg::AsyncFloat _in_measuredCurrentPlusZ;
 	/**
-	 [LOCAL]  [3]
+	 [INPUT] 
 	 */
-	float _orientationPlusZ[3];
+	simtg::AsyncFloat _in_measuredCurrentMinusY;
 	/**
-	 [LOCAL]  [3]
+	 [INPUT] 
 	 */
-	float _orientationMinusY[3];
-	/**
-	 [LOCAL]  [3]
-	 */
-	float _orientationMinusZ[3];
-	/**
-	 [LOCAL] 
-	 */
-	float _angle;
+	simtg::AsyncFloat _in_measuredCurrentMinusZ;
 	/**
 	 [OUTPUT]  [2]
 	 */
 	simtg::AsyncFloat _out_controlSignal;
-	Baffle* _Baffle;
-	Cell* _Cell_PlusY;
-	Cell* _Cell_MinusY;
-	Cell* _Cell_PlusZ;
-	Cell* _Cell_MinusZ;
-	Orientation* _Orientation;
-	AnalogToDigitalConverter* _ADC;
 
 private:
 	/**
@@ -118,28 +96,28 @@ public:
 	 @param parent_         the model parent
 	 @param description_         the model description
 	 */
-	SunSensor(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0, Smp::String8 description_ = "");
+	AnalogToDigitalConverter(Smp::String8 name_ = "", simtg::NamedObject* parent_ = 0, Smp::String8 description_ = "");
 	/**
 	 SMP default Constructor
 	 @param name_         the model instance name
 	 @param description_         the model description
 	 @param parent_         the model parent
 	 */
-	SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_);
+	AnalogToDigitalConverter(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* parent_);
 	/**
 	 Default Destructor
 	 */
-	virtual ~SunSensor();
+	virtual ~AnalogToDigitalConverter();
 	/**
 	 Default step method
 	 */
 	void step() throw (simtg::Exception);
 	/**
-	 InitMethod of SunSensor
+	 InitMethod of AnalogToDigitalConverter
 	 */
 	void init() throw (simtg::Exception);
 	/**
-	 Publish method of SunSensor
+	 Publish method of AnalogToDigitalConverter
 	 @param publication_         a SMP publishing interface
 	 */
 	void Publish(Smp::IPublication* publication_) throw (Smp::IModel::InvalidModelState);
@@ -165,11 +143,11 @@ public:
 	void callMethod(uint32_t methodId_, BaseType* params_) throw (SchedulableObject::BreakPointReached, simtg::Exception);
 
 public:
-	CLASS_INFO(SunSensor,simtg::AsyncModelBase,SatSim)
+	CLASS_INFO(AnalogToDigitalConverter,simtg::AsyncModelBase,SatSim)
 
 public:
 
-	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_methodIDEnum_hpp_inside_namespace) ENABLED START*/
+	/*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_methodIDEnum_hpp_inside_namespace) ENABLED START*/
 	//add user defined includes here
 	/*PROTECTED REGION END*/
 
@@ -178,24 +156,24 @@ public:
 	 */
 	enum methodIDs {
 
-	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_methodIDEnum_hpp_enum_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_methodIDEnum_hpp_enum_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 	};
 	// end enum methodIDs
 
-	/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_hpp_class_extensions) ENABLED START*/
+	/*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_hpp_class_extensions) ENABLED START*/
 	//add user defined code here
 	/*PROTECTED REGION END*/
 
 };
-// end class SunSensor
+// end class AnalogToDigitalConverter
 }//end SatSim
 
-/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_header_hpp_end_extensions) ENABLED START*/
+/*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_header_hpp_end_extensions) ENABLED START*/
 //add user defined code here
 /*PROTECTED REGION END*/
 
-#endif //end __SUNSENSOR.HPP__H  
+#endif //end __ANALOGTODIGITALCONVERTER.HPP__H  
 
