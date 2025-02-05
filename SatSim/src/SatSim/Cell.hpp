@@ -54,6 +54,10 @@ public:
 	 [STATE]  [3]
 	 */
 	simtg::AsyncFloat _normalVector;
+	/**
+	 [LOCAL] 
+	 */
+	float _noiseLevel;
 
 private:
 	/**

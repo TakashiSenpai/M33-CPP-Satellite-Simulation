@@ -10,6 +10,7 @@
 
 /*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_impl_cpp_before_includeimplementation) ENABLED START*/
 //add user defined includes here
+#include <stdio.h>
 /*PROTECTED REGION END*/
 
 #include "Satellite.hpp"
@@ -51,6 +52,12 @@ void Satellite::serializeExt(simtg::SerializationStream& stream_) throw (simtg::
 void Satellite::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_xuql89_rEe-b8OOJcDFPdw) ENABLED START*/
 	//add user defined code here
+	FILE *f = fopen("o.csv", "a");
+	char msg[512];
+
+	sprintf(msg, "%f, %f, %f,\n", this->_in_sunDirection[0], this->_in_sunDirection[1], this->_in_sunDirection[2]);
+	fprintf(f, msg);
+	fclose(f);
 	/*PROTECTED REGION END*/
 
 }
@@ -58,6 +65,8 @@ void Satellite::init() throw (simtg::Exception) {
 
 	/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_startInit) ENABLED START*/
 	// add user defined code here
+	FILE *f = fopen("o.csv", "w");
+	fclose(f);
 	/*PROTECTED REGION END*/
 
 	_SunSensor->init();

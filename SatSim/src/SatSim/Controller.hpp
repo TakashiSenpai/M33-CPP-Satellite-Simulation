@@ -70,6 +70,14 @@ public:
 	 [STATE]  [2]
 	 */
 	simtg::AsyncFloat _error;
+	/**
+	 [STATE] 
+	 */
+	simtg::AsyncInt _timeInSurvival;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _in_mode;
 
 private:
 	/**

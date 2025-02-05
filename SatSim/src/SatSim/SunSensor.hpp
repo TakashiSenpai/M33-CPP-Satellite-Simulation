@@ -65,6 +65,10 @@ public:
 	 [OUTPUT]  [2]
 	 */
 	simtg::AsyncFloat _out_controlSignal;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncInt _out_mode;
 	Baffle* _Baffle;
 	Cell* _Cell_PlusY;
 	Cell* _Cell_MinusY;

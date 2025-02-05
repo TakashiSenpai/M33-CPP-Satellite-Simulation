@@ -64,19 +64,21 @@ void Cell::step() throw (simtg::Exception) {
 		this->_out_measuredCurrent = 0;
 	}
 
+	this->_out_measuredCurrent += (1 - 2.0 * std::rand() / RAND_MAX) * this->_noiseLevel;
 	/*PROTECTED REGION END*/
 
 }
 void Cell::init() throw (simtg::Exception) {
 
 	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_startInit) ENABLED START*/
-	// add user defined code here
+// add user defined code here
+	std::srand(0);
 	/*PROTECTED REGION END*/
 
 	AsyncModelBase::init();
 
 	/*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_init) ENABLED START*/
-	//add user defined code here
+//add user defined code here
 	/*PROTECTED REGION END*/
 
 }

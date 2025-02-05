@@ -54,6 +54,14 @@ public:
 	 [LOCAL] 
 	 */
 	float _maxCurrent;
+	/**
+	 [LOCAL] 
+	 */
+	float _noiseLevel;
+	/**
+	 [OUTPUT] 
+	 */
+	simtg::AsyncInt _out_mode;
 
 private:
 	/**

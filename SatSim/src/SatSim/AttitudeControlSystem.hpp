@@ -47,6 +47,10 @@ public:
 	 [INPUT]  [3]
 	 */
 	simtg::AsyncFloat _in_sunDirection;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _in_mode;
 	Controller* _Controller;
 	Actuator* _Actuator;
 

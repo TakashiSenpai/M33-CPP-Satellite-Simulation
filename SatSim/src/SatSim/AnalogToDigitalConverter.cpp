@@ -10,6 +10,7 @@
 
 /*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_impl_cpp_before_includeimplementation) ENABLED START*/
 //add user defined includes here
+#include <cmath>
 /*PROTECTED REGION END*/
 
 #include "AnalogToDigitalConverter.hpp"
@@ -50,6 +51,13 @@ void AnalogToDigitalConverter::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_Nfy0NOCUEe-JhMcKl8Urew) ENABLED START*/
 	//add user defined code here
 	// output signal should remain between 0 and 1
+	this->_out_mode = 0;
+	if ((abs(this->_in_measuredCurrentPlusY) < this->_noiseLevel) && (abs(this->_in_measuredCurrentMinusY) < this->_noiseLevel)) {
+		if ((abs(this->_in_measuredCurrentPlusZ) < this->_noiseLevel) && (abs(this->_in_measuredCurrentMinusZ) < this->_noiseLevel)) {
+			this->_out_mode = 1;
+		}
+	}
+
 	this->_out_controlSignal[0] = (this->_in_measuredCurrentPlusY - this->_in_measuredCurrentMinusY) / this->_maxCurrent;
 	this->_out_controlSignal[1] = (this->_in_measuredCurrentPlusZ - this->_in_measuredCurrentMinusZ) / this->_maxCurrent;
 

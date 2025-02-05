@@ -29,6 +29,8 @@ Controller::Controller(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Str
 				_in_controlSignal("in_controlSignal", 2, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_rotationAngles("out_rotationAngles", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _timeInSurvival("timeInSurvival", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_6P4s8eCXEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -55,6 +57,8 @@ Controller::Controller(Smp::String8 name_, Smp::String8 description_, Smp::IComp
 				_in_controlSignal("in_controlSignal", 2, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_rotationAngles("out_rotationAngles", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _timeInSurvival("timeInSurvival", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_6P4s8eCXEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -184,7 +188,7 @@ void Controller::initDefaultValues() {
 		_setPoint[row] = 0.0;
 	}
 	_coefficientProportional = 1.0;
-	_coefficientIntegral = 0.0;
+	_coefficientIntegral = 1.0;
 	_coefficientDifferential = 0.0;
 	for (int row = 0; row < 2; row++) {
 		_prop[row] = 0.0;
@@ -198,6 +202,8 @@ void Controller::initDefaultValues() {
 	for (int row = 0; row < 2; row++) {
 		_error[row] = 0.0;
 	}
+	_timeInSurvival = 0;
+	_in_mode = 0;
 
 	initSubModelsDefaultValues();
 

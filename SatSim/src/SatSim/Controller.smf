@@ -8,7 +8,7 @@
       <properties xmi:type="DataDef" xmi:id="_9D_zUOCXEe-JhMcKl8Urew" name="in_controlSignal" propCategory="INPUT" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_9EcfQOCXEe-JhMcKl8Urew"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_9EcfQOCXEe-JhMcKl8Urew" order="1"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_BkGhcOCYEe-JhMcKl8Urew" name="out_rotationAngles" propCategory="OUTPUT" defaultValue="0.0 0.0">
         <size>2</size>
@@ -22,7 +22,7 @@
       <properties xmi:type="DataDef" xmi:id="_1ogN8OCeEe-JhMcKl8Urew" name="coefficientProportional" defaultValue="1.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_3j0EEOCeEe-JhMcKl8Urew" name="coefficientIntegral" defaultValue="0.0">
+      <properties xmi:type="DataDef" xmi:id="_3j0EEOCeEe-JhMcKl8Urew" name="coefficientIntegral" defaultValue="1.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_5oc1UOCeEe-JhMcKl8Urew" name="coefficientDifferential" defaultValue="0.0">
@@ -43,6 +43,13 @@
       <properties xmi:type="DataDef" xmi:id="_N8FGwODEEe-JhMcKl8Urew" name="error" propCategory="STATE" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_mS3EIOPUEe-JhMcKl8Urew" name="timeInSurvival" propCategory="STATE" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_1KVnAOPaEe-JhMcKl8Urew" name="in_mode" propCategory="INPUT" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_1OSS4OPaEe-JhMcKl8Urew"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_6P4s9OCXEe-JhMcKl8Urew" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>

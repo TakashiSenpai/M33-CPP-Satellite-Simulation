@@ -82,6 +82,10 @@ public:
 	 [STATE] 
 	 */
 	simtg::AsyncFloat _angle;
+	/**
+	 [STATE]  [3]
+	 */
+	simtg::AsyncFloat _axis;
 
 private:
 	/**

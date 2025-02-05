@@ -57,25 +57,28 @@ void Actuator::step() throw (simtg::Exception) {
 	 */
 
 	// compute rotation axis
-	float target[3] = { 0, 0, -1 };
-	float position[3] = {
+	float position[2] = {
 			this->_in_rotationAngles[1],
 			this->_in_rotationAngles[0],
-			0
 	};
+
+	float norm = sqrt(pow(position[0], 2) + pow(position[1], 2));
+	this->_axis[0] = position[1] / norm;
+	this->_axis[1] = -position[0] / norm;
+	this->_axis[2] = 0;
 
 	float axis[3] = {
-			position[1] * target[2] - position[2] * target[1],
-			position[2] * target[0] - position[0] * target[2],
-			position[0] * target[1] - position[1] * target[0]
+			this->_axis[0],
+			this->_axis[1],
+			this->_axis[2]
 	};
 
-	this->_angle = sqrt(pow(this->_in_rotationAngles[0], 2) + pow(this->_in_rotationAngles[1], 2));
+	this->_angle = sqrt(pow(this->_in_rotationAngles[0], 2) + pow(this->_in_rotationAngles[1], 2)) / 10.0;
 	if (this->_angle > this->_maxRotationAngle * M_PI / 180) {
 		this->_angle = this->_maxRotationAngle * M_PI / 180;
 	}
 
-	Quaternion *qRot = Quaternion::getRotation(axis, (-1) * this->_angle);
+	Quaternion *qRot = Quaternion::getRotation(axis, (+1) * this->_angle);
 	Quaternion *qRotStar = qRot->conjugate();
 	Quaternion *qPosOld = new Quaternion(0, this->_in_sunDirection[0], this->_in_sunDirection[1], this->_in_sunDirection[2]);
 
@@ -100,53 +103,7 @@ void Actuator::step() throw (simtg::Exception) {
 	delete qPosNew;
 	delete qTmp;
 
-	/*
-	 * Rotate Satellite THIS IS A BIT BAD, BETTER USE QUATERNIONS!
-
-
-	 float angles[2];
-	 angles[0] = this->_in_rotationAngles[0];
-	 angles[1] = this->_in_rotationAngles[1];
-
-	 // build the rotation matrices
-	 this->_rotY.at(0, 0) = cos(angles[0]);
-	 this->_rotY.at(0, 1) = 0;
-	 this->_rotY.at(0, 2) = sin(angles[0]);
-	 this->_rotY.at(1, 0) = 0;
-	 this->_rotY.at(1, 1) = 1;
-	 this->_rotY.at(1, 2) = 0;
-	 this->_rotY.at(2, 0) = -sin(angles[0]);
-	 this->_rotY.at(2, 1) = 0;
-	 this->_rotY.at(2, 2) = cos(angles[0]);
-
-	 this->_rotX.at(0, 0) = 1;
-	 this->_rotX.at(0, 1) = 0;
-	 this->_rotX.at(0, 2) = 0;
-	 this->_rotX.at(1, 0) = 0;
-	 this->_rotX.at(1, 1) = cos(angles[1]);
-	 this->_rotX.at(1, 2) = -sin(angles[1]);
-	 this->_rotX.at(2, 0) = 0;
-	 this->_rotX.at(2, 1) = sin(angles[1]);
-	 this->_rotX.at(2, 2) = cos(angles[1]);
-
-	 for (int i = 0; i < 3; i++) {
-	 this->_sunDirectionRotY[i] = 0;
-	 for (int j = 0; j < 3; j++) {
-	 this->_sunDirectionRotY[i] += this->_rotY.at(i, j) * this->_in_sunDirection[j];
-	 }
-	 }
-
-	 for (int i = 0; i < 3; i++) {
-	 this->_sunDirectionRotX[i] = 0;
-	 for (int j = 0; j < 3; j++) {
-	 this->_sunDirectionRotX[i] += this->_rotX.at(i, j) * this->_sunDirectionRotY[j];
-	 }
-	 }
-
-	 for (int i = 0; i < 3; i++) {
-	 this->_out_sunDirection[i] = this->_sunDirectionRotX[i];
-	 }
-	 /*PROTECTED REGION END*/
+	/*PROTECTED REGION END*/
 
 }
 void Actuator::init() throw (simtg::Exception) {

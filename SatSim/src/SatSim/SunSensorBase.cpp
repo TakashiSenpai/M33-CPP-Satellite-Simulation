@@ -32,6 +32,7 @@ SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 		AsyncModelBase(name_, parent_, description_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_controlSignal("out_controlSignal", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_mode("out_mode", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -73,6 +74,7 @@ SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 		AsyncModelBase(name_, description_, parent_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_controlSignal("out_controlSignal", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _out_mode("out_mode", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -212,6 +214,7 @@ void SunSensor::connectData() throw (Smp::IModel::InvalidModelState) {
 		_Cell_PlusZ->getOutput("out_measuredCurrent").connect(&_ADC->getInput("in_measuredCurrentPlusZ"));
 		_Cell_MinusZ->getOutput("out_measuredCurrent").connect(&_ADC->getInput("in_measuredCurrentMinusZ"));
 		_ADC->getOutput("out_controlSignal").connect(&this->getOutput("out_controlSignal"), 0, 2, 0);
+		_ADC->getOutput("out_mode").connect(&this->getOutput("out_mode"));
 
 		/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_connectData_catching) ENABLED START*/
 		//add user defined code here
@@ -251,6 +254,7 @@ void SunSensor::initDefaultValues() {
 	for (int row = 0; row < 2; row++) {
 		_out_controlSignal[row] = 0.0;
 	}
+	_out_mode = 0;
 
 	initSubModelsDefaultValues();
 

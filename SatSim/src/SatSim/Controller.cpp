@@ -52,27 +52,33 @@ void Controller::serializeExt(simtg::SerializationStream& stream_) throw (simtg:
 void Controller::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_6P4s9OCXEe-JhMcKl8Urew) ENABLED START*/
 	//add user defined code here
-	this->_error[YS] = this->_setPoint[YS] - this->_in_controlSignal[YS];
-	this->_error[XS] = this->_setPoint[XS] - this->_in_controlSignal[XS];
+	if (this->_in_mode == 1) {
+		this->_timeInSurvival += 1;
+		this->_out_rotationAngles[XS] = -1;
+		this->_out_rotationAngles[YS] = 0;
 
-	errorHistoryY.push_back(this->_error[YS]);
-	errorHistoryX.push_back(this->_error[XS]);
+	}
 
-	this->_prop[YS] = this->_coefficientProportional * this->_error[YS];
-	this->_inte[YS] += this->_coefficientIntegral * errorHistoryY.back(); // time interval is assumed to be unity
-	//this->_diff[YS] = this->_coefficientDifferential * (errorHistoryY.back() - errorHistoryY.at(errorHistoryY.size() - 2));
+	else {
+		this->_timeInSurvival = 0;
+		this->_error[YS] = this->_setPoint[YS] - this->_in_controlSignal[YS];
+		this->_error[XS] = this->_setPoint[XS] - this->_in_controlSignal[XS];
 
-	this->_prop[XS] = this->_coefficientProportional * this->_error[XS];
-	this->_inte[XS] += this->_coefficientIntegral * errorHistoryX.back(); // time interval is assumed to be unity
-	//this->_diff[XS] = this->_coefficientDifferential * (errorHistoryX.back() - errorHistoryX.at(errorHistoryX.size() - 2));
+		errorHistoryY.push_back(this->_error[YS]);
+		errorHistoryX.push_back(this->_error[XS]);
 
-	float controlVariableY;
-	float controlVariableX;
-	controlVariableY = this->_prop[YS] + this->_inte[YS];// + this->_diff[YS];
-	controlVariableX = this->_prop[XS] + this->_inte[XS];// + this->_diff[XS];
+		this->_prop[YS] = this->_coefficientProportional * this->_error[YS];
+		this->_inte[YS] += this->_coefficientIntegral * errorHistoryY.back(); // time interval is assumed to be unity
+		//this->_diff[YS] = this->_coefficientDifferential * (errorHistoryY.back() - errorHistoryY.at(errorHistoryY.size() - 2));
 
-	this->_out_rotationAngles[YS] = controlVariableY;
-	this->_out_rotationAngles[XS] = controlVariableX;
+		this->_prop[XS] = this->_coefficientProportional * this->_error[XS];
+		this->_inte[XS] += this->_coefficientIntegral * errorHistoryX.back(); // time interval is assumed to be unity
+		//this->_diff[XS] = this->_coefficientDifferential * (errorHistoryX.back() - errorHistoryX.at(errorHistoryX.size() - 2));
+
+		this->_out_rotationAngles[YS] = this->_prop[YS] + this->_inte[YS];// + this->_diff[YS];
+		this->_out_rotationAngles[XS] = this->_prop[XS] + this->_inte[XS];// + this->_diff[XS];
+	}
+
 	/*PROTECTED REGION END*/
 
 }

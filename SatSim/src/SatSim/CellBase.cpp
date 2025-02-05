@@ -181,11 +181,12 @@ void Cell::initDefaultValues() {
 		_in_cssSunDirection[row] = 0.0;
 	}
 	_in_baffleCoefficient = 0.0;
-	_maxCurrent = 31e-3;
+	_maxCurrent = 31e3;
 	_largeIncidenceExponent = 9.6;
 	for (int row = 0; row < 3; row++) {
 		_normalVector[row] = 0.0;
 	}
+	_noiseLevel = 2.3e-4;
 
 	initSubModelsDefaultValues();
 
@@ -244,6 +245,7 @@ void Cell::serializeMembers(simtg::SerializationStream& stream_) throw (simtg::S
 
 	stream_.value(_maxCurrent);
 	stream_.value(_largeIncidenceExponent);
+	stream_.value(_noiseLevel);
 
 	serializeExt(stream_);
 

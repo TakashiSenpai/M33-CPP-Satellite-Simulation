@@ -173,6 +173,7 @@ void Satellite::connectData() throw (Smp::IModel::InvalidModelState) {
 		_ACS->getOutput("out_sunDirection").connect(&this->getOutput("out_sunDirection"), 0, 3, 0);
 		this->getInput("in_sunDirection").connect(&_ACS->getInput("in_sunDirection"), 0, 3, 0);
 		this->getInput("in_sunDirection").connect(&_SunSensor->getInput("in_sunDirection"), 0, 3, 0);
+		_SunSensor->getOutput("out_mode").connect(&_ACS->getInput("in_mode"));
 
 		/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_connectData_catching) ENABLED START*/
 		//add user defined code here

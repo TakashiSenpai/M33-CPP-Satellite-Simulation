@@ -18,7 +18,7 @@
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_4FOsIN_7Ee-l77663yCzzw"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_KbNnIOALEe-l77663yCzzw" name="maxCurrent" defaultValue="31e-3">
+      <properties xmi:type="DataDef" xmi:id="_KbNnIOALEe-l77663yCzzw" name="maxCurrent" defaultValue="31e3">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_PuPnAOALEe-l77663yCzzw" name="largeIncidenceExponent" defaultValue="9.6">
@@ -26,6 +26,9 @@
       </properties>
       <properties xmi:type="DataDef" xmi:id="_05fVoOALEe-l77663yCzzw" name="normalVector" propCategory="STATE" defaultValue="0.0 0.0 0.0">
         <size>3</size>
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_jh248OPQEe-JhMcKl8Urew" name="noiseLevel" defaultValue="2.3e-4">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_DuiE1N_sEe-b8OOJcDFPdw" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>

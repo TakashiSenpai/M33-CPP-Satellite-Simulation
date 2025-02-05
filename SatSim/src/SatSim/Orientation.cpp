@@ -75,6 +75,9 @@ void Orientation::step() throw (simtg::Exception) {
 	float uPrimeNorm = sqrt(pow(uPrime[1], 2) + pow(uPrime[2], 2));
 
 	// calculate azimuth and elevation
+	if (this->_out_cssFrameVector[0] < -1) {
+		this->_out_cssFrameVector[0] = -1;
+	}
 	this->_out_sunEl = acos(this->_out_cssFrameVector[0]);
 	this->_out_sunAz =
 			(this->_out_cssFrameVector[1] <= 0) ?
