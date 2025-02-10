@@ -19,10 +19,10 @@
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_1ogN8OCeEe-JhMcKl8Urew" name="coefficientProportional" defaultValue="1.0">
+      <properties xmi:type="DataDef" xmi:id="_1ogN8OCeEe-JhMcKl8Urew" name="coefficientProportional" propCategory="PARAM" defaultValue="1.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_3j0EEOCeEe-JhMcKl8Urew" name="coefficientIntegral" defaultValue="1.0">
+      <properties xmi:type="DataDef" xmi:id="_3j0EEOCeEe-JhMcKl8Urew" name="coefficientIntegral" propCategory="PARAM" defaultValue="1.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_5oc1UOCeEe-JhMcKl8Urew" name="coefficientDifferential" defaultValue="0.0">

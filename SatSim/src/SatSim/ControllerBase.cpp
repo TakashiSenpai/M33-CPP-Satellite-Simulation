@@ -28,6 +28,8 @@ Controller::Controller(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Str
 		AsyncModelBase(name_, parent_, description_),
 				_in_controlSignal("in_controlSignal", 2, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_rotationAngles("out_rotationAngles", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _coefficientProportional("coefficientProportional", 1, 1, "-", simtg::INPUT, &_paramsContainer, this, 0)
+						, _coefficientIntegral("coefficientIntegral", 1, 1, "-", simtg::INPUT, &_paramsContainer, this, 0)
 						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _timeInSurvival("timeInSurvival", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
@@ -56,6 +58,8 @@ Controller::Controller(Smp::String8 name_, Smp::String8 description_, Smp::IComp
 		AsyncModelBase(name_, description_, parent_),
 				_in_controlSignal("in_controlSignal", 2, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_rotationAngles("out_rotationAngles", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _coefficientProportional("coefficientProportional", 1, 1, "-", simtg::INPUT, &_paramsContainer, this, 0)
+						, _coefficientIntegral("coefficientIntegral", 1, 1, "-", simtg::INPUT, &_paramsContainer, this, 0)
 						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _timeInSurvival("timeInSurvival", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
@@ -261,8 +265,6 @@ void Controller::serializeMembers(simtg::SerializationStream& stream_) throw (si
 	/*PROTECTED REGION END*/
 
 	stream_.array(&_setPoint[0], 2);
-	stream_.value(_coefficientProportional);
-	stream_.value(_coefficientIntegral);
 	stream_.value(_coefficientDifferential);
 	stream_.array(&_prop[0], 2);
 	stream_.array(&_inte[0], 2);

@@ -30,6 +30,7 @@ Satellite::Satellite(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 		AsyncModelBase(name_, parent_, description_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -61,6 +62,7 @@ Satellite::Satellite(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 		AsyncModelBase(name_, description_, parent_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 
 /*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -200,6 +202,7 @@ void Satellite::initDefaultValues() {
 	for (int row = 0; row < 3; row++) {
 		_out_sunDirection[row] = 0.0;
 	}
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

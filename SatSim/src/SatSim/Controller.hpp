@@ -43,13 +43,13 @@ public:
 	 */
 	float _setPoint[2];
 	/**
-	 [LOCAL] 
+	 [PARAM] 
 	 */
-	float _coefficientProportional;
+	simtg::AsyncFloat _coefficientProportional;
 	/**
-	 [LOCAL] 
+	 [PARAM] 
 	 */
-	float _coefficientIntegral;
+	simtg::AsyncFloat _coefficientIntegral;
 	/**
 	 [LOCAL] 
 	 */

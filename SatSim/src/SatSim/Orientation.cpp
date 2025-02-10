@@ -75,14 +75,21 @@ void Orientation::step() throw (simtg::Exception) {
 	float uPrimeNorm = sqrt(pow(uPrime[1], 2) + pow(uPrime[2], 2));
 
 	// calculate azimuth and elevation
-	if (this->_out_cssFrameVector[0] < -1) {
-		this->_out_cssFrameVector[0] = -1;
-	}
 	this->_out_sunEl = acos(this->_out_cssFrameVector[0]);
 	this->_out_sunAz =
 			(this->_out_cssFrameVector[1] <= 0) ?
 													acos(this->_out_cssFrameVector[2] / uPrimeNorm) :
 													M_PI + acos(-this->_out_cssFrameVector[2] / uPrimeNorm);
+
+	if (this->_out_cssFrameVector[0] < -1) {
+		this->_out_sunEl = acos(-1);
+	}
+	else if (this->_out_cssFrameVector[0] > 1) {
+		this->_out_sunEl = acos(1);
+	}
+	else {
+		this->_out_sunEl = acos(this->_out_cssFrameVector[0]);
+	}
 
 	/*
 	 * Convert Sun sensor Sun direction to satellite coordinate frame

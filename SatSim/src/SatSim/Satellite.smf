@@ -78,6 +78,9 @@
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_-RvPgN_sEe-l77663yCzzw" side="EAST"/>
       </properties>
+      <properties xmi:type="DataDef" xmi:id="_qzFrwOe-Ee-JhMcKl8Urew" name="forceStep" propCategory="STATE" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+      </properties>
       <functions xmi:type="FuncDef" xmi:id="_xuql89_rEe-b8OOJcDFPdw" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>
   </ModelDefinitionDocument>

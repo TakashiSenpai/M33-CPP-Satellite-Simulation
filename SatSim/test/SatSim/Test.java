@@ -1,6 +1,8 @@
 package SatSim;
 
 import simtg.simops.base.SimopsException;
+import java.util.Arrays;
+import java.io.IOException;
 
 public class Test extends BaseTest {
 
@@ -31,6 +33,8 @@ public class Test extends BaseTest {
 		 * Initialize simulation
 		 */		
 		sim.writeFloatArray(objName + ".In.in_sunDirection", sunPos);
+		sim.writeFloat(objName + ".ACS.Controller.Param.coefficientProportional", (float) 4.0); 
+		sim.writeFloat(objName + ".ACS.Controller.Param.coefficientIntegral", (float) 0.5); 
 		sim.init();
 		
 		/*
@@ -71,6 +75,7 @@ public class Test extends BaseTest {
 		int nSteps = 50;
 		for (int i=0; i<nSteps; i++){
 			System.out.println("\nStep " + i);
+			
 			sim.step();
 			
 			// retrieve values from the simulation
@@ -130,14 +135,29 @@ public class Test extends BaseTest {
 			System.out.printf("Mode: %d\n", mode);
 			
 			// update the Sun's position for the next step
-			satSunPos = sim.readFloatArray(objName + ".Out.out_sunDirection");
-			norm = Math.sqrt(Math.pow(satSunPos[0], 2) + Math.pow(satSunPos[1], 2) + Math.pow(satSunPos[2], 2));
-			System.out.printf("New Sun direction: %f, %f, %f, norm = %f\n", satSunPos[0], satSunPos[1], satSunPos[2], norm);
+			newSunPos = sim.readFloatArray(objName + ".Out.out_sunDirection");
+			norm = Math.sqrt(Math.pow(newSunPos[0], 2) + Math.pow(newSunPos[1], 2) + Math.pow(newSunPos[2], 2));
+			System.out.printf("New Sun direction: %f, %f, %f, norm = %f\n", newSunPos[0], newSunPos[1], newSunPos[2], norm);
 			
-			sim.writeFloatArray(objName + ".In.in_sunDirection", satSunPos); 
+			sim.writeFloatArray(objName + ".In.in_sunDirection", newSunPos); 
+			
+			// Force the simulation by writing an input that is for sure different from the previous step
+			if (Arrays.equals(satSunPos, newSunPos)) {
+				sim.writeInt(objName + ".State.forceStep", i);
+			}
 		}
 		
 		
 		System.out.println("\nTest finished");
+		
+		System.out.println("\nLaunching plotting script");
+		try {
+			ProcessBuilder pb = new ProcessBuilder("python3", "analysis.py");
+			pb.inheritIO();
+			Process process = pb.start();
+			process.waitFor();
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

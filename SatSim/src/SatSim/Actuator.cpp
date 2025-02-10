@@ -56,6 +56,13 @@ void Actuator::step() throw (simtg::Exception) {
 	 * Quaternion rotation
 	 */
 
+	if ((this->_in_rotationAngles[0] == 0.0) && (this->_in_rotationAngles[1] == 0.0)) {
+		for (int i = 0; i < 3; i++) {
+			this->_out_sunDirection[i] = this->_in_sunDirection[i];
+		}
+		return;
+	}
+
 	// compute rotation axis
 	float position[2] = {
 			this->_in_rotationAngles[1],

@@ -43,6 +43,10 @@ public:
 	 [OUTPUT]  [3]
 	 */
 	simtg::AsyncFloat _out_sunDirection;
+	/**
+	 [STATE] 
+	 */
+	simtg::AsyncInt _forceStep;
 	SunSensor* _SunSensor;
 	AttitudeControlSystem* _ACS;
 
