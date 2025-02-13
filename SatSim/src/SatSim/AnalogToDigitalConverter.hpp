@@ -62,6 +62,10 @@ public:
 	 [OUTPUT] 
 	 */
 	simtg::AsyncInt _out_mode;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _forceStep;
 
 private:
 	/**

@@ -32,6 +32,7 @@ AnalogToDigitalConverter::AnalogToDigitalConverter(Smp::String8 name_, simtg::Na
 						, _in_measuredCurrentMinusZ("in_measuredCurrentMinusZ", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_controlSignal("out_controlSignal", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_mode("out_mode", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -61,6 +62,7 @@ AnalogToDigitalConverter::AnalogToDigitalConverter(Smp::String8 name_, Smp::Stri
 						, _in_measuredCurrentMinusZ("in_measuredCurrentMinusZ", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_controlSignal("out_controlSignal", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_mode("out_mode", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_Nfy0MeCUEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -190,6 +192,7 @@ void AnalogToDigitalConverter::initDefaultValues() {
 	_maxCurrent = 31e3;
 	_noiseLevel = 2.3e-4;
 	_out_mode = 0;
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

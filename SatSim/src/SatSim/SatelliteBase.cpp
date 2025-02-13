@@ -30,7 +30,7 @@ Satellite::Satellite(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 		AsyncModelBase(name_, parent_, description_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _forceStep("forceStep", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -62,7 +62,7 @@ Satellite::Satellite(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 		AsyncModelBase(name_, description_, parent_),
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _forceStep("forceStep", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -176,6 +176,8 @@ void Satellite::connectData() throw (Smp::IModel::InvalidModelState) {
 		this->getInput("in_sunDirection").connect(&_ACS->getInput("in_sunDirection"), 0, 3, 0);
 		this->getInput("in_sunDirection").connect(&_SunSensor->getInput("in_sunDirection"), 0, 3, 0);
 		_SunSensor->getOutput("out_mode").connect(&_ACS->getInput("in_mode"));
+		this->getInput("forceStep").connect(&_SunSensor->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_ACS->getInput("forceStep"));
 
 		/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_connectData_catching) ENABLED START*/
 		//add user defined code here

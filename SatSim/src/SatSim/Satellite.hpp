@@ -44,7 +44,7 @@ public:
 	 */
 	simtg::AsyncFloat _out_sunDirection;
 	/**
-	 [STATE] 
+	 [INPUT] 
 	 */
 	simtg::AsyncInt _forceStep;
 	SunSensor* _SunSensor;

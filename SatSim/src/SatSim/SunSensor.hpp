@@ -69,6 +69,10 @@ public:
 	 [OUTPUT] 
 	 */
 	simtg::AsyncInt _out_mode;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _forceStep;
 	Baffle* _Baffle;
 	Cell* _Cell_PlusY;
 	Cell* _Cell_MinusY;

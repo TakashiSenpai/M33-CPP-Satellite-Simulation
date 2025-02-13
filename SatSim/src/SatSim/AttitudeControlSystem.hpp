@@ -51,6 +51,10 @@ public:
 	 [INPUT] 
 	 */
 	simtg::AsyncInt _in_mode;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _forceStep;
 	Controller* _Controller;
 	Actuator* _Actuator;
 

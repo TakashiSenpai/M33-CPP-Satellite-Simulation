@@ -11,6 +11,7 @@
 /*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_impl_cpp_before_includeimplementation) ENABLED START*/
 //add user defined includes here
 #include <stdio.h>
+#include "Cell.hpp"
 /*PROTECTED REGION END*/
 
 #include "Satellite.hpp"
@@ -52,10 +53,19 @@ void Satellite::serializeExt(simtg::SerializationStream& stream_) throw (simtg::
 void Satellite::step() throw (simtg::Exception) {
 	/*PROTECTED REGION ID(_xuql89_rEe-b8OOJcDFPdw) ENABLED START*/
 	//add user defined code here
-	FILE *f = fopen("o.csv", "a");
+	FILE *f = fopen("data.csv", "a");
 	char msg[512];
 
-	sprintf(msg, "%f, %f, %f,\n", this->_in_sunDirection[0], this->_in_sunDirection[1], this->_in_sunDirection[2]);
+	sprintf(msg, "%f, %f, %f, %f, %f, %f, %f, %d\n",
+			this->_in_sunDirection[0],
+			this->_in_sunDirection[1],
+			this->_in_sunDirection[2],
+			static_cast<float>(this->_SunSensor->_Cell_MinusY->_out_measuredCurrent),
+			static_cast<float>(this->_SunSensor->_Cell_PlusY->_out_measuredCurrent),
+			static_cast<float>(this->_SunSensor->_Cell_MinusZ->_out_measuredCurrent),
+			static_cast<float>(this->_SunSensor->_Cell_PlusZ->_out_measuredCurrent),
+			static_cast<int>(this->_SunSensor->_out_mode)
+			);
 	fprintf(f, msg);
 	fclose(f);
 	/*PROTECTED REGION END*/
@@ -65,7 +75,7 @@ void Satellite::init() throw (simtg::Exception) {
 
 	/*PROTECTED REGION ID(_xuql8N_rEe-b8OOJcDFPdw_startInit) ENABLED START*/
 	// add user defined code here
-	FILE *f = fopen("o.csv", "w");
+	FILE *f = fopen("data.csv", "w");
 	fclose(f);
 	/*PROTECTED REGION END*/
 

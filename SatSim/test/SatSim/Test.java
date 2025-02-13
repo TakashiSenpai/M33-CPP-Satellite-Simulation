@@ -23,18 +23,18 @@ public class Test extends BaseTest {
 		/*
 		 * Generate initial sun position
 		 */
-		float sunPos[] = {(float)1, (float)1, (float)0};
+		float sunPos[] = {(float)0, (float)1, (float)0};
 		double norm = Math.sqrt(Math.pow(sunPos[0], 2) + Math.pow(sunPos[1], 2) + Math.pow(sunPos[2], 2));
 		sunPos[0] /= (float) norm;
 		sunPos[1] /= (float) norm;
 		sunPos[2] /= (float) norm;
 		
-		/*
+		/*s
 		 * Initialize simulation
 		 */		
 		sim.writeFloatArray(objName + ".In.in_sunDirection", sunPos);
-		sim.writeFloat(objName + ".ACS.Controller.Param.coefficientProportional", (float) 4.0); 
-		sim.writeFloat(objName + ".ACS.Controller.Param.coefficientIntegral", (float) 0.5); 
+		sim.writeFloat(objName + ".ACS.Controller.Param.coefficientProportional", (float) 0.4); 
+		sim.writeFloat(objName + ".ACS.Controller.Param.coefficientIntegral", (float) 0.05); 
 		sim.init();
 		
 		/*
@@ -72,9 +72,9 @@ public class Test extends BaseTest {
 		System.out.printf("Cell_+Z normal vector: %f, %f, %f\n", normalVector[2][0], normalVector[2][1], normalVector[2][2]);
 		System.out.printf("Cell_-Z normal vector: %f, %f, %f\n", normalVector[3][0], normalVector[3][1], normalVector[3][2]);
 		
-		int nSteps = 50;
+		int nSteps = 100;
 		for (int i=0; i<nSteps; i++){
-			System.out.println("\nStep " + i);
+			//System.out.println("\nStep " + i);
 			
 			sim.step();
 			
@@ -109,7 +109,7 @@ public class Test extends BaseTest {
 			axis = sim.readFloatArray(objName + ".ACS.Actuator.State.axis");
 			timeInSurvival = sim.readFloat(objName + ".ACS.Controller.State.timeInSurvival");
 			mode = sim.readInt(objName + ".ACS.Controller.In.in_mode");
-			
+			/*
 			System.out.printf("SAT Sun direction: %f, %f, %f\n", satSunPos[0], satSunPos[1], satSunPos[2]);
 			System.out.printf("CSS Sun direction: %f, %f, %f\n", cssSunDir[0], cssSunDir[1], cssSunDir[2]);
 			System.out.printf("ACS Sun direction: %f, %f, %f\n", acsSunDir[0], acsSunDir[1], acsSunDir[2]);
@@ -122,28 +122,32 @@ public class Test extends BaseTest {
 
 			System.out.printf("Control signal Y: %f, Z: %f\n", controlSignal[0], controlSignal[1]);
 			System.out.printf("Rotation angles: Ys: %f, Xs: %f\n", rotationAngles[0], rotationAngles[1]);
-		/*
+			*/
+		 
+		 /*
 			System.out.println("\nQuaternion business:");
 			System.out.printf("qPosOld %f, %f, %f, %f\n", qPosOld[0], qPosOld[1], qPosOld[2], qPosOld[3]);
 			System.out.printf("qPosNew %f, %f, %f, %f\n", qPosNew[0], qPosNew[1], qPosNew[2], qPosNew[3]);
 			System.out.printf("qRot %f, %f, %f, %f\n", qRot[0], qRot[1], qRot[2], qRot[3]);
 			System.out.printf("qRotStar %f, %f, %f, %f\n", qRotStar[0], qRotStar[1], qRotStar[2], qRotStar[3]);
 		*/
+			/*
 			System.out.printf("Axis: %f, %f, %f\n", axis[0], axis[1], axis[2]);
 			System.out.printf("Angle: %f rad, %f deg\n", angle, angle * 180/Math.PI);		
 			System.out.printf("Time in survival: %f\n", timeInSurvival);
 			System.out.printf("Mode: %d\n", mode);
+			*/
 			
 			// update the Sun's position for the next step
 			newSunPos = sim.readFloatArray(objName + ".Out.out_sunDirection");
 			norm = Math.sqrt(Math.pow(newSunPos[0], 2) + Math.pow(newSunPos[1], 2) + Math.pow(newSunPos[2], 2));
-			System.out.printf("New Sun direction: %f, %f, %f, norm = %f\n", newSunPos[0], newSunPos[1], newSunPos[2], norm);
+			//System.out.printf("New Sun direction: %f, %f, %f, norm = %f\n", newSunPos[0], newSunPos[1], newSunPos[2], norm);
 			
 			sim.writeFloatArray(objName + ".In.in_sunDirection", newSunPos); 
 			
 			// Force the simulation by writing an input that is for sure different from the previous step
 			if (Arrays.equals(satSunPos, newSunPos)) {
-				sim.writeInt(objName + ".State.forceStep", i);
+				sim.writeInt(objName + ".In.forceStep", i);
 			}
 		}
 		

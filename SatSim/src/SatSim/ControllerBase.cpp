@@ -33,6 +33,7 @@ Controller::Controller(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Str
 						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _timeInSurvival("timeInSurvival", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_6P4s8eCXEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -63,6 +64,7 @@ Controller::Controller(Smp::String8 name_, Smp::String8 description_, Smp::IComp
 						, _error("error", 2, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _timeInSurvival("timeInSurvival", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_6P4s8eCXEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -208,6 +210,7 @@ void Controller::initDefaultValues() {
 	}
 	_timeInSurvival = 0;
 	_in_mode = 0;
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

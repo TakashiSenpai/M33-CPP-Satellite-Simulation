@@ -33,6 +33,7 @@ SunSensor::SunSensor(Smp::String8 name_, simtg::NamedObject* parent_, Smp::Strin
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_controlSignal("out_controlSignal", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_mode("out_mode", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -75,6 +76,7 @@ SunSensor::SunSensor(Smp::String8 name_, Smp::String8 description_, Smp::ICompos
 				_in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _out_controlSignal("out_controlSignal", 2, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_mode("out_mode", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -215,6 +217,13 @@ void SunSensor::connectData() throw (Smp::IModel::InvalidModelState) {
 		_Cell_MinusZ->getOutput("out_measuredCurrent").connect(&_ADC->getInput("in_measuredCurrentMinusZ"));
 		_ADC->getOutput("out_controlSignal").connect(&this->getOutput("out_controlSignal"), 0, 2, 0);
 		_ADC->getOutput("out_mode").connect(&this->getOutput("out_mode"));
+		this->getInput("forceStep").connect(&_Cell_PlusY->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_Cell_MinusY->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_Cell_PlusZ->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_Cell_MinusZ->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_Orientation->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_Baffle->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_ADC->getInput("forceStep"));
 
 		/*PROTECTED REGION ID(_-xPEYN_rEe-b8OOJcDFPdw_connectData_catching) ENABLED START*/
 		//add user defined code here
@@ -255,6 +264,7 @@ void SunSensor::initDefaultValues() {
 		_out_controlSignal[row] = 0.0;
 	}
 	_out_mode = 0;
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

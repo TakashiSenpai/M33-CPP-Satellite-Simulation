@@ -7,7 +7,7 @@
       </typeNotation>
       <properties xmi:type="DataDef" xmi:id="_293HUN_uEe-l77663yCzzw" name="in_sunAz" propCategory="INPUT" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_3A1i0N_uEe-l77663yCzzw"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_3A1i0N_uEe-l77663yCzzw" order="1"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_AzskAN_vEe-l77663yCzzw" name="yMinusFov" defaultValue="0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0">
         <size>2</size>
@@ -33,7 +33,7 @@
       </properties>
       <properties xmi:type="DataDef" xmi:id="_BHQjwN_wEe-l77663yCzzw" name="in_sunEl" propCategory="INPUT" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_BIX-EN_wEe-l77663yCzzw" order="1"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_BIX-EN_wEe-l77663yCzzw" order="2"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_YjNQ0N_wEe-l77663yCzzw" name="baffleCoefficients" propCategory="STATE" defaultValue="0.0 0.0 0.0 0.0">
         <size>4</size>
@@ -58,6 +58,10 @@
       <properties xmi:type="DataDef" xmi:id="_Vb12QN_7Ee-l77663yCzzw" name="out_baffleCoefficientMinusZ" propCategory="OUTPUT" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_Vb12Qd_7Ee-l77663yCzzw" side="EAST" order="3"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_OwEEgOnwEe-JhMcKl8Urew" name="forceStep" propCategory="INPUT" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_OyUHQOnwEe-JhMcKl8Urew"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_ME22k9_sEe-b8OOJcDFPdw" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>

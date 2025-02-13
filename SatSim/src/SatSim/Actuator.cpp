@@ -80,7 +80,7 @@ void Actuator::step() throw (simtg::Exception) {
 			this->_axis[2]
 	};
 
-	this->_angle = sqrt(pow(this->_in_rotationAngles[0], 2) + pow(this->_in_rotationAngles[1], 2)) / 10.0;
+	this->_angle = sqrt(pow(this->_in_rotationAngles[0], 2) + pow(this->_in_rotationAngles[1], 2));
 	if (this->_angle > this->_maxRotationAngle * M_PI / 180) {
 		this->_angle = this->_maxRotationAngle * M_PI / 180;
 	}

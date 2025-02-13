@@ -7,19 +7,19 @@
       </typeNotation>
       <properties xmi:type="DataDef" xmi:id="_QDjxcOCUEe-JhMcKl8Urew" name="in_measuredCurrentPlusY" propCategory="INPUT" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_QE-GsOCUEe-JhMcKl8Urew"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_QE-GsOCUEe-JhMcKl8Urew" order="1"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_VA-GoOCUEe-JhMcKl8Urew" name="in_measuredCurrentPlusZ" propCategory="INPUT" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_VA-GoeCUEe-JhMcKl8Urew" order="2"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_VA-GoeCUEe-JhMcKl8Urew" order="3"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_WY-bYOCUEe-JhMcKl8Urew" name="in_measuredCurrentMinusY" propCategory="INPUT" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_WY-bYeCUEe-JhMcKl8Urew" order="1"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_WY-bYeCUEe-JhMcKl8Urew" order="2"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_YIB-MOCUEe-JhMcKl8Urew" name="in_measuredCurrentMinusZ" propCategory="INPUT" defaultValue="0.0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_YIB-MeCUEe-JhMcKl8Urew" order="3"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_YIB-MeCUEe-JhMcKl8Urew" order="4"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_ckErsOCUEe-JhMcKl8Urew" name="out_controlSignal" propCategory="OUTPUT" defaultValue="0.0 0.0">
         <size>2</size>
@@ -35,6 +35,10 @@
       <properties xmi:type="DataDef" xmi:id="_hJP3QOPaEe-JhMcKl8Urew" name="out_mode" propCategory="OUTPUT" defaultValue="0">
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_hN8xEOPaEe-JhMcKl8Urew" side="EAST"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_L_kS0OnwEe-JhMcKl8Urew" name="forceStep" propCategory="INPUT" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_MBx5UOnwEe-JhMcKl8Urew"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_Nfy0NOCUEe-JhMcKl8Urew" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>

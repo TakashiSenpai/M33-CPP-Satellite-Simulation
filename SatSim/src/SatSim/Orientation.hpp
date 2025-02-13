@@ -55,13 +55,9 @@ public:
 	 */
 	int32_t _css2satFrame[3][3];
 	/**
-	 [INPUT]  [3]
+	 [INPUT] 
 	 */
-	simtg::AsyncFloat _in_cssFrameVector;
-	/**
-	 [OUTPUT]  [3]
-	 */
-	simtg::AsyncFloat _out_satFrameVector;
+	simtg::AsyncInt _forceStep;
 
 private:
 	/**

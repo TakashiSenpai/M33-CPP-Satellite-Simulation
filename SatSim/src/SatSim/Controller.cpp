@@ -54,9 +54,14 @@ void Controller::step() throw (simtg::Exception) {
 	//add user defined code here
 	if (this->_in_mode == 1) {
 		this->_timeInSurvival += 1;
-		this->_out_rotationAngles[XS] = -1;
-		this->_out_rotationAngles[YS] = 0;
-
+		if (this->_timeInSurvival < 18) {
+			this->_out_rotationAngles[XS] = -1;
+			this->_out_rotationAngles[YS] = 0;
+		}
+		else {
+			this->_out_rotationAngles[XS] = 0;
+			this->_out_rotationAngles[YS] = -1;
+		}
 	}
 
 	else {

@@ -90,19 +90,6 @@ void Orientation::step() throw (simtg::Exception) {
 	else {
 		this->_out_sunEl = acos(this->_out_cssFrameVector[0]);
 	}
-
-	/*
-	 * Convert Sun sensor Sun direction to satellite coordinate frame
-	 */
-
-	// Use simple matrix multiplication
-	for (int i = 0; i < 3; i++) {
-		this->_out_satFrameVector[i] = 0.0;
-		for (int j = 0; j < 3; j++) {
-			this->_out_satFrameVector[i] += this->_css2satFrame[i][j] * this->_in_cssFrameVector[j];
-		}
-	}
-
 	/*PROTECTED REGION END*/
 
 }

@@ -86,6 +86,10 @@ public:
 	 [STATE]  [3]
 	 */
 	simtg::AsyncFloat _axis;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _forceStep;
 
 private:
 	/**

@@ -30,8 +30,7 @@ Orientation::Orientation(Smp::String8 name_, simtg::NamedObject* parent_, Smp::S
 						, _out_cssFrameVector("out_cssFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunAz("out_sunAz", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunEl("out_sunEl", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _in_cssFrameVector("in_cssFrameVector", 3, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_satFrameVector("out_satFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -59,8 +58,7 @@ Orientation::Orientation(Smp::String8 name_, Smp::String8 description_, Smp::ICo
 						, _out_cssFrameVector("out_cssFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunAz("out_sunAz", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_sunEl("out_sunEl", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
-						, _in_cssFrameVector("in_cssFrameVector", 3, 1, "-", simtg::INPUT, &_data, this, 0)
-						, _out_satFrameVector("out_satFrameVector", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_5UEREN_rEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -206,12 +204,7 @@ void Orientation::initDefaultValues() {
 	_css2satFrame[2][0] = -1;
 	_css2satFrame[2][1] = 0;
 	_css2satFrame[2][2] = 0;
-	for (int row = 0; row < 3; row++) {
-		_in_cssFrameVector[row] = 0.0;
-	}
-	for (int row = 0; row < 3; row++) {
-		_out_satFrameVector[row] = 0.0;
-	}
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

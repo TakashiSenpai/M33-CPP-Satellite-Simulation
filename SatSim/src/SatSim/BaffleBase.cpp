@@ -34,6 +34,7 @@ Baffle::Baffle(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 des
 						, _out_baffleCoefficientPlusZ("out_baffleCoefficientPlusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_baffleCoefficientMinusY("out_baffleCoefficientMinusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_baffleCoefficientMinusZ("out_baffleCoefficientMinusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -65,6 +66,7 @@ Baffle::Baffle(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* p
 						, _out_baffleCoefficientPlusZ("out_baffleCoefficientPlusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_baffleCoefficientMinusY("out_baffleCoefficientMinusY", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _out_baffleCoefficientMinusZ("out_baffleCoefficientMinusZ", 1, 1, "-", simtg::OUTPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_ME22kN_sEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -214,6 +216,7 @@ void Baffle::initDefaultValues() {
 	_out_baffleCoefficientPlusZ = 0.0;
 	_out_baffleCoefficientMinusY = 0.0;
 	_out_baffleCoefficientMinusZ = 0.0;
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

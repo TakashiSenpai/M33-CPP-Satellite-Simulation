@@ -8,7 +8,7 @@
       <properties xmi:type="DataDef" xmi:id="_TivvAN_tEe-l77663yCzzw" name="in_satFrameVector" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_TmQ9EN_tEe-l77663yCzzw"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_TmQ9EN_tEe-l77663yCzzw" order="1"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_WJuYUN_tEe-l77663yCzzw" name="out_cssFrameVector" propCategory="OUTPUT" defaultValue="0.0 0.0 0.0">
         <size>3</size>
@@ -33,15 +33,9 @@
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
       </properties>
-      <properties xmi:type="DataDef" xmi:id="_i1C9sOCYEe-JhMcKl8Urew" name="in_cssFrameVector" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
-        <size>3</size>
-        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_i1zLoOCYEe-JhMcKl8Urew" order="1"/>
-      </properties>
-      <properties xmi:type="DataDef" xmi:id="_l0ULMOCYEe-JhMcKl8Urew" name="out_satFrameVector" propCategory="OUTPUT" defaultValue="0.0 0.0 0.0">
-        <size>3</size>
-        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_l1DyEOCYEe-JhMcKl8Urew" side="EAST" order="3"/>
+      <properties xmi:type="DataDef" xmi:id="_-V5_MOnvEe-JhMcKl8Urew" name="forceStep" propCategory="INPUT" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_-YmG0OnvEe-JhMcKl8Urew"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_5UERE9_rEe-b8OOJcDFPdw" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>
@@ -85,24 +79,6 @@
         <styles xmi:type="notation:FontStyle" xmi:id="_GzkmUt_wEe-l77663yCzzw" fontName="Ubuntu"/>
         <styles xmi:type="notation:FillStyle" xmi:id="_GzkmU9_wEe-l77663yCzzw" fillColor="12632256"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GzkmVN_wEe-l77663yCzzw" x="399" y="152"/>
-      </children>
-      <children xmi:type="notation:Node" xmi:id="_i1DkwOCYEe-JhMcKl8Urew" type="3004" element="_i1C9sOCYEe-JhMcKl8Urew">
-        <children xmi:type="notation:DecorationNode" xmi:id="_i1FZ8OCYEe-JhMcKl8Urew" type="5005">
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_i1FZ8eCYEe-JhMcKl8Urew" y="5"/>
-        </children>
-        <styles xmi:type="notation:DescriptionStyle" xmi:id="_i1DkweCYEe-JhMcKl8Urew"/>
-        <styles xmi:type="notation:FontStyle" xmi:id="_i1DkwuCYEe-JhMcKl8Urew" fontName="Ubuntu"/>
-        <styles xmi:type="notation:FillStyle" xmi:id="_i1Dkw-CYEe-JhMcKl8Urew" fillColor="12632256"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i1DkxOCYEe-JhMcKl8Urew" x="-11" y="140"/>
-      </children>
-      <children xmi:type="notation:Node" xmi:id="_l0VZUOCYEe-JhMcKl8Urew" type="3004" element="_l0ULMOCYEe-JhMcKl8Urew">
-        <children xmi:type="notation:DecorationNode" xmi:id="_l0VZVeCYEe-JhMcKl8Urew" type="5005">
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_l0VZVuCYEe-JhMcKl8Urew" y="5"/>
-        </children>
-        <styles xmi:type="notation:DescriptionStyle" xmi:id="_l0VZUeCYEe-JhMcKl8Urew"/>
-        <styles xmi:type="notation:FontStyle" xmi:id="_l0VZUuCYEe-JhMcKl8Urew" fontName="Ubuntu"/>
-        <styles xmi:type="notation:FillStyle" xmi:id="_l0VZU-CYEe-JhMcKl8Urew" fillColor="12632256"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l0VZVOCYEe-JhMcKl8Urew" x="399" y="212"/>
       </children>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UjnLkd_sEe-b8OOJcDFPdw" x="228" y="72"/>
     </children>

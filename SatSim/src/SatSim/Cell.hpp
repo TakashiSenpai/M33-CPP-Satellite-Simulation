@@ -58,6 +58,10 @@ public:
 	 [LOCAL] 
 	 */
 	float _noiseLevel;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _forceStep;
 
 private:
 	/**

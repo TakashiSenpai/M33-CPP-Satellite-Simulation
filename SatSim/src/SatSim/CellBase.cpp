@@ -30,6 +30,7 @@ Cell::Cell(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8 descrip
 						, _in_cssSunDirection("in_cssSunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _in_baffleCoefficient("in_baffleCoefficient", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _normalVector("normalVector", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -57,6 +58,7 @@ Cell::Cell(Smp::String8 name_, Smp::String8 description_, Smp::IComposite* paren
 						, _in_cssSunDirection("in_cssSunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _in_baffleCoefficient("in_baffleCoefficient", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _normalVector("normalVector", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_DuiE0d_sEe-b8OOJcDFPdw_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -187,6 +189,7 @@ void Cell::initDefaultValues() {
 		_normalVector[row] = 0.0;
 	}
 	_noiseLevel = 2.3e-4;
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

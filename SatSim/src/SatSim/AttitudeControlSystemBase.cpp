@@ -32,6 +32,7 @@ AttitudeControlSystem::AttitudeControlSystem(Smp::String8 name_, simtg::NamedObj
 						, _out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_4bXJYeCZEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -65,6 +66,7 @@ AttitudeControlSystem::AttitudeControlSystem(Smp::String8 name_, Smp::String8 de
 						, _out_sunDirection("out_sunDirection", 3, 1, "-", simtg::OUTPUT, &_data, this, 0)
 						, _in_sunDirection("in_sunDirection", 3, 1, "-", simtg::INPUT, &_data, this, 0)
 						, _in_mode("in_mode", 1, 1, "-", simtg::INPUT, &_data, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_4bXJYeCZEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -178,6 +180,8 @@ void AttitudeControlSystem::connectData() throw (Smp::IModel::InvalidModelState)
 		_Actuator->getOutput("out_sunDirection").connect(&this->getOutput("out_sunDirection"), 0, 3, 0);
 		this->getInput("in_sunDirection").connect(&_Actuator->getInput("in_sunDirection"), 0, 3, 0);
 		this->getInput("in_mode").connect(&_Controller->getInput("in_mode"));
+		this->getInput("forceStep").connect(&_Controller->getInput("forceStep"));
+		this->getInput("forceStep").connect(&_Actuator->getInput("forceStep"));
 
 		/*PROTECTED REGION ID(_4bXJYeCZEe-JhMcKl8Urew_connectData_catching) ENABLED START*/
 		//add user defined code here
@@ -208,6 +212,7 @@ void AttitudeControlSystem::initDefaultValues() {
 		_in_sunDirection[row] = 0.0;
 	}
 	_in_mode = 0;
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 

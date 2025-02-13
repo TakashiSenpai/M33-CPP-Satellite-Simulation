@@ -78,6 +78,10 @@ public:
 	 [OUTPUT] 
 	 */
 	simtg::AsyncFloat _out_baffleCoefficientMinusZ;
+	/**
+	 [INPUT] 
+	 */
+	simtg::AsyncInt _forceStep;
 
 private:
 	/**

@@ -13,12 +13,12 @@
       <properties xmi:type="DataDef" xmi:id="_vu190OCcEe-JhMcKl8Urew" name="in_rotationAngles" propCategory="INPUT" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_vvlksOCcEe-JhMcKl8Urew"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_vvlksOCcEe-JhMcKl8Urew" order="1"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_1RMzIOCcEe-JhMcKl8Urew" name="in_sunDirection" propCategory="INPUT" defaultValue="0.0 0.0 0.0">
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_1RypAOCcEe-JhMcKl8Urew" order="1"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_1RypAOCcEe-JhMcKl8Urew" order="2"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_ppbWYOCqEe-JhMcKl8Urew" name="rotX" propCategory="STATE" defaultValue="0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0">
         <size>3</size>
@@ -63,6 +63,10 @@
       <properties xmi:type="DataDef" xmi:id="_VXqUAOPkEe-JhMcKl8Urew" name="axis" propCategory="STATE" defaultValue="0.0 0.0 0.0">
         <size>3</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
+      </properties>
+      <properties xmi:type="DataDef" xmi:id="_hTfjcOnwEe-JhMcKl8Urew" name="forceStep" propCategory="INPUT" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_hWksoOnwEe-JhMcKl8Urew"/>
       </properties>
       <functions xmi:type="FuncDef" xmi:id="_rn_dNOCcEe-JhMcKl8Urew" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>

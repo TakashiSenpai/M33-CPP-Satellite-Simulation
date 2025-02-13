@@ -8,7 +8,7 @@
       <properties xmi:type="DataDef" xmi:id="_9D_zUOCXEe-JhMcKl8Urew" name="in_controlSignal" propCategory="INPUT" defaultValue="0.0 0.0">
         <size>2</size>
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#float"/>
-        <portNotation xmi:type="_1:PortNotation" xmi:id="_9EcfQOCXEe-JhMcKl8Urew" order="1"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_9EcfQOCXEe-JhMcKl8Urew" order="2"/>
       </properties>
       <properties xmi:type="DataDef" xmi:id="_BkGhcOCYEe-JhMcKl8Urew" name="out_rotationAngles" propCategory="OUTPUT" defaultValue="0.0 0.0">
         <size>2</size>
@@ -51,6 +51,10 @@
         <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
         <portNotation xmi:type="_1:PortNotation" xmi:id="_1OSS4OPaEe-JhMcKl8Urew"/>
       </properties>
+      <properties xmi:type="DataDef" xmi:id="_dTLvsOnwEe-JhMcKl8Urew" name="forceStep" propCategory="INPUT" defaultValue="0">
+        <type xmi:type="SimpleType" href="platform:/plugin/simtg.simmf.workbench/types/types.xml#int"/>
+        <portNotation xmi:type="_1:PortNotation" xmi:id="_dU4Y0OnwEe-JhMcKl8Urew" order="1"/>
+      </properties>
       <functions xmi:type="FuncDef" xmi:id="_6P4s9OCXEe-JhMcKl8Urew" name="step" description="Default step method" throwException="simtg::Exception" visibility="PUBLIC" schedulable="true"/>
     </modelDefinition>
   </ModelDefinitionDocument>
@@ -75,6 +79,24 @@
         <styles xmi:type="notation:FontStyle" xmi:id="_BkHIguCYEe-JhMcKl8Urew" fontName="Ubuntu"/>
         <styles xmi:type="notation:FillStyle" xmi:id="_BkHIg-CYEe-JhMcKl8Urew" fillColor="12632256"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BkHIhOCYEe-JhMcKl8Urew" x="399" y="116"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_cVD6kOnwEe-JhMcKl8Urew" type="3004" element="_1KVnAOPaEe-JhMcKl8Urew">
+        <children xmi:type="notation:DecorationNode" xmi:id="_cVEhoOnwEe-JhMcKl8Urew" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_cVEhoenwEe-JhMcKl8Urew" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_cVD6kenwEe-JhMcKl8Urew"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_cVD6kunwEe-JhMcKl8Urew" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_cVD6k-nwEe-JhMcKl8Urew" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cVD6lOnwEe-JhMcKl8Urew"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_dTQoMOnwEe-JhMcKl8Urew" type="3004" element="_dTLvsOnwEe-JhMcKl8Urew">
+        <children xmi:type="notation:DecorationNode" xmi:id="_dTQoNenwEe-JhMcKl8Urew" type="5005">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_dTQoNunwEe-JhMcKl8Urew" y="5"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_dTQoMenwEe-JhMcKl8Urew"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_dTQoMunwEe-JhMcKl8Urew" fontName="Ubuntu"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_dTQoM-nwEe-JhMcKl8Urew" fillColor="12632256"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTQoNOnwEe-JhMcKl8Urew" x="-11" y="62"/>
       </children>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6krRMeCXEe-JhMcKl8Urew" x="100" y="100"/>
     </children>

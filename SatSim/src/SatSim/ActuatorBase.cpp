@@ -39,6 +39,7 @@ Actuator::Actuator(Smp::String8 name_, simtg::NamedObject* parent_, Smp::String8
 						, _qRotStarArr("qRotStarArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _angle("angle", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _axis("axis", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_defConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -75,6 +76,7 @@ Actuator::Actuator(Smp::String8 name_, Smp::String8 description_, Smp::IComposit
 						, _qRotStarArr("qRotStarArr", 4, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _angle("angle", 1, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
 						, _axis("axis", 3, 1, "-", simtg::OUTPUT, &_statesContainer, this, 0)
+						, _forceStep("forceStep", 1, 1, "-", simtg::INPUT, &_data, this, 0)
 
 /*PROTECTED REGION ID(_rn_dMeCcEe-JhMcKl8Urew_namedConst_constructor_init) ENABLED START*/
 //add user defined code here
@@ -236,6 +238,7 @@ void Actuator::initDefaultValues() {
 	for (int row = 0; row < 3; row++) {
 		_axis[row] = 0.0;
 	}
+	_forceStep = 0;
 
 	initSubModelsDefaultValues();
 
